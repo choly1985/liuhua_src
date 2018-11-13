@@ -27,8 +27,8 @@ if __name__ == '__main__':
 
     print('a', 'b', 'c', end='+++++++++++++++')
     print(1, 2, 3, end='\t')
-    print(1+2)
-    print('a'+'b')
+    print(1 + 2)
+    print('a' + 'b')
     print(True or False)
     print(123.456)
     print(print)
@@ -104,7 +104,7 @@ if __name__ == '__main__':
     # kwlist = ['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif',
     #  'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not',
     #  'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
-    
+
     print('我们群有个吉祥物', '他的名字叫狗子', end=', ')
     print('狗子今年18岁')
     print('狗子没有女朋友')
@@ -131,6 +131,6 @@ if __name__ == '__main__':
     # command.py
     # ADB_DEVICES = 'adb devices'
     # INSTALL_APK = 'adb install -r xxx.apk'
-    
+
     dog = ['港', 22, True, False, 'my name is gang.']
     print('我的名字是：', dog[0], '我今年', dog[1], '我', dog[2], '女朋友')
