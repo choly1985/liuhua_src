@@ -91,14 +91,19 @@ if __name__ == '__main__':
     # dict_dir_list = dir(dict)
     # dict_module = [item for item in dict_dir_list if '__' not in item]    # 列表推导式
     # print(dict_module)
-    a_list = ['a', 'b', 'c', 'd', 'e']
-    b_list = ['ab', 'abc', 'agg', 'ff']
-    list_1 = [item for item in b_list if '' not in item]
-    print(list_1)
-    keys = ('zhaoyang', 'liuhua', 'jianghao')
-    values = ('27', '33', '27')
-    user_age = {key: value for key, value in zip(keys, values)}
-    print(user_age)
+    # a_list = ['a', 'b', 'c', 'd', 'e']
+    # b_list = ['ab', 'abc', 'agg', 'ff']
+    # list_1 = [item for item in b_list if '' not in item]
+    # print(list_1)
+    # keys = ('zhaoyang', 'liuhua', 'jianghao')
+    # values = ('27', '33', '27')
+    # user_age = {key: value for key, value in zip(keys, values)}
+    # print(user_age)
 
-    print(list(user_age.keys())[2])  # dict.keys 和dict.values并不能直接通过下标取值的形式直接取值
-    print(list(user_age.values())[2])  # 我们需要先把dict.keys的数据类型转换成list类型， 再做取值行为
+    # print(list(user_age.keys())[2])  # dict.keys 和dict.values并不能直接通过下标取值的形式直接取值
+    # print(list(user_age.values())[2])  # 我们需要先把dict.keys的数据类型转换成list类型， 再做取值行为
+
+    # tuple 只有1个元素时候加,不然会认为是一个str类型
+    tuple1 = ('list',)
+    list1 = ['list']
+    print(type(tuple1))

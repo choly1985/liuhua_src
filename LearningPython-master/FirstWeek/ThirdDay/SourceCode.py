@@ -174,9 +174,9 @@ if __name__ == '__main__':
     # print(news)
     # dict.setdefault ：可以通过传递一个key 来给字典增加一个key value， 默认的value 为None
     # dict.setdefault(key, value)
-    
+
     # bool True or False
-    
+
     if True:    # if判断的内容永远为真， if not 判断的永远为假
         print('hello world !')
     else:
@@ -201,7 +201,7 @@ if __name__ == '__main__':
         print('num != 0')
     else:
         print('num == 0')
-    
+
     news = {'beijing': '北京'}
 
     if news.get('tianjin'):
