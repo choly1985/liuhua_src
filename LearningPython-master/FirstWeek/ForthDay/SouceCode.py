@@ -61,7 +61,7 @@ userdict = dict.fromkeys(userinfo, 0)
 # userdict['11'] = '十一'
 # userdict.update({'11': 1})
 # dict.update 如果key不存在， 则新增一个key并新增对应的value
-# dict.default 如果key不存在， 则新增， 如果key存在， 则不做任何修改
+# dict.setdefault 如果key不存在， 则新增， 如果key存在， 则不做任何修改
 # dict[key] = new_value， 这样写法可以直接新增或修改对应的key的value
 # print(userdict)
 
@@ -137,7 +137,7 @@ if __name__ == '__main__':
     while len(userinfo) <= 10:
         print(len(userinfo))
         userinfo.append('Raymond')
-    
+
     for item in userinfo:
         if item == 'dog':
             break   # 跳出一个循环
@@ -152,18 +152,18 @@ if __name__ == '__main__':
     #         print(num)
     # while 如果用的不恰当， 他会进入一个死循环无法跳出
     # break 只跳出最近一层循环 不管是for 或是while
-    
+
     # print(list(range(10)))
     #
     # for _ in range(5):
     #     userinfo.pop()
     #     print(userinfo)
-    
+
     # numbers = []
     # for num in range(10):
     #     numbers.append(num)
     # print(numbers)
-    
+
     # userinfo = ['Raymond', 'gang', 'dog', 'devan', '牛仔']
 
     for item in userinfo:
@@ -198,7 +198,7 @@ if __name__ == '__main__':
         elif 'dog' == item:
             pass
         print(item)
-    
+
     userinfo = ['刘德华', '黎明', 'Raymond', 'dog', '随便', '牛仔']
     username = 'dog'
     # print(username in userinfo)
@@ -215,4 +215,3 @@ if __name__ == '__main__':
         elif num == len(userinfo):
             print('不存在userinfo中')
         num += 1
-

@@ -117,15 +117,15 @@ if __name__ == '__main__':
     # else:
     #     print('num==0')
 
-    news = {'beijing': '北京'}
-    if news.get('tianjin'):
-        print('天津')
-    else:
-        print('天津不在字典中')
-    num = 3
-    if isinstance(num, (int)):
-        print('num is int')
-    elif isinstance(num, (str, dict)):
-        print('num is str or dict object')
-    else:
-        print('我也不知道num什么类型')
+    # news = {'beijing': '北京'}
+    # if news.get('tianjin'):
+    #     print('天津')
+    # else:
+    #     print('天津不在字典中')
+    # num = 3
+    # if isinstance(num, (int)):
+    #     print('num is int')
+    # elif isinstance(num, (str, dict)):
+    #     print('num is str or dict object')
+    # else:
+    #     print('我也不知道num什么类型')
