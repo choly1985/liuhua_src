@@ -6,7 +6,9 @@
 # @Version : $Id$
 
 import os
-
+import sys
+import random
+import string
 # user_dict = dict(a=1, b='a')  # 初始化字典
 # print(user_dict)
 
@@ -48,7 +50,7 @@ import os
 # print(bool(0))
 
 if __name__ == '__main__':
-    import sys
+
     userdict = {}
     # try:
     #     print(userdic['dog'])
@@ -103,8 +105,7 @@ if __name__ == '__main__':
     #     def __repr__(self):
     #         return self.msg
     # raise ValideJsonError('错误的Json结构体')
-    import random
-    import string
+
 
 # print([item for item in dir(random) if not item.startswith('__')])
 # print([item for item in dir(random) if '__'not in item])
@@ -135,19 +136,17 @@ if __name__ == '__main__':
     # mobile_head = ['137', '138', '139', '140', '150', '177']
     # print(random.choice(mobile_head) + str(random.randint(10000000, 99999999)))
 
+    class Usage(Exception):
+        """dmsgtring for  Usage"""
 
-# class Usage(Exception):
-#     """dmsgtring for  Usage"""
+        def __init__(self, msg):
+            super(Usage, self).__init__()
+            self.msg = msg
 
-#     def __init__(self, msg):
-#         super(Usage, self).__init__()
-#         self.msg = msg
+        def __repr__(self):
+            return self.msg
 
-#     def __repr__(self):
-#         return self.msg
-
-
-# raise Usage('Usage error')
+    raise Usage('Usage error')
 # user_input = int('1')
 # print(user_input, type(user_input))
 # user_input = input('请输入一个数字：')
@@ -160,8 +159,6 @@ if __name__ == '__main__':
 # 如果用户持续猜错 可以选择继续猜，或者通过ctrl + c的方式结束游戏
 # 如果用户猜对了， 则自动退出
 # 如果错误， 则重新猜
-
-    import sys
 
     user_input_list = []
     while 1:
