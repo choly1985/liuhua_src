@@ -231,7 +231,7 @@ if __name__ == '__main__':
 # 并返回一个2-3位的随机中文名字
 
     FIRST_NAME_ENUM = '赵钱孙李周吴郑王'
-    LAST_NAME_ENUM = '与玉鱼汪千苗喵'
+    LAST_NAME_ENUM = '华伟波洋勇智超富'
 
     def make_user_name(first_name=None)->str:
         if not first_name:
