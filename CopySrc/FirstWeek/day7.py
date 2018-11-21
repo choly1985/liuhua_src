@@ -129,6 +129,7 @@ def sum(a, b):
 
 
 # def sum(a, b): return a + b
+
 # 写一个计算器
 # 这个计算器接受不确定个数的参数
 # 他接受一个seq参数， 这个参数代表 + - * /
@@ -162,4 +163,11 @@ def 计算器(*args, seq='+'):
     return '除法暂时不做处理'
 
 
-print(计算器(1, 2, 3, 4, 5, seq='+'))
+list1 = [item for item in range(101)]  # 列表逆序3中方法
+# # list1.reverse()
+# # print(list1)
+# # list1 = list1[::-1]
+# # print(list1)
+# list2 = list(reversed(list1))
+print(计算器(*list1, seq='+'))
+print(计算器(1, 2, 3, seq='*'))
