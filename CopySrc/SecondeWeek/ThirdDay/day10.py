@@ -1,31 +1,25 @@
-"""
-@Name: SourceCode
-@Version: 
-@Project: PyCharm Community Edition
-@Author: liujinjia
-@Data: 2017/11/20
-"""
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# @Date    : 2018-11-22 23:07:19
+# @Author  : liuhua (434375025@qq.com)
+# @Link    : https://github.com/choly1985
+# @Version : $Id$
 
-# oop 面向对象编程的三大特性
-# 封装 把重复的代码整合成一个通过不同参数而返回相同操作的过程 买水果这个过程中， 买可以封装为一个类方法
-# 多态 多态是写一个父类， 抽象类不做实现， 只做定义
-# 继承 首先我们写了一个Fruits类， Apple -> 脆的， 面的， 青苹果， 红苹果
-
+import os
 import json
 from abc import ABCMeta
 from abc import abstractmethod
 
-# 定义一个抽象类，需要在这个类的继承中继承metaclass=ABCMeta
-# 定义一个抽象类方法， 需要在这个类方法上挂一个abstractmethod装饰器
-# 定义好的抽象类，不能直接实例化， 否则会抛出TypeError的异常
-# 如果你需要实现这个抽象类的类方法， 可以让子类继承父类后， 用子类的类方法override父类的对应方法
-
 
 class Fruits(metaclass=ABCMeta):
-    """ 这是一个水果的父类 """
+    """这是一个水果的父类"""
 
     @abstractmethod
     def buy(self):
+        pass
+
+    @abstractmethod
+    def throw(self):
         pass
 
     @abstractmethod
@@ -48,7 +42,7 @@ class Apple(Fruits):
         print('卖掉一个苹果')
 
     def throw(self):
-        print('这个苹果坏了， 仍掉它')
+        print('这个苹果坏了，扔掉它')
 
 
 class Banana(Fruits):
@@ -58,11 +52,8 @@ class Banana(Fruits):
     def sell(self):
         print('卖掉一个香蕉')
 
-    def throw(self):
-        print('这个香蕉坏了， 仍掉它')
 
-
-class People:
+class People(object):
     def __init__(self, name, age, city, work):
         self.users = name, age, city, work
         self.title = ('name', 'age', 'city', 'work')
@@ -75,7 +66,7 @@ class Teacher(People):
     def __init__(self, name, age, city):
         self.work = 'teacher'
         super(Teacher, self).__init__(name, age, city, self.work)
-        # super 初始化父类
+        # super初始化父类
 
 
 class Student(People):
@@ -85,15 +76,13 @@ class Student(People):
 
 
 class Worker(People):
-    """ 这是一个工人的类"""
-
     def __init__(self):
-        self.users = 'Raymond', 20, '北京', '工人'
+        self.users = 'Raymond', '20', '北京', '工人'
         super(Worker, self).__init__(*self.users)
 
 
-class Duck:
-    """ pass """
+class Duck(object):
+    """Duck class"""
 
     def __init__(self, _quack, _fly):
         self._quack = _quack
@@ -101,7 +90,7 @@ class Duck:
         self.type = '真'
 
     def swim(self):
-        print('swiming ...!')
+        print("swiming ...!")
 
     def display(self):
         print(self._quack)
@@ -131,12 +120,12 @@ class RubberDuck(Duck):
         self.type = '橡皮'
 
     def swim(self):
-        print('橡皮鸭漏气了， 不会游泳了')
+        print('橡皮鸭漏气了，不会游泳了')
         return '我不能游泳了'
 
 
 class DecoyDuck(RubberDuck):
-    """ 诱饵鸭子"""
+    """诱饵鸭子"""
 
     def __init__(self):
         super(DecoyDuck, self).__init__()
@@ -144,39 +133,42 @@ class DecoyDuck(RubberDuck):
 
 
 if __name__ == '__main__':
-    green = GreenDuck()
-    print(green.display())   # display 是由父类来实现的
-    green.swim()    # swim和green_qucak 是由子类来实现的
-    print(green.green_quack())
-    # duck = Duck('我会叫', '我会飞')
-    # print(duck.display())
-    print('================')
-    rubber = RubberDuck()
-    print(rubber.display())     # display 是由父类实现
-    print(rubber.swim())    # 是由子类override之后实现的
-    # decoy = DecoyDuck()
-    # print(decoy.display())
-    
-    # worker = Worker()
-    # print(worker.get_user_info())
-    # teacher = Teacher('茶茶', 35, '上海')
-    # print(teacher.get_user_info())
-    # students = [
-    #     ('gang', 18, 'chengdu'),
-    #     ('老虎', 22, '平顶山'),
-    #     ('随便', 19, 'xiamen')
-    # ]
-    # for student in students:
-    #     st = Student(*student)
-    #     print(st.get_user_info())
 
-    # fruits = Fruits()
+    # fruits = Fruits() #TypeError抽象类无法被实例化
     # apple = Apple()
     # apple.buy()
     # apple.throw()
     # apple.sell()
 
-    # user = Teacher('Raymond', 20, '北京')
-    # user1 = Student('gang', 20, 'shanghai')
-    # print(user.get_user_info())
-    # print(user1.get_user_info())
+    # worker = Worker()
+    # print(worker.get_user_info())
+    # # 继承父类的方法
+
+    # teacher = Teacher('茶茶', '33', '上海')
+    # print(teacher.get_user_info())
+
+    # students = [
+    #     ('gang', 18, 'chengdu'),
+    #     ('随便', 20, '平顶山'),
+    #     ('大哥', 19, '厦门')
+    # ]
+
+    # for student in students:
+    #     st = Student(*student)
+    #     print(st.get_user_info())
+
+    # green = GreenDuck()
+    # print(green.display())
+    # green.swim()
+    # print(green.green_quack())
+
+    # duck = Duck('我会叫', '我会飞')
+    # print(duck.display())
+    # print('=============')
+    # rubber = RubberDuck()
+    # # print(duck.display())
+    # print(rubber.display())  # display 是由父类实现,父类调用类方法看在子类中有无，有用子类方法
+    # print(rubber.swim())
+
+    decoy = DecoyDuck()
+    print(decoy.display())
