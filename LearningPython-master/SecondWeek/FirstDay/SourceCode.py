@@ -14,6 +14,7 @@ import json
 class MyFirstClass:
     """ 这是一个测试类 """
     # object = MyFirstClass(name, age, city)
+
     def __init__(self, name, age, city):
         """ init class
         __init__默认第一位接受的参数为self，self代表着类的实例对象本身
@@ -21,7 +22,7 @@ class MyFirstClass:
         # 一种是我们今天讲到的instance类， 也就实例类
         # 另一种是我们明天要将的 class类对象, 也就是类方法中的@classmethod装饰器
         # 第三种是静态类对象，用@staticemethod装饰器
-        
+
         # 如果这个类需要接受参数， 则需要在这个类下面定义一个 def __init__(self, *args, **kwargs)的方法
         """
         self.log = True   # 这是一个可以直接在外部读取的实例类属性
@@ -30,7 +31,7 @@ class MyFirstClass:
         self.__city = city
         # self.__name 是实例类属性
         # 带有双下划线的实例类属性属于私有属性， 是说这个类中的私有属性不建议在外部直接调用或访问
-    
+
     def __repr__(self) -> str:
         """
             返回这个对象的基础信息
@@ -49,7 +50,7 @@ class MyFirstClass:
         :return:
         """
         self.__name = new_name
-    
+
     def del_all_info(self):
         """
             函数：在python中是不需要绑定任何对象就可以直接使用的
@@ -61,6 +62,7 @@ class MyFirstClass:
 
 class PythonStudent:
     """ 这个类是python学员信息的存储类"""
+
     def __init__(self, name, age, city):
         """
             这个类接受3个参数
@@ -72,7 +74,7 @@ class PythonStudent:
         self.age = age
         self.city = city
         self.titles = ('用户名', '年龄', '城市')
-    
+
     def __repr__(self):
         """
             save userinfo
@@ -89,6 +91,7 @@ class PythonStudent:
 
 class Crawl:
     """这是一个userinfo的展示类"""
+
     def __init__(self, url, xpath, craw_name):
         """
             初始化这个类， 接受三个参数
@@ -97,7 +100,7 @@ class Crawl:
         :param craw_name: 爬虫的名字
         """
         self.info = url, xpath, craw_name
-    
+
     def __repr__(self):
         """
             repr
@@ -119,8 +122,7 @@ if __name__ == '__main__':
         ('Gang', 18, '上海'),
         ('随便', 30, '俄罗斯'),
         ('Raymon', 20, '北京'),
-        ('狗子', 5, '新加坡'),
-        ('年华', 25, '上海'),
+        ('狗子', 5, '新加坡'), ('年华', 25, '上海'),
         ('思', 30, '马来西亚')
     ]
     # user = MyFirstClass(*user_infos[2])

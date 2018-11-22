@@ -14,10 +14,10 @@ class Student:
     def __init__(self, name, age, sex, classinfo):
         """
             类在初始化的时候接受三个必传参数
-        :param name: 学生名
-        :param age: 学生年龄
-        :param sex: 学生的性别
-        :param classinfo: 班级信息
+            :param name: 学生名
+            :param age: 学生年龄
+            :param sex: 学生的性别
+            :param classinfo: 班级信息
         """
         self.user_info = name, age, sex, classinfo
         if len(self.user_info) != 4:
