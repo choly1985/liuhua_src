@@ -172,3 +172,5 @@ if __name__ == '__main__':
 
     decoy = DecoyDuck()
     print(decoy.display())
+
+    # 重新开始
