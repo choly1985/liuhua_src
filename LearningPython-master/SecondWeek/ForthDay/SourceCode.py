@@ -21,6 +21,7 @@ def return_sum_number(*args, **kwargs):
 
 class Animal(metaclass=ABCMeta):
     """ 这是动物的抽象类 """
+
     def __init__(self, animal_name, animal_age, animal_color, **kwargs: dict):
         self.animal_info = [animal_name, animal_age, animal_color]
         if kwargs:
@@ -32,6 +33,7 @@ class Animal(metaclass=ABCMeta):
     def call(self):
         """ 这是动物的叫声的抽象类方法 """
         raise NotImplemented
+
     @abstractmethod
     def swim(self):
         """这是动物的游泳的抽象类方法"""
@@ -52,7 +54,8 @@ class Animal(metaclass=ABCMeta):
             # self.animal_info[0], self.animal_info[1], self.animal_info[2] <== *self.animal_info
             print("这是一只{}动物, 它今年{}岁了, 他有一身漂亮的{}颜色".format(*self.animal_info))
         else:
-            print("这是一只{}动物, 它今年{}岁了, 他有一身漂亮的{}颜色,".format(*self.animal_info[0:3]))
+            print("这是一只{}动物, 它今年{}岁了, 他有一身漂亮的{}颜色,".format(
+                *self.animal_info[0:3]))
             info = ''
             for key, value in self.animal_info[-1].items():
                 info += key + ',' + value + '.'
@@ -70,19 +73,19 @@ class Animal(metaclass=ABCMeta):
 class Dog(Animal):
     def __init__(self, name, age, color, **kwargs):
         super(Dog, self).__init__(name, age, color, **kwargs)
-    
+
     def call(self):
         """ pass """
         print('汪汪汪！')
-    
+
     def swim(self):
         """ pass """
         print('狗子会游泳')
-    
+
     def fly(self):
         """ pass """
         print('狗子不会飞')
-        
+
     def run(self):
         print('狗子跑得快')
 
@@ -123,7 +126,7 @@ class 搞事情:
         """
         for 参数 in 实例对象.不确定参数元组:
             实例对象.打印(参数)
-    
+
     def 将字典中的元素全部打印出来(实例对象):
         """ pass """
         for 关键字, 值 in 实例对象.不确定关键字字典.items():
@@ -143,4 +146,3 @@ if __name__ == '__main__':
     print(yellow_duck)
     green_duck = Duck('绿头鸭', 2, '彩色', hair='一头绿色的长发', fly='迎风就飞起来')
     print(green_duck)
-

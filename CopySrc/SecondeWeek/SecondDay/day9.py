@@ -21,7 +21,8 @@ class Student(object):
             :param classinfo: 班级信息
         """
         self.user_info = name, age, sex, classinfo
-        # print(type(self.user_info))
+        # self.user_info是一个tuple类型
+        print(type(self.user_info))
         if len(self.user_info) != 4:
             raise AttributeError('传递进来的参数错误，请验证后重新传递')
         self.user_info_back = self.user_info
@@ -116,11 +117,11 @@ class Sum(object):
         return '<Sum({}+{}:{})>'.format(*self.numbers, self.return_sum())
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
-    userinfo = ('liuli', '33', '男', '三班')
-    ray = Student(*userinfo)
-    # ray.del_userinfo()
+    # userinfo = ['liuli', 33, '男', '三班']
+    # ray = Student(*userinfo)
+    # # ray.del_userinfo()
     # print(ray.save_userinfo())
     # # ray.del_userinfo()  # 删除自定的类对象
     # print(ray)
@@ -136,13 +137,13 @@ if __name__ == '__main__':
     # fruits.banana()
     # fruits.orange()
     # Fruits.banana()
-    sum_ = Sum(10, 5)
-    print(sum_)
+    # sum_ = Sum(10, 5)
+    # print(sum_)
 
-    sum_.modify_num(0, 100)
-    print(sum_)
+    # sum_.modify_num(0, 100)
+    # print(sum_)
 
-    sum_.modify_num(1, 55)
-    print(sum_)
+    # sum_.modify_num(1, 55)
+    # print(sum_)
 
-    sum_.modify_num(2, 100)  # 抛出异常
+    # sum_.modify_num(2, 100)  # 抛出异常
