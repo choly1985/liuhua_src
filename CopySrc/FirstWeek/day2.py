@@ -104,6 +104,6 @@ if __name__ == '__main__':
     # print(list(user_age.values())[2])  # 我们需要先把dict.keys的数据类型转换成list类型， 再做取值行为
 
     # tuple 只有1个元素时候加,不然会认为是一个str类型
-    tuple1 = ('list',)
-    list1 = ['list']
-    print(type(tuple1))
+    # tuple1 = ('list',)
+    # list1 = ['list']
+    # print(type(tuple1))

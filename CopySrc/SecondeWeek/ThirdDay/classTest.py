@@ -23,18 +23,18 @@ import os
 
 # 实例化
 
-class NewPerson(object):
-    """docstring for NewPerson"""
-    role = 'new person'
+# class NewPerson(object):
+#     """docstring for NewPerson"""
+#     role = 'new person'
 
-    def __init__(self, name):
-        super(NewPerson, self).__init__()
-        self.name = name
+#     def __init__(self, name):
+#         super(NewPerson, self).__init__()
+#         self.name = name
 
-    def walk(self):
-        print("new person is walking..")
+#     def walk(self):
+#         print("new person is walking..")
 
 
-testPerson = NewPerson('test')
-print(testPerson.role, testPerson.name)
-testPerson.walk()
+# testPerson = NewPerson('test')
+# print(testPerson.role, testPerson.name)
+# testPerson.walk()

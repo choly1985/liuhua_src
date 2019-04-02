@@ -47,22 +47,22 @@ import os
 # else:
 #     print('当月应发奖金总数为{}'.format(100000 * 0.1 + 100000 * 0.075 + 200000 * 0.05 + 200000 * 0.03 +
 #                                +400000 * 0.015 + (I - 1000000) * 0.01))
-import time
-time_start = time.time()
-for i in range(1, 10):
-    for j in range(10):
-        for k in range(10):
-            for m in range(10):
-                for n in range(10):
-                    if (10000 * i + 1000 * j + 100 * k + 10 * m + n) * 9 == 10000 * n + 1000 * m + 100 * k + 10 * j + i:
-                        print('{}'.format(10000 * i + 1000 *
-                                          j + 100 * k + 10 * m + n))
-time_end = time.time()
-print(time_end - time_start)
+# import time
+# time_start = time.time()
+# for i in range(1, 10):
+#     for j in range(10):
+#         for k in range(10):
+#             for m in range(10):
+#                 for n in range(10):
+#                     if (10000 * i + 1000 * j + 100 * k + 10 * m + n) * 9 == 10000 * n + 1000 * m + 100 * k + 10 * j + i:
+#                         print('{}'.format(10000 * i + 1000 *
+#                                           j + 100 * k + 10 * m + n))
+# time_end = time.time()
+# print(time_end - time_start)
 
-time_start = time.time()
-for i in range(10000, 100000):
-    if i * 9 == (int(i % 10) * 10000 + int(i % 100 / 10) * 1000 + int(i % 1000 / 100) * 100 + int(i % 10000 / 1000) * 10 + int(i / 10000)):
-        print(i)
-time_end = time.time()
-print(time_end - time_start)
+# time_start = time.time()
+# for i in range(10000, 100000):
+#     if i * 9 == (int(i % 10) * 10000 + int(i % 100 / 10) * 1000 + int(i % 1000 / 100) * 100 + int(i % 10000 / 1000) * 10 + int(i / 10000)):
+#         print(i)
+# time_end = time.time()
+# print(time_end - time_start)
