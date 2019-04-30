@@ -38,3 +38,4 @@ import os
 # testPerson = NewPerson('test')
 # print(testPerson.role, testPerson.name)
 # testPerson.walk()
+
