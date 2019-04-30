@@ -25,6 +25,7 @@ LAST_NAME_ENUM = '与玉鱼汪千苗喵'
 
 class Datas:
     """ 这是一个构造测试数据的类"""
+
     def __init__(self, mobile_number_head=None, first_name_head=None, name_lenth=None):
         """
         初始化Datas类并接受必要的入参
@@ -37,22 +38,23 @@ class Datas:
         self.name_lenth = name_lenth
         self.save_json_file_path = 'Users'
         self.return_title = 'Datas<{}>'
-        self.func_args = [item for item in dir(self) if not item.startswith('__') and callable(getattr(self, item))]
+        self.func_args = [item for item in dir(self) if not item.startswith(
+            '__') and callable(getattr(self, item))]
 
     def write_file(self, file_name, data):
         """ 讲文件写入Users路径"""
         file_name = '{}/{}.json'.format(self.save_json_file_path, file_name)
         with open(file_name, 'w', encoding='utf-8') as file:
             file.write(data)
-    
+
     def make_user_json_and_write_file(self):
         """
             将随机生成的用户信息， 存储进文件
         :return:
         """
-        titles = ('中文名', '密码', '手机号', '邮箱','创建时间')
+        titles = ('中文名', '密码', '手机号', '邮箱', '创建时间')
         name = self.make_user_name()
-        
+
         infos = (
             name,
             self.make_random_password(),
@@ -60,7 +62,8 @@ class Datas:
             self.make_user_email(),
             time.strftime('%Y-%m-%d %H:%M:%S')
         )
-        data = json.dumps({key: value for key, value in zip(titles, infos)}, ensure_ascii=False, indent=4)
+        data = json.dumps({key: value for key, value in zip(
+            titles, infos)}, ensure_ascii=False, indent=4)
         self.write_file(name, data)
 
     def make_random_password(self):
@@ -89,10 +92,11 @@ class Datas:
         if not self.name_lenth:
             self.name_lenth = 2 if random.randint(1, 100) > 50 else 1
 
-        last_name = ''.join(random.sample(list(LAST_NAME_ENUM), self.name_lenth))
+        last_name = ''.join(random.sample(
+            list(LAST_NAME_ENUM), self.name_lenth))
         print('用户名是 ：{}'.format(self.first_name + last_name))
         return self.first_name + last_name
-        
+
     def mobile(self):
         """ 生成一个指定号段的手机号， 如果没有指定则随机返回一个号段的手机号"""
         if self.mobile_head:
@@ -100,37 +104,38 @@ class Datas:
                 int(self.mobile_head)
             except Exception as err:
                 return err
-    
+
         if self.mobile_head and len(list(self.mobile_head)) == 3:
             return self.mobile_head + ''.join(random.sample(list(string.digits), 8))
         mobile = ['137', '138', '139', '131', '140', '150', '177']
         return random.choice(mobile) + ''.join(random.sample(list(string.digits), 8))
 
     def __repr__(self):
-         """
-            pass
-         :return:
-         """
-         return 'Datas(<{}>)'.format(self.func_args)
+        """
+           pass
+        :return:
+        """
+        return 'Datas(<{}>)'.format(self.func_args)
 
 
 class FruitsMarket:
     """ 这是一个水果市场"""
+
     def __init__(self, mkname, create_time=time.strftime('%Y-%m-%d %H:%M:%S')):
         self.mkname = mkname
         self.create_time = create_time
         self.all_fruits_count = 100
-    
+
     def buy_some_fruits(self, fruits_count):
         """ 水果市场进货功能 """
         self.all_fruits_count += fruits_count
-    
+
     def cell_some_fruits(self, fruits_count):
         self.all_fruits_count -= fruits_count
-    
+
     def throw_some_fruits(self):
         self.all_fruits_count -= 2
-    
+
     def __repr__(self):
         return str(self.all_fruits_count)
 
@@ -143,9 +148,9 @@ class InterfaceTest(Datas):
 
 
 if __name__ == '__main__':
-    # datas = Datas()
-    # datas.make_user_json_and_write_file()
-    # print(datas)
+    datas = Datas()
+    datas.make_user_json_and_write_file()
+    print(datas)
     # market = FruitsMarket('上海贸易中心')
     # print(market)
     # market.cell_some_fruits(21)
@@ -155,4 +160,3 @@ if __name__ == '__main__':
     # market.cell_some_fruits(50)
     # print(market)
     interface = InterfaceTest()
-

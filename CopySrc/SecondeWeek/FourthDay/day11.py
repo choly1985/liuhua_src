@@ -130,6 +130,7 @@ class 搞事情(object):
 
 
 if __name__ == '__main__':
+
     # balck_dog = Dog("狗子", 5, "黑色的")
     # print(balck_dog)
 
