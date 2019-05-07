@@ -1,5 +1,7 @@
 import json
 import urllib.request
+import keyword
+import string
 # post发送的数据
 url = 'http://10.40.2.62:2087/gateway/'
 values = ({
@@ -31,3 +33,5 @@ req.add_header("Content-Type", "application/json")
 response = urllib.request.urlopen(req)  # 发送页面请求
 content = response.read()
 print(content)
+
+print([item for item in dir(list) if not item.endswith("__")])

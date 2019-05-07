@@ -11,8 +11,8 @@ import os
 # dict_modules = [item for item in dir(dict) if '__' not in item]
 # print(dict_modules)
 
-# # dict_moduemailles = [item for item in dir(dict) if not '__' in item]
-# # print(dict_modules)
+# dict_moduemailles = [item for item in dir(dict) if not '__' in item]
+# print(dict_moduemailles)
 # # clear 是清空字典中的所有键值对， key=value
 # # copy  是复制一个字典全部的key value
 # # fromkeys 初始化字典，是接受一个列表或元组， 并把元组中的所有元素作为key， 默认赋值key的value为None
@@ -119,7 +119,7 @@ if __name__ == '__main__':
 # while 如果用的不恰当， 他会进入一个死循环无法跳出
 # break 只跳出最近一层循环 不管是for 或是while
 
-    print(list(range(10)))
+    # print(list(range(10)))
 
     # for _ in range(3):
     #     userinfo.pop()
@@ -156,12 +156,12 @@ if __name__ == '__main__':
     #     else:
     #         break
 
-    for item in userinfo:
-        if 'Raymond' == item:
-            continue
-        elif 'dog' == item:
-            pass
-        print(item)
+    # for item in userinfo:
+    #     if 'Raymond' == item:
+    #         continue
+    #     elif 'dog' == item:
+    #         pass
+    #     print(item)
 
     userpram = ['刘德华', '黎明', 'Raymond', 'dog', '随便', '牛仔']
     username = 'a'

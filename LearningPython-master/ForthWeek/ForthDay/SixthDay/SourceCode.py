@@ -191,8 +191,6 @@ if __name__ == '__main__':
 
 
 
-
-
 # def mobile(head=None):
 #     """
 #         mobile is a function

@@ -7,7 +7,7 @@
 
 import os
 if __name__ == '__main__':
-    # user_list = ['小布', 'mytest', 'liuhua', 'zhangbo', 'liuli']
+    user_list = ['小布', 'mytest', 'liuhua', 'zhangbo', 'liuli']
     # print(type(user_list))
     # print(isinstance(user_list, list))
     # print(user_list[0], user_list[-5], user_list[-1], user_list[4])
@@ -28,7 +28,7 @@ if __name__ == '__main__':
     # # user_list.clear()  # clear方法， 是清空一个列表
     # # print(user_list)
     # print(user_list.count(0))  # count统计列表元素
-    # print(user_list.index('liuhua', 0, 3))  # index 获取列表元素下标
+    print(user_list.index('liuhua', 0, 3))  # index 获取列表元素下标
 
     # user_list.insert(0, 'liuhua')  # 在user_list这个列表0号index位置， 增减一个元素
     # print(user_list)
