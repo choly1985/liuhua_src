@@ -124,13 +124,32 @@ if __name__ == '__main__':
     # datas.make_user_json_and_write_file()
     # print(datas)
 
-    # market = FruitsMarket('上海贸易中心','2019-05-05')
-    # print(market)
-    # market.cell_some_fruits(21)
-    # print(market)
-    # market.buy_some_fruits(15)
-    # print(market)
-    # market.throw_some_fruits()
-    # print(market)
+    market = FruitsMarket('上海贸易中心', '2019-05-05')
+    print(market)
+    market.cell_some_fruits(21)
+    print(market)
+    market.buy_some_fruits(15)
+    print(market)
+    market.throw_some_fruits()
+    print(market)
 
-    interface = InterfaceTest()
+    # interface = InterfaceTest()
+
+    # with open("Users/赵明.json", encoding='utf-8') as file:
+    # message = file.read()
+    # print(message)
+
+    # with open('Users/testfile.txt', encoding='utf-8') as file_object:
+    #     for line in file_object:
+    #         print(line.rstrip())  # 文件末尾有看不见的换行符，print语句会加上
+
+    # with open("Users/testfile.txt", encoding='utf-8') as file_object:
+    #     lines = file_object.readlines()
+
+    # for line in lines:
+    #     print(line.rstrip())
+
+    # pi_string = ''
+    # for line in lines:
+    #     pi_string += line.strip()
+    # print(len(pi_string))

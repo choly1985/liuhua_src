@@ -31,7 +31,6 @@ if __name__ == '__main__':
     print(People('随便', 'student', '18', '不知道'))
 
 
-
 # # 当类中的metaclass=ABCMeta的时候 说明父类为抽象类
 # # 当类方法中使用了absractmethod装饰器的时候， 说明类方法为抽象类方法
 # # 抽象类方法如果在子类中不进行重新实现， 无法实例化新的对象
@@ -179,7 +178,6 @@ if __name__ == '__main__':
 #
 #     def color(self):
 #         pass
- 
 
 
 # if __name__ == '__main__':
@@ -187,8 +185,6 @@ if __name__ == '__main__':
     # cat.dispaly()
     # dog = Dog()
     # dog.dispaly()
-
-
 
 
 # def mobile(head=None):
