@@ -163,11 +163,12 @@ def 计算器(*args, seq='+'):
     return '除法暂时不做处理'
 
 
-list1 = [item for item in range(101)]  # 列表逆序3中方法
+list1 = [item for item in range(100000)]  # 列表逆序3中方法
 # # list1.reverse()
 # # print(list1)
 # # list1 = list1[::-1]
 # # print(list1)
 # list2 = list(reversed(list1))
+print()
 print(计算器(*list1, seq='+'))
-print(计算器(1, 2, 3, seq='*'))
+print(计算器(2, 4, 3, seq='*'))
