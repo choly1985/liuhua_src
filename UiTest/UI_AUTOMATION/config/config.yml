@@ -1,0 +1,52 @@
+
+paypal:
+    PPusername: 123_1355728146_per@qq.com
+    PPpassword: 33333333
+
+log:
+    file_name: test.log
+    backup: 5
+    console_level: INFO
+    file_level: DEBUG
+    pattern: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+
+mail:
+    server: newmailf.globalegrow.com    #smtp.qq.com
+    port: 465            #465
+    sender: jiangjiahao@globalegrow.com
+    password: abc456456456      # qffmtutgoxbtbfff
+    receiver: jiangjiahao@globalegrow.com;  # 583241254@qq.com;  #zhuangjindi@globalegrow.com    # 以;号隔开多个收件人
+    title: PAY-支付UI测试报告
+
+GB:
+    GBURL: https://www.gearbest.net/
+    GBloginURL: https://login.gearbest.net/m-users-a-sign.htm?type=1/
+    GBselfcenter: https://user.gearbest.net/index#/order/list?index=1/
+    GBgood: https://www.gearbest.net/other-car-gadgets/pp_346622.html?wid=1349303
+    # https://www.gearbest.net/rc-quadcopters/pp_009973389385.html
+    #  https://www.gearbest.net/rc-quadcopters/pp_234744.html
+    UA: jiangjiahao
+    GBusername: jiangjiahao@globalegrow.com #583241254@qq.com
+    GBpassword: abc456456
+    PPusername: 123_1355728146_per@qq.com
+    PPpassword: 33333333
+    userId: 6375643854670131200
+    #6461990521694420992
+
+mysql:
+     host: '10.40.6.150'
+     post: 3306
+     user: 'java-service'
+     passwd: 'java123456'
+     db: 'pay'
+
+connect_date:
+    tokenId: "487d842de4e1c9b9c99ac868c7af15a4"
+    url: 'http://10.40.2.62:2087/gateway/'
+    userId: 6375643854670131200
+
+# PAY: *PP_express、*GC、*worldpay、PP_CC、*paypal、*ADN_CC、*checkout_credit、*boleto、*ebanxinstallment、WP_24、ADN_PTMB 、
+
+ip: 127.0.0.1
+port: 8080
+
