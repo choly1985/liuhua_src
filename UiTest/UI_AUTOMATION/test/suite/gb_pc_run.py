@@ -11,7 +11,6 @@ from UI_AUTOMATION.utils.haoemail import Email
 from UI_AUTOMATION.test.page.pageconfig.CI import GBConnect
 
 
-
 # # 构造测试集
 suite = unittest.TestSuite()
 suite.addTest(BaseTestCase('login_GB'))
@@ -60,7 +59,7 @@ suite.addTest(BaseTestCase('test_WP_DEGP'))
 # # suite.addTest(BaseTestCase('test_Postepay')) ### #postepay wp-qiwi  wp-p24 和sofort不能同时存在,切换后正常,后台设置之后在执行
 # suite.addTest(BaseTestCase('test_PagoEfectivo'))
 # suite.addTest(BaseTestCase('test_SQ_ESCC1'))   #   同样第三方问题，跑不了
-suite.addTest(BaseTestCase('test_SQ_ESCC2'))   #   同样第三方问题，跑不了,收银台不展示。
+suite.addTest(BaseTestCase('test_SQ_ESCC2'))  # 同样第三方问题，跑不了,收银台不展示。
 # suite.addTest(BaseTestCase('test_poli'))
 # # # # # #
 # suite.addTest(BaseTestCase('test_Webmoney'))   # 只可验证跳转
@@ -77,8 +76,6 @@ suite.addTest(BaseTestCase('test_SQ_ESCC2'))   #   同样第三方问题，跑�
 # suite.addTest(BaseTestCase('test_WP_PTMB'))
 # suite.addTest(BaseTestCase('test_PayU_UPI'))   # 只可验证跳转
 # suite.addTest(BaseTestCase('test_DGPAY_PHdp'))   # 只可验证跳转
-
-
 
 
 '''
@@ -99,10 +96,11 @@ now_time = time.strftime('%Y%m%d-%H%M%S', time.localtime())
 report = REPORT_PATH + '\\' + 'PAY_Report ' + now_time + '.html'
 # print(report)
 
-### 从代码执行结果里面获取数据      HTMLTestRunner
+# 从代码执行结果里面获取数据      HTMLTestRunner
 with open(report, "wb") as outfile:
     # runner = HTMLTestRunner(stream=outfile, title=u"GB-PC-PAY_UITest", description=u"用例执行情况：")
-    runner = HTMLTestRunner(stream=outfile, title=u"GB-PC-PAY_UITest", description=u"用例执行情况：", verbosity=2, retry=0, save_last_try=True)
+    runner = HTMLTestRunner(stream=outfile, title=u"GB-PC-PAY_UITest",
+                            description=u"用例执行情况：", verbosity=2, retry=0, save_last_try=True)
     aa = runner.run(suite)
 e = Email(path=report, message='''
 本邮件是支付UI自动化测试报告，请下载或者使用浏览器查看附件内容.
@@ -127,8 +125,5 @@ while 1:
         exit(0)
     else:
         print("输入命令有误，请重新输入!")
-conn = GBConnect()    ##发CI接口
+conn = GBConnect()  # 发CI接口
 conn.CI_pc_date(runner, aa)
-
-
-
