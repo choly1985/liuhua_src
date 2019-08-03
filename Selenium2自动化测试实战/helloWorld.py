@@ -4,7 +4,7 @@
 # @Author  : liuhua (434375025@qq.com)
 # @Link    : https://github.com/choly1985
 # @Version : $Id$
-
+import sys
 import os
 import selenium
 import time
@@ -13,30 +13,13 @@ from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 import HTMLTestRunner
 from selenium.webdriver.support.select import Select
-
-
-# class BaiduSearch(unittest.TestCase):
-
-#     def setUp(self):
-#         self.driver = webdriver.Chrome()
-#         self.driver.maximize_window()
-#         self.driver.implicitly_wait(1)
-#         self.driver.get("https://www.baidu.com")
-
-#     def tearDown(self):
-
-#         self.driver.quit()
-
-#     def test_baidu_search(self):
-#         self.driver.find_element_by_id('kw').send_keys('war3')
-#         self.driver.find_element_by_id('su').click()
-#         time.sleep(3)
-#         try:
-#             assert 'war3' in self.driver.title
-#             print('Test Pass')
-#         except Exception as e:
-#             print('Test Fail', format(e))
-
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.header import Header
+from email.mime.application import MIMEApplication
+from email import encoders
+from email.mime.base import MIMEBase
 
 # class login_gb(unittest.TestCase):
 
@@ -72,32 +55,33 @@ from selenium.webdriver.support.select import Select
 class login_gb(unittest.TestCase):
 
     def setUp(self):
-        self.profile_directory = "C:\\Users\\liuhua2\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\p18j8opt.default"
-        self.profile = webdriver.FirefoxProfile(self.profile_directory)
-        self.path = r"D:\Program Files\python\Scripts\geckodriver.exe"
-        self.driver = webdriver.Firefox(
-            firefox_profile=self.profile, executable_path=self.path)
+        # self.profile_directory = "C:\\Users\\liuhua2\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\p18j8opt.default"
+        # self.profile = webdriver.FirefoxProfile(self.profile_directory)
+        # self.path = r"D:\Program Files\python\Scripts\geckodriver.exe"
+        # self.driver = webdriver.Firefox(
+        #     firefox_profile=self.profile, executable_path=self.path)
         # self.profile.set_preference()
+        self.driver = webdriver.Firefox()
         self.driver.maximize_window()
         time.sleep(2)
 
     def tearDown(self):
         self.driver.quit()
 
-    def test_login_gb(self):
-        self.driver.get("https://login.gearbest.net/m-users-a-sign.htm?type=1")
-        time.sleep(1)
-        self.driver.find_element_by_id('email').send_keys('lh100@qq.com')
-        self.driver.find_element_by_id('password').send_keys('aaaa1234')
-        self.driver.find_element_by_id('js-btnSubmit').click()
-        # self.driver.implicitly_wait(4)  # 等待页面加载
-        time.sleep(8)
-        try:
-            if 'Gearbest' in self.driver.title:
-                print('Login success')
-        except Exception as e:
-            print('Login fail')
-            raise e
+    # def test_login_gb(self):
+    #     self.driver.get("https://login.gearbest.net/m-users-a-sign.htm?type=1")
+    #     time.sleep(1)
+    #     self.driver.find_element_by_id('email').send_keys('lh100@qq.com')
+    #     self.driver.find_element_by_id('password').send_keys('aaaa1234')
+    #     self.driver.find_element_by_id('js-btnSubmit').click()
+    #     # self.driver.implicitly_wait(4)  # 等待页面加载
+    #     time.sleep(8)
+    #     try:
+    #         if 'Gearbest' in self.driver.title:
+    #             print('Login success')
+    #     except Exception as e:
+    #         print('Login fail')
+    #         raise e
         # above = self.driver.find_element_by_xpath(
         #     '//*[@id="ucenter_content"]/div/div/ul/li[1]/a/img')
         # ActionChains(self.driver).move_to_element(above).perform()
@@ -252,23 +236,53 @@ class login_gb(unittest.TestCase):
         # self.driver.find_element_by_id("confirmButtonTop").click()
 
         # 需要js点击，不然无法点击
-        paypal_paynow_js = "document.getElementById('confirmButtonTop').click()"
-        self.driver.execute_script(paypal_paynow_js)
+        # paypal_paynow_js = "document.getElementById('confirmButtonTop').click()"
+        # self.driver.execute_script(paypal_paynow_js)
 
-        time.sleep(15)
-        try:
-            if 'Gearbest' in self.driver.title:
-                print('pay success')
-        except Exception as e:
-            print('pay fail')
-            raise e
+        # time.sleep(15)
+        # try:
+        #     if 'Gearbest' in self.driver.title:
+        #         print('pay success')
+        # except Exception as e:
+        #     print('pay fail')
+        #     raise e
         # 弹窗无法截取
         # self.driver.get_screenshot_as_file(
         #     r"C:\Users\liuhua2\Desktop\testcase\pay.png")
         # self.imgs.append(self.driver.get_screenshot_as_base64())
 
     def test_baidu(self):
+        url = 'https://www.baidu.com'
+        self.driver.get(url)
+        self.driver.implicitly_wait(5)
+        self.driver.get_screenshot_as_file(
+            r"C:\Users\liuhua2\Desktop\testcase\baidu.png")
+        # self.imgs.append(self.driver.get_screenshot_as_base64())
+        mouse = self.driver.find_element_by_xpath("//div[@id='u1']/a[8]")
+        ActionChains(self.driver).move_to_element(mouse).perform()
+        time.sleep(2)
+        # driver.find_element_by_link_text(
+        #    "搜索设置").click()
+        self.driver.find_element_by_xpath(
+            "/html/body/div[1]/div[6]/a[1]").click()
+        time.sleep(0.5)
+        s = self.driver.find_element_by_id("nr")
+        # s.find_elements_by_xpath("//*[@id='nr']/option[2]").click() 无点击
+        # Select(s).select_by_value("20")
+        Select(s).select_by_visible_text("每页显示50条")
+        # self.imgs.append(self.driver.get_screenshot_as_base64())
+        self.driver.find_element_by_xpath("//*[@id='gxszButton']/a[1]").click()
+        # self.imgs.append(self.driver.get_screenshot_as_base64())
+        time.sleep(0.5)
 
+        self.imgs.append(self.driver.get_screenshot_as_base64())
+        t = self.driver.switch_to_alert()
+        self.imgs.append(self.driver.get_screenshot_as_base64())
+        t.accept()
+        time.sleep(0.5)
+        self.imgs.append(self.driver.get_screenshot_as_base64())
+
+    def test_baidu_new(self):
         url = 'https://www.baidu.com'
         self.driver.get(url)
         self.driver.implicitly_wait(5)
@@ -301,7 +315,7 @@ class login_gb(unittest.TestCase):
 
 
 def all_case():
-    case_dir = r"F:\Src\LearningPython\Selenium2自动化测试实战"
+    case_dir = r"E:\pythonSrc\Selenium2自动化测试实战"
     testcase = unittest.TestSuite()
     discover = unittest.defaultTestLoader.discover(
         case_dir, pattern='hello*.py', top_level_dir=None)
@@ -312,15 +326,58 @@ def all_case():
     return(testcase)
 
 
+def send_email(file_new):
+
+    subject = '自动化测试报告'
+    sender = 'choly1985@163.com'
+    receiver = '958905266@qq.com'
+
+    msgRoot = MIMEMultipart('related')
+    msgRoot['from'] = sender
+    msgRoot['to'] = receiver
+    msgRoot['subject'] = subject
+
+    text_content = 'Python自动化测试报告'
+    msg_text = MIMEText(text_content, _charset='utf-8')
+    msgRoot.attach(msg_text)
+
+    # 成功的代码别动
+    part = MIMEBase('application', "text/html")
+    part.set_payload(open(file_new, "rb").read())
+    encoders.encode_base64(part)
+    # filename 不要省略了文件名的后缀 否则会变成乱码 eg.:ATT00002.bin
+    part.add_header('Content-Disposition', 'attachment',
+                    filename="report.html")
+    msgRoot.attach(part)
+
+    try:
+        smtp = smtplib.SMTP()
+        smtp.connect("smtp.163.com", port=25)
+        smtp.login("choly1985@163.com", 'xlab0628')
+        smtp.sendmail(sender, receiver, msgRoot.as_string())
+        smtp.quit()
+        print('邮件发送成功')
+    except smtp.SMPTException as e:
+        print(e)
+        print('邮件发送失败')
+
+
+def new_report(testreport):
+    lists = os.listdir(testreport)
+    lists.sort(key=lambda fn: os.path.getmtime(testreport + r"\\" + fn))
+    file_new = os.path.join(testreport, lists[-1])
+    return file_new
+
+
 if __name__ == '__main__':
     runner = unittest.TextTestRunner()
-    report_path = r"C:\Users\liuhua2\Desktop"
-    fp = open(report_path, "wb")
+    report_path = r"C:\Users\Administrator\Desktop\report.html"
+    fp = open(report_path, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(
-        stream=fp, title='这是我的自动化测试报告', description='用例执行情况：')
+        stream=fp, title='自动化测试报告', description='用例执行情况：')
     runner.run(all_case())
     fp.close()
 
-    # test_report = r'C:\Users\liuhua2\Desktop\result.html'
-    # new_report1 = new_report(test_report)
-    # send_email(new_report1)
+    test_report = r'C:\Users\Administrator\Desktop'
+    new_report1 = new_report(test_report)
+    send_email(r'C:\Users\Administrator\Desktop\report.html')
