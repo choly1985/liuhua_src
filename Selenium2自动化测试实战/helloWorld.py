@@ -55,13 +55,12 @@ from email.mime.base import MIMEBase
 class login_gb(unittest.TestCase):
 
     def setUp(self):
-        # self.profile_directory = "C:\\Users\\liuhua2\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\p18j8opt.default"
-        # self.profile = webdriver.FirefoxProfile(self.profile_directory)
-        # self.path = r"D:\Program Files\python\Scripts\geckodriver.exe"
-        # self.driver = webdriver.Firefox(
-        #     firefox_profile=self.profile, executable_path=self.path)
-        # self.profile.set_preference()
-        self.driver = webdriver.Firefox()
+        self.profile_directory = "C:\\Users\\liuhua2\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\p18j8opt.default"
+        self.profile = webdriver.FirefoxProfile(self.profile_directory)
+        self.path = r"D:\Program Files\python\Scripts\geckodriver.exe"
+        self.driver = webdriver.Firefox(
+            firefox_profile=self.profile, executable_path=self.path)
+        # self.driver = webdriver.Firefox()
         self.driver.maximize_window()
         time.sleep(2)
 
@@ -315,7 +314,7 @@ class login_gb(unittest.TestCase):
 
 
 def all_case():
-    case_dir = r"E:\pythonSrc\Selenium2自动化测试实战"
+    case_dir = r"F:\Src\LearningPython\Selenium2自动化测试实战"
     testcase = unittest.TestSuite()
     discover = unittest.defaultTestLoader.discover(
         case_dir, pattern='hello*.py', top_level_dir=None)
@@ -330,7 +329,8 @@ def send_email(file_new):
 
     subject = '自动化测试报告'
     sender = 'choly1985@163.com'
-    receiver = '958905266@qq.com'
+    #receiver = '958905266@qq.com'
+    receiver = 'liuhua2@globalegrow.com'
 
     msgRoot = MIMEMultipart('related')
     msgRoot['from'] = sender
@@ -347,7 +347,7 @@ def send_email(file_new):
     encoders.encode_base64(part)
     # filename 不要省略了文件名的后缀 否则会变成乱码 eg.:ATT00002.bin
     part.add_header('Content-Disposition', 'attachment',
-                    filename="report.html")
+                    filename=('Report-' + time.strftime('%Y%m%d-%H%M%S') + ".html"))
     msgRoot.attach(part)
 
     try:
@@ -371,7 +371,7 @@ def new_report(testreport):
 
 if __name__ == '__main__':
     runner = unittest.TextTestRunner()
-    report_path = r"C:\Users\Administrator\Desktop\report.html"
+    report_path = r"C:\Users\liuhua2\Desktop\report.html"
     fp = open(report_path, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(
         stream=fp, title='自动化测试报告', description='用例执行情况：')
@@ -380,4 +380,4 @@ if __name__ == '__main__':
 
     test_report = r'C:\Users\Administrator\Desktop'
     new_report1 = new_report(test_report)
-    send_email(r'C:\Users\Administrator\Desktop\report.html')
+    send_email(r'C:\Users\liuhua2\Desktop\report.html')
