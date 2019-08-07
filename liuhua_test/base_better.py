@@ -209,5 +209,4 @@ class login_gb(unittest.TestCase):
                
 if __name__ == '__main__':
     unittest.main()
-    print("1234test")
-    print('test')
+    print("hello world")
