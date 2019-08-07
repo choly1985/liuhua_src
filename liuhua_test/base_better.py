@@ -32,7 +32,6 @@ class login_gb(unittest.TestCase):
 
     def test_login_gb(self):
         self.driver.get("https://login.gearbest.net/m-users-a-sign.htm?type=1")
-
         time.sleep(3)
         # 登录
         WebDriverWait(self.driver, 20).until(
@@ -203,24 +202,12 @@ class login_gb(unittest.TestCase):
 
         WebDriverWait(self.driver, 25).until(lambda x: x.find_element_by_xpath(
             "//*[@id='siteWrap']/div/div/div/div/div/a"))
-
         if EC.title_is(u'Gearbest: Affordable Quality, Fun Shopping'):
             print('支付成功')
         self.end = time.clock()
         print(self.end - self.start)
-
-
+               
 if __name__ == '__main__':
     unittest.main()
     print("1234test")
-
-
-
-
-
-
-
-
-
-
-
+    print('test')
