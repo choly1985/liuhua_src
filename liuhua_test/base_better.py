@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Date    : 2019-08-05 15:36:16
@@ -13,6 +12,7 @@ import unittest
 import time
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 
 
 class login_gb(unittest.TestCase):
@@ -48,18 +48,20 @@ class login_gb(unittest.TestCase):
             '//*[@id="ucenter_content"]/div/div/ul/li[1]/a/img'))
         print(above)
         ActionChains(self.driver).move_to_element(above).perform()
-        WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_xpath(
+        WebDriverWait(self.driver, 10).until(lambda x: x.find_element_by_xpath(
             '//*[@id="ucenter_content"]/div/div/ul/li[1]/a/div/span[1]/i')).click()
-        time.sleep(1)
+        time.sleep(2)
 
         # 点击购物车
-        WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_xpath(
+        WebDriverWait(self.driver, 15).until(lambda x: x.find_element_by_xpath(
             "//div[@id='js-labelHeadCart']/a/span[2]")).click()
 
         # 点击跳转订单确认页
-        time.sleep(2)
+        time.sleep(3)
+        # WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
+        #    "div.cart_checkoutBtnBox>a.btn.middle.strong.proceed_checkout")).click()
         WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
-            "div.cart_checkoutBtnBox>a.btn.middle.strong.proceed_checkout")).click()
+            "div.cart_checkoutBtnBox>a.btn.middle.strong.proceed_checkout")).send_keys(Keys.ENTER)
 
         # 点击编辑地址
         WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
@@ -160,17 +162,18 @@ class login_gb(unittest.TestCase):
         WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
             "div.address_data>input[name='birthDay'][class='address_input']")).send_keys("2016-05-22")
 
-        WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_xpath(
+        WebDriverWait(self.driver, 15).until(lambda x: x.find_element_by_xpath(
             "/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/form/div[19]/a[2]")).click()
-
-        WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_xpath(
+        time.sleep(3)
+        WebDriverWait(self.driver, 15).until(lambda x: x.find_element_by_xpath(
             "/html/body/div[4]/div[2]/div/div[3]/a[1]")).click()
 
         WebDriverWait(self.driver, 10).until(lambda x: x.find_element_by_xpath(
             "/html/body/div[1]/div/div/div/div[2]/div[3]/div[2]/a")).click()
 
-        WebDriverWait(self.driver, 10).until(lambda x: x.find_element_by_css_selector(
-            "span.compCheckbox_shape.checked>i.compCheckbox_check")).click()
+        # 注意写法 class属性注意
+        WebDriverWait(self.driver, 20).until(lambda x: x.find_element_by_css_selector(
+            "span[class='compCheckbox_shape checked'][paychannel='PAYPAL']>i.compCheckbox_check")).click()
 
         WebDriverWait(self.driver, 20).until(lambda x: x.find_element_by_css_selector(
             "div.pc_order_total>i.placeOrder.btn.block.toPayBtn")).click()
@@ -194,11 +197,11 @@ class login_gb(unittest.TestCase):
 
         WebDriverWait(self.driver, 15).until(lambda x: x.find_element_by_id(
             "confirmButtonTop"))
-        time.sleep(8)
+        time.sleep(10)
         WebDriverWait(self.driver, 15).until(lambda x: x.find_element_by_id(
             "confirmButtonTop")).click()
 
-        WebDriverWait(self.driver, 15).until(lambda x: x.find_element_by_xpath(
+        WebDriverWait(self.driver, 25).until(lambda x: x.find_element_by_xpath(
             "//*[@id='siteWrap']/div/div/div/div/div/a"))
 
         if EC.title_is(u'Gearbest: Affordable Quality, Fun Shopping'):
@@ -209,3 +212,5 @@ class login_gb(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+    print(123)
+    print(123)

@@ -327,12 +327,12 @@ from selenium.webdriver.support.select import Select
 
 # 2.21 Js处理滚动条
 
-driver = webdriver.Firefox()
-time.sleep(2)
-driver.maximize_window()
-url = 'file:///C:/Users/Administrator/Desktop/Seleium/Html/js.html'
-driver.get(url)
-time.sleep(1)
+# driver = webdriver.Firefox()
+# time.sleep(2)
+# driver.maximize_window()
+# url = 'file:///C:/Users/Administrator/Desktop/Seleium/Html/js.html'
+# driver.get(url)
+# time.sleep(1)
 
 # js1 = "document.getElementById('yoyoketang').scrollTop=10000"
 # driver.execute_script(js1)
@@ -351,12 +351,17 @@ time.sleep(1)
 # driver.execute_script(js4)
 # time.sleep(3)
 
-js5 = "document.getElementsByClassName('scroll')[0].scrollTop=10000"
-driver.execute_script(js5)
-time.sleep(2)
+# js5 = "document.getElementsByClassName('scroll')[0].scrollTop=10000"
+# driver.execute_script(js5)
+# time.sleep(2)
 
-js6 = "document.getElementsByClassName('scroll')[0].scrollLeft=10000"
-driver.execute_script(js6)
-time.sleep(2)
+# js6 = "document.getElementsByClassName('scroll')[0].scrollLeft=10000"
+# driver.execute_script(js6)
+# time.sleep(2)
 
-driver.quit()
+# driver.quit()
+
+print('hello world!!!!!!!!!!!!!!!123123!')
+print(12345)
+print(123123)
+

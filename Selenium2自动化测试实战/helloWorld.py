@@ -20,6 +20,7 @@ from email.header import Header
 from email.mime.application import MIMEApplication
 from email import encoders
 from email.mime.base import MIMEBase
+from selenium.webdriver.common.keys import Keys
 
 # class login_gb(unittest.TestCase):
 
@@ -207,7 +208,7 @@ class login_gb(unittest.TestCase):
 
         time.sleep(10)
         self.driver.find_element_by_css_selector(
-            "span.compCheckbox_shape.checked>i.compCheckbox_check").click()
+            "span[class='compCheckbox_shape checked'][paychannel='PAYPAL']>i.compCheckbox_check").click()
         self.driver.find_element_by_css_selector(
             "div.pc_order_total>i.placeOrder.btn.block.toPayBtn").click()
 
@@ -246,7 +247,7 @@ class login_gb(unittest.TestCase):
         except Exception as e:
             print('pay fail')
             raise e
-        #弹窗无法截取
+        # 弹窗无法截取
         # self.driver.get_screenshot_as_file(
         #     r"C:\Users\liuhua2\Desktop\testcase\pay.png")
         # self.imgs.append(self.driver.get_screenshot_as_base64())
@@ -403,3 +404,4 @@ if __name__ == '__main__':
     # new_report1 = new_report(test_report)
     # send_email(r'C:\Users\liuhua2\Desktop\report.html')
     unittest.main()
+    print(123, end=' ')
