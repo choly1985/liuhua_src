@@ -5,6 +5,7 @@
 # @Link    : https://github.com/choly1985
 # @Version : $Id$
 
+import sys
 import os
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
@@ -56,18 +57,19 @@ class login_gb(unittest.TestCase):
             "//div[@id='js-labelHeadCart']/a/span[2]")).click()
 
         # 点击跳转订单确认页
-        time.sleep(3)
+        time.sleep(4)
         # WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
         #    "div.cart_checkoutBtnBox>a.btn.middle.strong.proceed_checkout")).click()
-        WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
+        WebDriverWait(self.driver, 15).until(lambda x: x.find_element_by_css_selector(
             "div.cart_checkoutBtnBox>a.btn.middle.strong.proceed_checkout")).send_keys(Keys.ENTER)
 
+        time.sleep(1)
         # 点击编辑地址
-        WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
+        WebDriverWait(self.driver, 15).until(lambda x: x.find_element_by_css_selector(
             "div.ckSa_editAddressBtn>a.btn.middle.strong")).click()
 
         # 编辑地址信息
-        WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
+        WebDriverWait(self.driver, 15).until(lambda x: x.find_element_by_css_selector(
             "div.address_data>input[name='firstName'][class='address_input']")).clear()
         WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
             "div.address_data>input[name='firstName'][class='address_input']")).send_keys("firstname")
@@ -194,6 +196,7 @@ class login_gb(unittest.TestCase):
             "button#btnLogin")).click()
         self.driver.switch_to_default_content()
 
+        time.sleep(0.5)
         WebDriverWait(self.driver, 15).until(lambda x: x.find_element_by_id(
             "confirmButtonTop"))
         time.sleep(10)
@@ -205,7 +208,7 @@ class login_gb(unittest.TestCase):
         if EC.title_is(u'Gearbest: Affordable Quality, Fun Shopping'):
             print('支付成功')
         self.end = time.clock()
-        print(self.end - self.start)
+        print(self.end-self.start)
                
 if __name__ == '__main__':
     unittest.main()
