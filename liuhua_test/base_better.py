@@ -1,9 +1,13 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @Date    : 2019-08-05 15:36:16
-# @Author  : liuhua (434375025@qq.com)
-# @Link    : https://github.com/choly1985
-# @Version : $Id$
+'''
+@Description:
+@Version: 1.0
+@Autor: liuhua
+@QQ: 434375025@qq.com
+@Link: https://github.com/choly1985
+@Date: 2019-08-07 00:00:53
+@LastEditors: liuhua
+@LastEditTime: 2019-08-10 18:35:38
+'''
 
 import os
 from selenium import webdriver

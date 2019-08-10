@@ -1,10 +1,13 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @Date    : 2019-05-08 09:02:24
-# @Author  : liuhua (434375025@qq.com)
-# @Link    : https://github.com/choly1985
-# @Version : $Id$
-
+'''
+@Description: python
+@Version: 1.0
+@Autor: liuhua
+@QQ: 434375025@qq.com
+@Link: https://github.com/choly1985
+@Date: 2019-07-21 22:46:29
+@LastEditors: liuhua
+@LastEditTime: 2019-08-10 15:57:04
+'''
 import os
 
 # magicians = ['alice', 'david', 'carolina']
