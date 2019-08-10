@@ -21,7 +21,7 @@ class login_gb(unittest.TestCase):
         self.profile_directory = "C:\\Users\\liuhua2\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\p18j8opt.default"
         self.profile = webdriver.FirefoxProfile(self.profile_directory)
         self.path = r"D:\Program Files\python\Scripts\geckodriver.exe"
-        self.driver = webdriver.Firefox(~firefox_profile=self.profile,
+        self.driver = webdriver.Firefox(firefox_profile=self.profile,
                                         executable_path=self.path)
         # self.driver = webdriver.Firefox()
         self.driver.maximize_window()
@@ -315,4 +315,3 @@ class login_gb(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-    """test"""
