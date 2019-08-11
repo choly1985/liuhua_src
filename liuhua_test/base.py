@@ -6,7 +6,7 @@
 @Link: https://github.com/choly1985
 @Date: 2019-08-10 14:16:06
 @LastEditors: liuhua
-@LastEditTime: 2019-08-11 03:09:56
+@LastEditTime: 2019-08-11 23:55:00
 '''
 import xlrd
 
@@ -92,3 +92,44 @@ import xlrd
 
 # if __name__ == "__main__":
 #     unittest.main()
+
+{
+    "git.autofetch": true,
+    "editor.fontSize": 20,
+    "editor.renderWhitespace": "none",
+    "editor.minimap.enabled": true,
+    "breadcrumbs.enabled": true,
+    "workbench.colorTheme": "Sublime Material Theme - Dark",
+    "python.linting.flake8Enabled": true,
+    "python.formatting.provider": "autopep8",
+    "python.linting.enabled": false,
+    "python.linting.flake8Args": [
+        "--max-line-length=128"
+    ],
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true,
+    "fileheader.customMade": {
+        "Description": "python",
+        "Version": "1.0",
+        "Autor": "liuhua",
+        "QQ": "434375025@qq.com",
+        "Link": "https://github.com/choly1985",
+        "Date": "Do not edit",
+        "LastEditors": "liuhua",
+        "LastEditTime": "Do not edit"
+    },
+    "fileheader.cursorMode": {
+        "description": "python",
+        "param": "param",
+        "return": "None",
+        "author": "liuhua"
+    },
+    "workbench.iconTheme": "vscode-icons",
+    "debug.allowBreakpointsEverywhere": true,
+    "debug.inlineValues": true,
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+    "workbench.editor.enablePreview": false
+}
+# koroFileHeader
+# python-autopep8
+# vscode-icons
