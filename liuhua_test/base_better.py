@@ -6,7 +6,7 @@
 @Link: https://github.com/choly1985
 @Date: 2019-08-07 00:00:53
 @LastEditors: liuhua
-@LastEditTime: 2019-08-12 10:10:42
+@LastEditTime: 2019-08-12 10:13:38
 '''
 
 import sys
@@ -102,7 +102,7 @@ class login_gb(unittest.TestCase):
         WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
             "div.address_data>input[name='addressLine2'][class='address_input']")).send_keys("addressline2")
 
-       # 点击编辑国家下拉框
+        # 点击编辑国家下拉框
         WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_xpath(
             "/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/form/div[7]/div[1]/div/p/i")).click()
 

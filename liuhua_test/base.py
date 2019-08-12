@@ -6,7 +6,7 @@
 @Link: https://github.com/choly1985
 @Date: 2019-08-10 14:16:06
 @LastEditors: liuhua
-@LastEditTime: 2019-08-12 09:29:57
+@LastEditTime: 2019-08-12 19:27:35
 '''
 import xlrd
 
@@ -89,6 +89,38 @@ import xlrd
 #     def test_ddt(self, data):
 #         print(data)
 
-
 # if __name__ == "__main__":
 #     unittest.main()
+
+
+# 模拟手机浏览器操作
+# from selenium import webdriver
+# from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.firefox.options import Options
+# import time
+
+# 谷歌手机浏览器手机设置，设计手机型号
+# mobile_emulation = {'deviceName': 'iPhone X'}
+# options = webdriver.ChromeOptions()
+# options.add_experimental_option("mobileEmulation", mobile_emulation)
+# driver = webdriver.Chrome(chrome_options=options)
+# driver.get("http://m.baidu.com")
+# time.sleep(100)
+# driver.quit()
+
+# 谷歌手机浏览器手机设置，设计分辨率
+# WIDTH = 375
+# HEIGHT = 812
+# PIXEL_RATIO = 3.0
+# UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_4 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/27.0.1453.10 Mobile/10B350 Safari/8536.25'
+
+# mobileEmulation = {"deviceMetrics": {"width": WIDTH,
+#                                      "height": HEIGHT, "pixelRatio": PIXEL_RATIO}, "userAgent": UA}
+# options = webdriver.ChromeOptions()
+# options.add_experimental_option('mobileEmulation', mobileEmulation)
+
+# driver = webdriver.Chrome(chrome_options=options)
+# driver.set_window_size(WIDTH, HEIGHT)
+# driver.get('http://m.baidu.com')
+# time.sleep(10)
+# driver.close()
