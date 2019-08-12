@@ -404,4 +404,3 @@ if __name__ == '__main__':
     # new_report1 = new_report(test_report)
     # send_email(r'C:\Users\liuhua2\Desktop\report.html')
     unittest.main()
-    print(123, end=' ')
