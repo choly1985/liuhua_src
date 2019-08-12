@@ -6,7 +6,7 @@
 @Link: https://github.com/choly1985
 @Date: 2019-08-07 00:00:53
 @LastEditors: liuhua
-@LastEditTime: 2019-08-11 04:08:26
+@LastEditTime: 2019-08-12 09:25:08
 '''
 
 import sys
@@ -345,15 +345,9 @@ class login_gb(unittest.TestCase):
                           "button#btnLogin")).click()
         self.driver.switch_to_default_content()
 
-<<<<<<< HEAD
         time.sleep(0.5)
         WebDriverWait(self.driver, 15).until(lambda x: x.find_element_by_id(
             "confirmButtonTop"))
-=======
-        WebDriverWait(
-            self.driver,
-            15).until(lambda x: x.find_element_by_id("confirmButtonTop"))
->>>>>>> 2885262ae01eef3639281dd554e49712ad40455a
         time.sleep(10)
         WebDriverWait(self.driver, 15).until(
             lambda x: x.find_element_by_id("confirmButtonTop")).click()
@@ -363,13 +357,7 @@ class login_gb(unittest.TestCase):
         if EC.title_is(u'Gearbest: Affordable Quality, Fun Shopping'):
             print('支付成功')
         self.end = time.clock()
-<<<<<<< HEAD
         print(self.end-self.start)
                
-=======
-        print(self.end - self.start)
-
-
->>>>>>> 2885262ae01eef3639281dd554e49712ad40455a
 if __name__ == '__main__':
     unittest.main()
