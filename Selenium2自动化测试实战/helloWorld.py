@@ -1,3 +1,13 @@
+'''
+@Description: python
+@Version: 1.0
+@Autor: liuhua
+@QQ: 434375025@qq.com
+@Link: https://github.com/choly1985
+@Date: 2019-07-08 16:31:49
+@LastEditors: liuhua
+@LastEditTime: 2019-08-12 09:32:13
+'''
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Date    : 2019-07-08 16:30:00
