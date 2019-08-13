@@ -6,7 +6,7 @@
 @Link: https://github.com/choly1985
 @Date: 2019-08-10 14:16:06
 @LastEditors: liuhua
-@LastEditTime: 2019-08-13 19:11:00
+@LastEditTime: 2019-08-14 01:02:05
 '''
 
 # import xlrd
@@ -151,3 +151,37 @@
 
 # logger.info('Information——test')
 # logger.warning('Warning——test')
+
+# 异常处理案例
+# 导入日志记录模块
+
+# import logging
+# # 创建一个记录器
+# logger = logging.getLogger(__name__)
+# logger.setLevel(logging.INFO)
+
+# # 创建一个日志处理程序
+
+# handler = logging.FileHandler('ex1_critical.txt', encoding='utf-8')
+# handler.setLevel(logging.INFO)
+
+# # 日志的格式
+# formatter = logging.Formatter('%(asctime)s-%(name)s-%(levelname)s-%(message)s')
+# handler.setFormatter(formatter)
+
+# # 将处理程序添加到记录器
+# logger.addHandler(handler)
+
+
+# def age():
+#     logger.info('Inside function age()')
+#     try:
+#         logger.info('In the try Block')
+#         age = int(input('请输入你当前年龄'))
+#         logger.debug('Value of age is{}'.format(age))
+#     except ValueError as e:
+#         logger.critical('Invalid Input', exc_info=True)
+
+
+# if __name__ == '__main__':
+#     age()
