@@ -6,9 +6,10 @@
 @Link: https://github.com/choly1985
 @Date: 2019-08-10 14:16:06
 @LastEditors: liuhua
-@LastEditTime: 2019-08-12 19:27:35
+@LastEditTime: 2019-08-13 19:11:00
 '''
-import xlrd
+
+# import xlrd
 
 # excel 操作方法如下
 # 打开excel表格，参数文件路径
@@ -124,3 +125,29 @@ import xlrd
 # driver.get('http://m.baidu.com')
 # time.sleep(10)
 # driver.close()
+
+# import logging
+# logger = logging.getLogger('test')
+# logger.setLevel(logging.INFO)
+
+# # # 不写路径,会在git目录同级下，即Src下
+# handler_warn = logging.FileHandler(r'C:\Users\liuhua2\Desktop\warning_log.txt')
+# handler_warn.setLevel(logging.WARN)
+
+# handler_info = logging.FileHandler(r'C:\Users\liuhua2\Desktop\info_log.txt')
+# handler_info.setLevel(logging.INFO)
+
+# formatter = logging.Formatter(
+#     '%(asctime)s-%(name)s-%(levelname)s-%(message)s')  # 设置日志格式
+# handler_warn.setFormatter(formatter)
+# handler_info.setFormatter(formatter)
+
+# show_window = logging.StreamHandler()
+# show_window.setFormatter(formatter)
+
+# logger.addHandler(handler_warn)
+# logger.addHandler(handler_info)
+# logger.addHandler(show_window)
+
+# logger.info('Information——test')
+# logger.warning('Warning——test')
