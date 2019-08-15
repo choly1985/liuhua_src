@@ -6,7 +6,7 @@
 @Link: https://github.com/choly1985
 @Date: 2019-08-10 14:16:06
 @LastEditors: liuhua
-@LastEditTime: 2019-08-14 01:02:05
+@LastEditTime: 2019-08-15 18:38:36
 '''
 
 # import xlrd
@@ -185,3 +185,68 @@
 
 # if __name__ == '__main__':
 #     age()
+# Visual Studio IntelliCode智能提醒插件 ***
+# import unittest
+# import logging
+# from selenium import webdriver
+# from selenium.webdriver.common.keys import Keys
+# from selenium.common.exceptions import NoSuchElementException
+# from selenium.webdriver.common.by import By
+
+# # create a logger
+
+# logger = logging.getLogger(__name__)
+# logger.setLevel(logging.INFO)
+
+# # log handler
+# # create and name xx.txt
+
+# handler_critical = logging.FileHandler('xxxx.txt', 'w')
+# handler_critical.setLevel(logging.WARNING)
+
+# # output log message
+# handler_info = logging.StreamHandler()
+# handler_info.setLevel(logging.INFO)
+
+# # log format
+# formatter = logging.Formatter("%(asctime)s-%(name)s-%(levelname)s-%(message)s")
+# handler_critical.setFormatter(formatter)
+# handler_info.setFormatter(formatter)
+
+# # add handler message
+# logger.addHandler(handler_info)
+# logger.addHandler(handler_critical)
+
+
+# class YoutubeSearch(unittest.TestCase):
+#     def setUp(self):
+#         logger.info("------xxx------")
+#         self.browser = webdriver.Firefox()
+#         self.browser.get('http://www.xxx.com')
+#         logger.info('------xxx------')
+
+#     def tearDown(self):
+#         logger.info('------xxx------')
+#         self.browser.save_screenshot('XXX.png')
+#         self.browser.quit()
+#         logger.info('------xxx------')
+
+#     def test_youtube_search(self):
+#         logger.info('------xxx------')
+#         try:
+#             self.assertIn('xxx', self.browser.title)
+#             searchElement = self.browser.find_element_by_id('xxx')
+#         except AssertionError:
+#             logger.critical('xxx', exc_info=True)
+#             self.fail('xxx')
+#         except NoSuchElementException:
+#             logger.critical('xxx', exc_info=True)
+#             self.fail('xxx')
+#         else:
+#             searchElement.send_keys('xxx')
+#             searchElement.send_keys(Keys.RETURN)
+#             logger.info('------xxx------')
+
+
+# if __name__ == '__main__':
+#     unittest.main(exit=False, warnings='ignore')
