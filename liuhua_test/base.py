@@ -310,4 +310,4 @@ if __name__ == '__main__':
     log = print_log()
     log.info('----测试开始----')
     log.info('输入密码')
-    log.warning('----测试结束----')
+    log.warning('----测试结束----')  # end
