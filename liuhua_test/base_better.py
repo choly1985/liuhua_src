@@ -6,7 +6,6 @@
 @Link: https://github.com/choly1985
 @Date: 2019-08-07 00:00:53
 @LastEditors: liuhua
-@LastEditTime: 2019-08-12 10:13:38
 '''
 
 import sys
