@@ -251,10 +251,75 @@
 #     unittest.main(exit=False, warnings='ignore')
 
 
-import logging
-import os
+# import logging
+# import os
+# import time
+# log_path = 'C:\\Users\\liuhua2\\Desktop\\'
+
+
+# class print_log():
+#     def __init__(self):
+#         # filename
+#         self.logname = os.path.join(
+#             log_path, '{}.txt'.format(time.strftime('%Y-%m-%d')))
+#         self.logger = logging.getLogger('__name__')
+#         self.logger.setLevel((logging.DEBUG))
+
+#         # log format
+#         self.formatter = logging.Formatter(
+#             '%(asctime)s-%(filename)s-%(levelname)s:%(message)s')
+
+#     def __console(self, level, message):
+#         # create a filehandler,for write local
+#         fh = logging.FileHandler(self.logname, 'a', encoding='utf-8')
+#         fh.setLevel(logging.DEBUG)
+#         fh.setFormatter(self.formatter)
+#         self.logger.addHandler(fh)
+#         # create a StreamHandler,for output console
+#         ch = logging.StreamHandler()
+#         ch.setLevel(logging.DEBUG)
+#         ch.setFormatter(self.formatter)
+#         self.logger.addHandler(ch)
+#         if level == 'info':
+#             self.logger.info(message)
+#         elif level == 'debug':
+#             self.logger.debug(message)
+#         elif level == 'warning':
+#             self.logger.warning(message)
+#         elif level == 'error':
+#             self.logger.error(message)
+#         # clear log for avoid Repeat output
+#         self.logger.removeHandler(ch)
+#         self.logger.removeHandler(fh)
+#         fh.close()
+
+#     def debug(self, message):
+#         self.__console('debug', message)
+
+#     def info(self, message):
+#         self.__console('info', message)
+
+#     def warning(self, message):
+#         self.__console('warning', message)
+
+#     def error(self, message):
+#         self.__console('error', message)
+
+
+# if __name__ == '__main__':
+#     log = print_log()
+#     log.info('----测试开始----')
+#     log.info('输入密码')
+#     log.warning('----测试结束----')  # end
+
+
 import time
-log_path = 'C:\\Users\\liuhua2\\Desktop\\'
+import os
+import logging
+import unittest
+from selenium import webdriver
+
+log_path = r"C:\Users\Administrator\Desktop\Seleium"
 
 
 class print_log():
@@ -306,8 +371,29 @@ class print_log():
         self.__console('error', message)
 
 
-if __name__ == '__main__':
-    log = print_log()
-    log.info('----测试开始----')
-    log.info('输入密码')
-    log.warning('----测试结束----')  # end
+log = print_log()
+
+
+class Test(unittest.TestCase):
+    def setUp(self):
+        self.driver = webdriver.Firefox()
+        self.driver.get('https://www.baidu.com')
+        time.sleep(3)
+
+    def tearDown(self):
+        self.driver.quit()
+        log.info("-----测试用例结束-----")
+
+    def test_01(self):
+        log.info('-----测试用例开始-----')
+        self.driver.find_element_by_id("kw").send_keys('yoyo')
+        log.info('输入内容：yoyo')
+        self.driver.find_element_by_id("su").click()
+        log.info("点击按钮：id=su")
+        time.sleep(2)
+        log.info('获取title内容：{}'.format(self.driver.title))
+        self.assertIn('百度搜索', self.driver.title)
+
+
+if __name__ == "__main__":
+    unittest.main()
