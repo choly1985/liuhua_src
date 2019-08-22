@@ -8,15 +8,30 @@
 @LastEditors: liuhua
 '''
 
+import random
+import time
 
-def sort():
+
+def dubbuleSort(arr):
     '''
-    @description: python
-    @param {type} param
-    @return: None
+    @description: 冒泡排序
+    @param: 入参一个待排序列表
+    @return: 运行时间
     @author: liuhua
     '''
-    print(123)
+    start_time = time.clock()
+    __len = len(arr)
+    for i in range(__len):
+        for j in range(1, __len - i):
+            if arr[j - 1] > arr[j]:
+                arr[j-1], arr[j] = arr[j], arr[j-1]
+    end_time = time.clock()
+    return end_time-start_time
 
 
-sort()
+if __name__ == '__main__':
+
+    arr = [random.randint(1, 500) for i in range(20)]
+    print(dubbuleSort(arr))
+    for i in range(len(arr)):
+        print('{:>5}'.format(arr[i]), end=' ')
