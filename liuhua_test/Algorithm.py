@@ -26,14 +26,72 @@ def dubbuleSort(arr):
             if arr[j - 1] > arr[j]:
                 arr[j-1], arr[j] = arr[j], arr[j-1]
     end_time = time.clock()
-
-    for k in range(len(arr)):
-        print('{:>5}'.format(arr[k]), end='\t')
     print('\n')
     return end_time-start_time
 
 
-if __name__ == '__main__':
+def qucik_sort1(arr, left, right):
+    '''
+    @description: 快速排序，一次比较arr[0]和其他元素，比arr[0]小，就原地删除
+    ，然后插入到arr[0]前面，基准值后移，大于等于则不处理。然后递归
+    @param 接受3个参数，待排序列表，左右基准
+    @return: 函数无返回值
+    @author: liuhua
+    '''
+    # 退出函数递归
+    if left >= right:
+        return
 
-    arr = [random.randint(1, 10000) for i in range(300)]
-    print(dubbuleSort(arr))
+    flag = left
+    for i in range(left + 1, right + 1):
+        if arr[flag] > arr[i]:
+            temp = arr[i]
+            del arr[i]
+            arr.insert(flag, temp)
+            flag += 1
+    qucik_sort1(arr, left, flag - 1)
+    qucik_sort1(arr, flag+1, right)
+
+
+def quick_sort2(alist, start, end):
+    """快速排序"""
+    if start >= end:
+        return
+    # 基准
+    mid = alist[start]
+    # 左边游标
+    left = start
+    # 右边游标
+    right = end
+
+    while left < right:
+        while left < right and alist[right] >= mid:
+            # 右边游标移动，左边游标不动
+            right -= 1
+        alist[left] = alist[right]
+        while left < right and alist[left] < mid:
+            # 左边游标移动，右边游标不动
+            left += 1
+        alist[right] = alist[left]
+    # 退出循环后 left与right重合，即相等
+    alist[left] = mid
+    # 递归的方式排左边的序列
+    quick_sort2(alist, start, left - 1)
+    # 递归的方式排右边的序列
+    quick_sort2(alist, left + 1, end)
+
+
+if __name__ == '__main__':
+    # arr = [random.randint(1, 50000) for i in range(10000)]
+    # print(dubbuleSort(arr))
+    # print('\n')
+
+    arr = [random.randint(1, 1000000) for i in range(1000000)]
+    start_time = time.clock()
+    quick_sort2(arr, 0, len(arr) - 1)
+    end_time = time.clock()
+    # 超大数打印费时间
+    # for k in range(len(arr)):
+    #     print('{:>8}'.format(arr[k]), end='\t')
+    # print('\n')
+    print(end_time-start_time)
