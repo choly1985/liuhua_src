@@ -21,17 +21,19 @@ def dubbuleSort(arr):
     '''
     start_time = time.clock()
     __len = len(arr)
-    for i in range(__len):
+    for i in range(__len-1):
         for j in range(1, __len - i):
             if arr[j - 1] > arr[j]:
                 arr[j-1], arr[j] = arr[j], arr[j-1]
     end_time = time.clock()
+
+    for k in range(len(arr)):
+        print('{:>5}'.format(arr[k]), end='\t')
+    print('\n')
     return end_time-start_time
 
 
 if __name__ == '__main__':
 
-    arr = [random.randint(1, 500) for i in range(20)]
+    arr = [random.randint(1, 10000) for i in range(300)]
     print(dubbuleSort(arr))
-    for i in range(len(arr)):
-        print('{:>5}'.format(arr[i]), end=' ')
