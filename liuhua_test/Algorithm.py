@@ -81,17 +81,31 @@ def quick_sort2(alist, start, end):
     quick_sort2(alist, left + 1, end)
 
 
+def shell_sort(arr: list):
+    n = len(arr)
+    gap = n // 2
+    while gap > 0:
+        for i in range(gap, n):
+            j = i
+            while j >= gap and arr[j] < arr[j - gap]:
+                arr[j], arr[j - gap] = arr[j - gap], arr[j]
+                j -= gap
+        gap //= 2
+
+
 if __name__ == '__main__':
     # arr = [random.randint(1, 50000) for i in range(10000)]
     # print(dubbuleSort(arr))
     # print('\n')
 
-    arr = [random.randint(1, 1000000) for i in range(1000000)]
+    arr = [random.randint(1, 50000000) for i in range(50000000)]
     start_time = time.clock()
-    quick_sort2(arr, 0, len(arr) - 1)
+    # quick_sort2(arr, 0, len(arr) - 1)
+    arr.sort()
+    # sorted(arr)
     end_time = time.clock()
     # 超大数打印费时间
     # for k in range(len(arr)):
-    #     print('{:>8}'.format(arr[k]), end='\t')
+    #     print('{:>5}'.format(arr[k]), end='\t')
     # print('\n')
     print(end_time-start_time)
