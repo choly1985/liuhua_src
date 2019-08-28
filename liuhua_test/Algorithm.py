@@ -10,6 +10,7 @@
 
 import random
 import time
+import string
 
 
 def dubbuleSort(arr):
@@ -82,6 +83,13 @@ def quick_sort2(alist, start, end):
 
 
 def shell_sort(arr: list):
+    '''
+    @description: 希尔排序，缩小增量排序，是直接插入排序算法的一种更高效的改进版本希尔排序是把记录按下标的一定增量分组，
+    对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，算法便终止。
+    @param {type} 接受待排序序列
+    @return: None
+    @author: liuhua
+    '''
     n = len(arr)
     gap = n // 2
     while gap > 0:
@@ -97,15 +105,18 @@ if __name__ == '__main__':
     # arr = [random.randint(1, 50000) for i in range(10000)]
     # print(dubbuleSort(arr))
     # print('\n')
-
-    arr = [random.randint(1, 50000000) for i in range(50000000)]
+    list = [''.join((random.sample(string.ascii_letters+string.digits, 1)))
+            for i in range(10)]
+    arr = [random.randint(1, 1000000) for i in range(1000000)]
     start_time = time.clock()
-    # quick_sort2(arr, 0, len(arr) - 1)
-    arr.sort()
+    #quick_sort2(arr, 0, len(arr) - 1)
+    # arr.sort()
     # sorted(arr)
+    shell_sort(list)
     end_time = time.clock()
     # 超大数打印费时间
     # for k in range(len(arr)):
     #     print('{:>5}'.format(arr[k]), end='\t')
     # print('\n')
     print(end_time-start_time)
+    print(list)
