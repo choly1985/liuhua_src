@@ -7,10 +7,3 @@
 @Date: 2019-08-22 14:25:24
 @LastEditors: liuhua
 '''
-
-
-def prrint_log():
-    print(123)
-
-
-prrint_log()

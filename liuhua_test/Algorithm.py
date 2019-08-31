@@ -11,6 +11,8 @@
 import random
 import time
 import string
+import sys
+import os
 
 
 def dubbuleSort(arr):
@@ -105,18 +107,25 @@ if __name__ == '__main__':
     # arr = [random.randint(1, 50000) for i in range(10000)]
     # print(dubbuleSort(arr))
     # print('\n')
-    list = [''.join((random.sample(string.ascii_letters+string.digits, 1)))
+    list = [''.join((random.sample(string.ascii_letters+string.digits+string.punctuation, 1)))
             for i in range(10)]
     arr = [random.randint(1, 1000000) for i in range(1000000)]
-    start_time = time.clock()
-    #quick_sort2(arr, 0, len(arr) - 1)
+    # start_time = time.clock()
+    # quick_sort2(arr, 0, len(arr) - 1)
     # arr.sort()
     # sorted(arr)
-    shell_sort(list)
-    end_time = time.clock()
+    # shell_sort(list)
+    # end_time = time.clock()
     # 超大数打印费时间
     # for k in range(len(arr)):
     #     print('{:>5}'.format(arr[k]), end='\t')
     # print('\n')
-    print(end_time-start_time)
-    print(list)
+    # print(end_time-start_time)
+    # print(list)
+    # print(os.path.split(os.path.abspath(__file__))[0])  # 获取本文件所在目录,并打印
+    # print(os.path.split(os.path.realpath(__file__))[0])  # 获取本文件所在目录，并打印
+    # print(os.path.abspath(__file__))  # 获取本文件绝对路径，并打印
+    # print(os.path.dirname(__file__))  # 获取本文件所在目录，并打印
+    # print(os.path.dirname(os.path.realpath(__file__)))  # 获取本文件所在目录，并打印
+    # filePath, fileName = os.path.split(os.path.abspath(__file__))#获取当前文件目录，文件名
+    # print(filePath, fileName, sep='\t')
