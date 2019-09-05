@@ -1,3 +1,12 @@
+'''
+@Description: python
+@Version: 1.0
+@Autor: liuhua
+@QQ: 434375025@qq.com
+@Link: https://github.com/choly1985
+@Date: 2019-05-11 15:36:28
+@LastEditors: liuhua
+'''
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Date    : 2019-05-11 15:36:20
@@ -22,7 +31,7 @@ class AnonymousSurvey():
     def show_results(self):
         print("Survey results:")
         for response in self.responses:
-            print("_ " + response)
+            print("_" + response)
 
 
 question = "What language did you first learn to speak?"

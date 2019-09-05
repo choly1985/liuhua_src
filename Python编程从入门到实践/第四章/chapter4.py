@@ -6,7 +6,6 @@
 @Link: https://github.com/choly1985
 @Date: 2019-07-21 22:46:29
 @LastEditors: liuhua
-@LastEditTime: 2019-08-10 15:57:04
 '''
 import os
 
@@ -47,3 +46,6 @@ player = ['chrales', 'martina', 'michael', 'florence', 'eli']
 # postion = ([1], [3])
 # postion[1].append(2)# 改变tuple内容
 # print(postion)
+hello_message = help(print)
+# print(hello_message)
+print()
