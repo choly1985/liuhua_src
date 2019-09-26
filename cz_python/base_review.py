@@ -71,7 +71,7 @@
 # 顺序、选择、循环
 """
 5. if
-	
+
 	if 条件:
 		xxxx
 
@@ -101,7 +101,7 @@
 			yyyyy1
 
 6. while
-	
+
 	i = 0
 	while i<100:
 		xxxx
@@ -174,14 +174,14 @@
 
 		类属性
 		num = 100
-		
+
 		实例方法
 		def __init__(self):
 			self.xxx = 100 实例属性
 			父类名字.父类方法(self)
 			super().父类的方法名()
 			super(当前类的名字Animal,self).父类的方法名()
-		
+
 		实例方法
 		def tset(self):
 			Animal.num = 300
@@ -233,3 +233,61 @@
 	if __name__ =="__main__":
 		xxx
 """
+
+
+def sum_2_nums(a, b, c=22, *args, **kwargs):
+    print(a, b, c, args, kwargs)
+
+
+# A = (44, 55, 66)
+# B = {'name': "laowang", "age": 20}
+# sum_2_nums(1, 11,  22, A, B)
+
+def count_input():
+    a = input("请输入数字：")
+    b = input("请输入数字:")
+    return int(a) + int(b)
+
+
+def show_info():
+    print("=" * 40)
+    print("=" + " " * 10 + "欢迎进入到身份认证系统V1.0")
+    print("= 1. 登录")
+    print("= 2. 退出")
+    print("= 3. 认证")
+    print("= 4. 修改密码")
+    print("=" * 40)
+
+
+# print(count_input())
+# show_info()
+
+def get_person_info():
+    person_name = input("请输入姓名：")
+    person_qq = input("请输入qq:")
+    person_tel = input("请输入电话号码:")
+    person_addr = input("请输入住址:")
+    print("=" * 40)
+    print("姓名：%s" % (person_name))
+    print("QQ ：%s" % (person_qq))
+    print("手机号：%s" % (person_tel))
+    print("公司地址：%s" % (person_addr))
+
+
+# get_person_info()
+name = 'hello world ha ha'
+# print(name.split(" "))
+# print(name.capitalize())
+# print(name.title())
+# print(name.startswith('hello'))
+# print(name.startswith('Hello'))
+# print(name.endswith('ha'))
+# print(name.endswith('Ha'))
+print(name.upper())
+print(name.lower())
+
+li = ('my', 'name', 'is', 'liuhua')
+print(' '.join(li))
+a = [1, 4, 3, 2, 1]
+sorted(a)
+print(a)
