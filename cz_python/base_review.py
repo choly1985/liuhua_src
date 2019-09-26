@@ -235,6 +235,10 @@
 """
 
 
+
+
+import os
+import random
 def sum_2_nums(a, b, c=22, *args, **kwargs):
     print(a, b, c, args, kwargs)
 
@@ -283,11 +287,63 @@ name = 'hello world ha ha'
 # print(name.startswith('Hello'))
 # print(name.endswith('ha'))
 # print(name.endswith('Ha'))
-print(name.upper())
-print(name.lower())
+# print(name.upper())
+# print(name.lower())
 
-li = ('my', 'name', 'is', 'liuhua')
-print(' '.join(li))
-a = [1, 4, 3, 2, 1]
-sorted(a)
-print(a)
+# li = ('my', 'name', 'is', 'liuhua')
+# print(' '.join(li))
+# a = [1, 4, 3, 2, 1]
+# sorted(a)
+# print(a)
+
+# offices = [[], [], []]
+names = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+
+# for name in names:
+#     index = random.randint(0, 2)
+#     offices[index].append(name)
+# i = 1
+# for tempNames in offices:
+#     print("办公室%d人数为:%d" % (i, len(tempNames)))
+#     i += 1
+#     for name in tempNames:
+#         print("%s" % name, end=' ')
+#     print("\n")
+#     print("-"*20)
+
+name_info = {"liuhua": "hengyang", "liuhua1": "yueyang"}
+# print(name_info.get("liuhua"))
+# print(name_info.setdefault("liuhua3", "hello"))
+info = {'liuli1': "beijing", "yiping": "changsha", "liuhua": "hengyang1"}
+# name_info.update(info)
+# print(name_info)
+# del(name_info)
+# print(name_info)
+
+
+# tuple1 = [(2, 3), (4, 5)]
+# print(tuple1[0][1])
+
+
+# def print_info(**kwargs):
+#     for item in kwargs.items():
+#         print(item)
+# print_info(**info)
+
+def calNum(num):
+    if num >= 1:
+        result = num * calNum(num - 1)
+    else:
+        result = 1
+    return result
+
+
+def read_file(file):
+    f = open(file, 'r')
+    for line in f.readlines():
+        if not line.startswith("#"):
+            print(line.rstrip())
+    f.close()
+
+
+read_file(r"C:\Users\liuhua2\Desktop\test.txt")
