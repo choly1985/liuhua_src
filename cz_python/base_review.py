@@ -346,4 +346,21 @@ def read_file(file):
     f.close()
 
 
-read_file(r"C:\Users\liuhua2\Desktop\test.txt")
+# read_file(r"C:\Users\liuhua2\Desktop\test.txt")
+
+
+def read_file_new(file):
+    with open(file, 'r') as f:
+        for line in f.readlines():
+            if (not line.rstrip().startswith("#")) and (not line.rstrip().endswith("#")):
+                print(line.rstrip())
+            # if not line.rstrip().startswith("#"):
+            #     if not line.rstrip().endswith("#"):
+            #         print(line.rstrip())
+
+
+# read_file_new(r"C:\Users\liuhua2\Desktop\test.txt")
+l1 = [1, 2, 3]
+l2 = [4, 5, 6]
+l3 = map(lambda x, y: x+y, l1, l2)
+print(list(l3))
