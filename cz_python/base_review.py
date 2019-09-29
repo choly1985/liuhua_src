@@ -237,6 +237,8 @@
 
 
 
+import sys
+import string
 import os
 import random
 def sum_2_nums(a, b, c=22, *args, **kwargs):
@@ -349,18 +351,237 @@ def read_file(file):
 # read_file(r"C:\Users\liuhua2\Desktop\test.txt")
 
 
-def read_file_new(file):
-    with open(file, 'r') as f:
-        for line in f.readlines():
-            if (not line.rstrip().startswith("#")) and (not line.rstrip().endswith("#")):
-                print(line.rstrip())
-            # if not line.rstrip().startswith("#"):
-            #     if not line.rstrip().endswith("#"):
-            #         print(line.rstrip())
+# def read_file_new(file):
+#     with open(file, 'r') as f:
+#         for line in f.readlines():
+#             if (not line.rstrip().startswith("#")) and (not line.rstrip().endswith("#")):
+#                 print(line.rstrip())
+#             # if not line.rstrip().startswith("#"):
+#             #     if not line.rstrip().endswith("#"):
+#             #         print(line.rstrip())
 
 
 # read_file_new(r"C:\Users\liuhua2\Desktop\test.txt")
-l1 = [1, 2, 3]
-l2 = [4, 5, 6]
-l3 = map(lambda x, y: x+y, l1, l2)
-print(list(l3))
+# l1 = [1, 2, 3]
+# l2 = [4, 5, 6]
+# l3 = map(lambda x, y: x+y, l1, l2)
+# print(list(l3))
+
+# a = {1, 2, 3, 4}
+# b = {4, 5, 6, 7}
+# print(a & b, a | b, a ^ b, a-b)
+
+# print("\n".join("\t".join(["%s*%s=%s" % (x, y, x*y)
+#                            for y in range(1, x+1)]) for x in range(1, 10)))
+
+# while True:
+#     player = int(input("请输入剪刀(0),石头(1)，布(2) :"))
+#     computer = random.randint(0, 2)
+#     if (player == 1 and computer == 0) or (player == 2 and computer == 1) or (player == 0 and computer == 2):
+#         print("赢了")
+#     elif player == computer:
+#         print("平了")
+#     elif player not in range(0, 3):
+#         print("输入有误")
+#     else:
+#         print("输了")
+
+# 输入一行字符，分别统计出其中英文字母、空格、数字和其它字符的个数
+# s = input("请输入一行字符：")
+# letter_count = 0
+# digit_count = 0
+# other_count = 0
+# for c in s:
+#     if c.isalpha():
+#         letter_count += 1
+#     elif c.isdigit():
+#         digit_count += 1
+#     elif c in string.punctuation:
+#         other_count += 1
+#     else:
+#         pass
+# print(letter_count, digit_count, other_count)
+
+# a = 'dabcb'
+# if a in 'abdabcbcd':
+#     print(1)
+
+# keys = ('狗子', '港', 'DAYDREAM')
+# values = ('dog', 'gang', 'day')
+# user_dict = {key: value for key, value in zip(keys, values)}
+# print(user_dict)
+# print(user_dict.setdefault('狗子1', 'dog2'))
+# print(user_dict)
+
+news = {'beijing': '北京', 'xian': "西安"}
+
+# if news.get('beijing'):
+#     print(news['beijing'])
+# else:
+#     print('北京不在字典中')
+# news.popitem()
+# print(news)
+
+# userinfo = ['刘德华', '黎明', 'Raymond', 'dog', '随便', '牛仔']
+# username = '牛仔1'
+# num = 0
+# for user in userinfo:
+#     if user == username:
+#         print('username 在 userinfo中')
+#         break
+#     elif num == len(userinfo)-1:
+#         print('不存在userinfo中')
+#     num += 1
+
+# foot = ['@qq.com', '@163.com', '@hotmail.com', '@gmail.com']
+# email = ''.join(random.sample(string.ascii_letters +
+#                               string.digits, 8)) + random.choice(foot)
+
+# for i in range(10):
+#     email = ''.join(random.sample(string.ascii_letters +
+#                                   string.digits, 16)) + random.choice(foot)
+#     print(email)
+
+# mobile_head = ['132', '133', '159', '181', '138', '180']
+# for i in range(1000):
+#     mobile = random.choice(mobile_head)+str(random.randint(10000000, 99999999))
+#     print(mobile)
+
+# 随机出一个数字
+# 让用户去猜
+# 如果用户持续猜错 可以选择继续猜，或者通过ctrl + c的方式结束游戏
+# 如果用户猜对了， 则自动退出
+# 如果错误， 则重新猜
+
+# user_input_list = []
+# while 1:
+#     rand = random.randint(1, 11)
+#     user = input('请输入一个数字:')
+#     try:
+#         user = int(user)
+#         if user_input_list.count(user) >= 5:
+#             print('该数字输入5次，不可继续输入啦！')
+#             continue
+#         if rand == int(user):
+#             print('恭喜你，猜对了！游戏退出')
+#             break
+#         else:
+#             user_input_list.append(user)
+#             print('user : {}'.format(user), 'comp :{}'.format(rand))
+#             print('猜错了哦， 继续加油， 或者 CTRL+C退出游戏！')
+#     except KeyboardInterrupt:
+#         sys.exit(0)
+#     except ValueError:
+#         print('输入类型错误， 只接受int类型的参数')
+
+# number = random.sample(string.digits, 4)
+# print(number)
+# success_number = 0
+# fail_number = 0
+# while 1:
+#     if success_number == 3 or fail_number == 10:
+#         print('退出游戏！')
+#         break
+#     user = list(input('请输入这不相同的4个数字：'))
+#     if user == number:
+#         success_number += 1
+#         print('恭喜你！回答正确')
+#     else:
+#         print('真糟糕！猜错了！')
+#         fail_number += 1
+
+
+# def print_user_info(name, age, work):
+#     """
+#         这个函数，接受三个必传参数，把他们拼接成一句话，不错返回
+#     :param name: 用户名
+#     :param age: 用户年龄
+#     :param work: 用户的工作
+#     :return: None
+#     """
+#     print('我是{}，我今年{}，我的工作是{}'.format(name, age, work))
+
+
+# user_info = ('Raymond', 20, 'IT')
+# print_user_info(*user_info)
+# user_info = dict(name='Raymond', age=20, work='IT')
+# print_user_info(**user_info)
+
+
+FIRST_NAME_ENUM = '赵钱孙李周吴郑王'
+LAST_NAME_ENUM = '与玉鱼汪千苗喵'
+
+
+# def make_user_name(first_name=None) -> str:
+#     """
+#         生成一个随机的用户名
+#     :return:
+#     """
+#     if not first_name:
+#         first_name = random.choice(list(FIRST_NAME_ENUM))
+
+#     rand = 2 if random.randint(1, 100) > 50 else 1
+#     last_name = ''.join(random.sample(list(LAST_NAME_ENUM), rand))
+#     print('用户名是 ：{}'.format(first_name + last_name))
+#     return first_name + last_name
+
+# make_user_name('上官')
+# for i in range(10):
+#     print('*'*10) if random.randint(1, 10) < 5 else print("-"*10)
+
+
+# file = open('log.txt', mode='a', encoding='utf-8')
+# file.writelines(['\n我是整行写入的', '\n我想在这行再加一些备注'])
+# file.writelines(['\n我是第二个整行', '\n好吧我觉得我没什么写的了就是想在这里占一个位置'])
+# file.close()
+
+# string_text = '我是雷蒙德！'
+# print('string text ', string_text, type(string_text))
+# bytes_text = string_text.encode()   # str => bytes
+# print('bytes_text ', bytes_text, type(bytes_text))
+# bytes2string = bytes_text.decode()   # bytes => str
+# print(bytes2string)
+
+# with open('log.txt', mode='rb') as file:
+#     data = file.read()
+#     # print(file.read())   # 这里会返回一个空的bytes类型的数据，因为file.read()只会返回一次数据，返回后数据被消费掉
+# # print(data.decode('gbk')) #gbk会报错
+# file_text = data.decode()
+# print(file_text)
+
+
+# with open('log.txt', mode='r', encoding='utf-8') as file:
+#     data = file.readlines()  # file.readlines() 返回一个完整的文件内容的列表，每一行用’，‘分割
+#     for line, item in enumerate(data, 1):
+#         print(line, item.replace('\n', ''))
+
+# def sum1(start=1, *args):
+#     print(start)
+#     return start+sum(args)
+
+
+# print(sum1(2, 2, 3, 4, 5, 6, 7, 8, 9))
+
+def 计算器(*args, seq='+'):
+    """
+        这是一个制作一种运算的计算器
+    :param args:
+    :param seq:
+    :return:
+    """
+    if seq == '+':
+        return sum(args)
+    if seq == '-':
+        head, foot = args[0], args[1::]
+        for num in foot:
+            head -= num
+        return head
+    if seq == '*':
+        res = 1
+        for num in args:
+            res *= num
+        return res
+    return '除法暂时不做处理'
+
+
+print(计算器(5, 5, 3, 3, seq='*'))

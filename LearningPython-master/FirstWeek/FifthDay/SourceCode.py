@@ -19,7 +19,8 @@ user_dict = dict(beijing='北京', shanghai='上海', tianjin='天津')
 print(type(user_dict.keys()))
 # print(user_dict.keys()[1])    # 我们不能直接对dict.keys() 和 dict.values()返回的类型进行下标取值
 print(type(list(user_dict.keys())))
-print(list(user_dict.keys())[0])   # 如果我们需要通过下标取出dict.keys or dict.values中对应index的元素， 可以用list(dict.keys())
+# 如果我们需要通过下标取出dict.keys or dict.values中对应index的元素， 可以用list(dict.keys())
+print(list(user_dict.keys())[0])
 # 转换一次类型之后再做取值行为
 
 # for key, value in user_dict.items():
@@ -51,7 +52,7 @@ userdict = dict.fromkeys(userinfo, 0)
 if __name__ == '__main__':
     # try ... catch
     # try ... except
-    
+
     # random
     # try 在python中用于捕获异常
     # 如果不分类型，捕获全部异常，则直接使用Exception
@@ -75,10 +76,10 @@ if __name__ == '__main__':
     except Exception as ex:
         print('捕获未知异常， 异常消息为：', ex)
     #
-    
+
     # raise , 主动抛出异常的关键字
     from time import sleep
-    
+
     num = 0
     while num < 100:
         num += 1
@@ -112,7 +113,7 @@ if __name__ == '__main__':
     #
     # raise ValideJsonError('错误的json结构体')
     #
-    
+
     import random
     # import string
     #
@@ -136,8 +137,7 @@ if __name__ == '__main__':
     #
     # mobile = ['137', '138', '139', '131', '140', '150', '177']
     # print(random.choice(mobile) + str(random.randint(10000000, 99999999)))
-    
-    
+
     # class Usage(Exception):
     #     """ pass """
     #     def __init__(self, msg):
@@ -149,12 +149,12 @@ if __name__ == '__main__':
     #
     # raise Usage('Usage error')
     #
-    
+
     # user_input = input('请输入一个数字:')
     # print('用户输入的数字是:', user_input)
     # input接受的类型 是一个字符串
     # input的作用是接受用户输入的一个参数, 传递给一个变量
-    
+
     # 随机出一个数字
     # 让用户去猜
     # 如果用户持续猜错 可以选择继续猜，或者通过ctrl + c的方式结束游戏

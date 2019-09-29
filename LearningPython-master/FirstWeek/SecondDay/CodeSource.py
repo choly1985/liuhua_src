@@ -121,7 +121,7 @@ if __name__ == '__main__':
     # print(user_list)  # 对列表进行升序排序， 并改变列表原有的index
     # print(sorted(user_list))  # python内置的sorted 是不会改变原有的listindex位置的
     # print(user_list)
-    
+
     # 取出user_list中的第2到第4个元素的全部的值
     # 在user_list列表中， 每2个index位置取值一次
     print(user_list)
@@ -169,7 +169,8 @@ if __name__ == '__main__':
     # import requests
     # pip install requests
     dict_dir_list = dir(dict)
-    dict_module = [item for item in dict_dir_list if '__' not in item]    # 列表推导式
+    dict_module = [
+        item for item in dict_dir_list if '__' not in item]    # 列表推导式
     print(dict_module)
     keys = ('狗子', '港', 'DAYDREAM')
     values = ('dog', 'gang', 'day')
@@ -178,5 +179,7 @@ if __name__ == '__main__':
     # dict hashmap
     # 是一个无序的， 且key唯一
     # python3.6之后 字典是有序的
-    print(list(user_dict.keys())[2])   # dict.keys 和dict.values并不能直接通过下标取值的形式直接取值
-    print(list(user_dict.values())[2])    # 我们需要先把dict.keys的数据类型转换成list类型， 再做取值行为
+    # dict.keys 和dict.values并不能直接通过下标取值的形式直接取值
+    print(list(user_dict.keys())[2])
+    # 我们需要先把dict.keys的数据类型转换成list类型， 再做取值行为
+    print(list(user_dict.values())[2])

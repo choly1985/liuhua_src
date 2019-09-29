@@ -1,10 +1,12 @@
-"""
-@Name: SouceCode
-@Version: 
-@Project: PyCharm Community Edition
-@Author: liujinjia
-@Data: 2017/11/14
-"""
+'''
+@Description: python
+@Version: 1.0
+@Autor: liuhua
+@QQ: 434375025@qq.com
+@Link: https://github.com/choly1985
+@Date: 2018-11-08 20:56:31
+@LastEditors: liuhua
+'''
 
 # dir(dict)
 
@@ -212,6 +214,6 @@ if __name__ == '__main__':
         if user == username:
             print('username 在 userinfo中')
             break
-        elif num == len(userinfo):
+        elif num == len(userinfo)-1:
             print('不存在userinfo中')
         num += 1

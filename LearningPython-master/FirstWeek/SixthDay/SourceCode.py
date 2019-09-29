@@ -89,7 +89,7 @@
 #         random.shuffle(numbers)
 #         headers = ['138', '139', '140', '131', '155', '157']
 #         mobile_number = random.choice(headers) + ''.join(random.sample(numbers, 8))  # 随机生成一个手机号
-#         print(mobile_number)
+#         print(mobile_number)[]
 #         return mobile_number
 #
 #     def hi(name):
@@ -263,7 +263,7 @@ def make_user_name(first_name=None) -> str:
     """
     if not first_name:
         first_name = random.choice(list(FIRST_NAME_ENUM))
-    
+
     rand = 2 if random.randint(1, 100) > 50 else 1
     last_name = ''.join(random.sample(list(LAST_NAME_ENUM), rand))
     print('用户名是 ：{}'.format(first_name + last_name))
@@ -271,6 +271,3 @@ def make_user_name(first_name=None) -> str:
 
 
 make_user_name('独孤')
-
-
-
