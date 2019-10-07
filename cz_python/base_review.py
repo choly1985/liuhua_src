@@ -562,26 +562,240 @@ LAST_NAME_ENUM = '与玉鱼汪千苗喵'
 
 # print(sum1(2, 2, 3, 4, 5, 6, 7, 8, 9))
 
-def 计算器(*args, seq='+'):
-    """
-        这是一个制作一种运算的计算器
-    :param args:
-    :param seq:
-    :return:
-    """
-    if seq == '+':
-        return sum(args)
-    if seq == '-':
-        head, foot = args[0], args[1::]
-        for num in foot:
-            head -= num
-        return head
-    if seq == '*':
-        res = 1
-        for num in args:
-            res *= num
-        return res
-    return '除法暂时不做处理'
+# def 计算器(*args, seq='+'):
+#     """
+#         这是一个制作一种运算的计算器
+#     :param args:
+#     :param seq:
+#     :return:
+#     """
+#     if seq == '+':
+#         return sum(args)
+#     if seq == '-':
+#         head, foot = args[0], args[1::]
+#         for num in foot:
+#             head -= num
+#         return head
+#     if seq == '*':
+#         res = 1
+#         for num in args:
+#             res *= num
+#         return res
+#     return '除法暂时不做处理'
 
 
-print(计算器(5, 5, 3, 3, seq='*'))
+# print(计算器(5, 5, 3, 3, seq='*'))
+
+
+"""
+# 实现一个构造测试数据的类
+# 这个类能生成指定号段的手机号码
+# 这个类能生成随机中文名字， 可指定生成名字的姓氏和长度
+# 这个类可以生成一共用户信息的字典， 该用户信息字典包含 用户中文名 密码 邮箱 手机号 创建这条数据的时间
+# 将用户信息存储到用户文件夹下
+# 定义repr 查看对应类实例对象的基础信息
+"""
+
+
+
+import json
+import random
+import string
+import time
+import os
+
+
+# class Datas:
+#     """ 这是一个构造测试数据的类"""
+
+#     def __init__(self, mobile_number_head=None, first_name_head=None, name_lenth=None):
+#         """
+#         初始化Datas类并接受必要的入参
+#         :param mobile_number_head: 指定的手机号段
+#         :param first_name_head: 指定的姓
+#         :param name_lenth: 指定用户名的长度
+#         """
+#         self.mobile_head = mobile_number_head
+#         self.first_name = first_name_head
+#         self.name_lenth = name_lenth
+#         self.save_json_file_path = 'Users'
+#         self.return_title = 'Datas<{}>'
+#         self.func_args = [item for item in dir(self) if not item.startswith(
+#             '__') and callable(getattr(self, item))]
+
+
+#     def write_file(self, file_name, data):
+#         """ 讲文件写入Users路径"""
+#         file_name = '{}/{}/{}.json'.format(os.path.dirname(__file__),self.save_json_file_path, file_name)
+#         with open(file_name, 'w', encoding='utf-8') as file:
+#             file.write(data)
+
+#     def make_user_json_and_write_file(self):
+#         """
+#             将随机生成的用户信息， 存储进文件
+#         :return:
+#         """
+#         titles = ('中文名', '密码', '手机号', '邮箱', '创建时间')
+#         name = self.make_user_name()
+
+#         infos = (
+#             name,
+#             self.make_random_password(),
+#             self.mobile(),
+#             self.make_user_email(),
+#             time.strftime('%Y-%m-%d %H:%M:%S')
+#         )
+#         data = json.dumps({key: value for key, value in zip(
+#             titles, infos)}, ensure_ascii=False, indent=4)
+#         self.write_file(name, data)
+	
+#     def make_random_password(self):
+#         """
+#             创建一个随机的用户密码
+#         :return:
+#         """
+#         return ''.join(random.sample(string.digits + string.ascii_letters + string.punctuation, 8))
+
+#     def make_user_email(self):
+#         """
+#         :return:
+#         """
+#         buf = ['@163.com', '@qq.com', '@gmail.com', '@yahoo.com']
+#         head = random.sample(string.ascii_letters + string.digits, 8)
+#         email = ''.join(head) + random.choice(buf)
+#         return email
+
+#     def make_user_name(self) -> str:
+#         """
+#         生成一个随机的用户名
+#         return:
+#         """
+#         if not self.first_name:
+#             self.first_name = random.choice(list(FIRST_NAME_ENUM))
+#         if not self.name_lenth:
+#             self.name_lenth = 2 if random.randint(1, 100) > 50 else 1
+
+#         last_name = ''.join(random.sample(
+#             list(LAST_NAME_ENUM), self.name_lenth))
+#         print('用户名是 ：{}'.format(self.first_name + last_name))
+#         return self.first_name + last_name
+
+#     def mobile(self):
+#         """ 生成一个指定号段的手机号， 如果没有指定则随机返回一个号段的手机号"""
+#         if self.mobile_head:
+#             try:
+#                 self.mobile_head
+#             except Exception as err:
+#                 return err
+
+#         if self.mobile_head and len(list(self.mobile_head)) == 3:
+#             return self.mobile_head + ''.join(random.sample(list(string.digits), 8))
+#         mobile = ['137', '138', '139', '131', '140', '150', '177']
+#         return random.choice(mobile) + ''.join(random.sample(list(string.digits), 8))
+
+#     def __repr__(self):
+#         """
+#            pass
+#         :return:
+#         """
+#         return 'Datas(<{}>)'.format(self.func_args)
+
+
+# class InterfaceTest(Datas):
+#     def __init__(self):
+#         super(InterfaceTest, self).__init__()
+#         print(self.mobile())
+#         print(self.make_user_name())
+
+
+
+class PythonStudent(object):
+	
+	def __init__(self, name, age, city):
+		self.name = name
+		self.age = age
+		self.city = city
+		self.titles = ('用户名', '年龄', '城市')
+	
+	def __repr__(self):
+		userinfo = (self.name, self.age, self.city)
+		user_dict = {key: value for key, value in zip(self.titles, userinfo)}
+		user_json = json.dumps(user_dict, ensure_ascii=False, indent=4)
+		
+		with open('{}/Users/{}.json'.format(os.path.dirname(__file__),self.name), 'w') as file:
+			file.write(user_json.en)
+		return "数据存储完成，存储文件是{}.json".format(self.name)
+
+
+class MyFristClass(object):
+	def __init__(self, name, age, city):
+		self.log = True
+		self.__name = name
+		self.__age = age
+		self.__city = city
+	
+	def __repr__(self) -> str:
+		if '_MyFristClass__name' in dir(self):
+			return '我的名字:{},我的年龄{},我在{},当前的log信息状态为{}'.format(
+				self.__name, self.__age, self.__city, self.log)
+		return 'user info is not define ...'
+
+	def reset_name(self, new_name):
+		self.__name = new_name
+
+	def del_all_info(self):
+		del self.__name,self.__age,self.__city,self.log		
+
+class People:
+    def __init__(self, name, age, city, work):
+        self.users = name, age, city, work
+        self.title = ('name', 'age', 'city', 'work')
+
+    def get_user_info(self):
+        return json.dumps({key: value for key, value in zip(self.title, self.users)}, indent=4, ensure_ascii=False)
+
+
+class Worker(People):
+    """ 这是一个工人的类"""
+
+    def __init__(self):
+        self.users = 'Raymond', 20, '北京', '工人'
+        super(Worker, self).__init__(*self.users)
+		
+class Teacher(People):
+    def __init__(self, name, age, city):
+        self.work = 'teacher'
+        super(Teacher, self).__init__(name, age, city, self.work)
+        # super 初始化父类
+
+
+
+if __name__ == '__main__':
+    # datas = Datas('1459')
+    # datas.make_user_json_and_write_file()
+    # print(datas)
+	# interface = InterfaceTest()
+
+	# user_infos = [
+    #     ('Gang', 18, '上海'),
+    #     ('随便', 30, '俄罗斯'),
+    #     ('Raymon', 20, '北京'),
+    #     ('狗子', 5, '新加坡'),
+	# 	('年华', 25, '上海'),
+    #     ('思', 30, '马来西亚')
+    # ]
+	
+	# for user in user_infos:
+	# 	class_instance = PythonStudent(*user)
+	# 	print(class_instance)
+
+	# user = MyFristClass(*user_infos[-2])
+	# print(user)
+	# user.reset_name('行者')
+	# print(user)
+	# user.del_all_info()
+	# print(user)
+	worker = Worker()
+	print(worker.get_user_info())
+	teacher = Teacher('茶茶', 35, '上海')
+	print(teacher.get_user_info())

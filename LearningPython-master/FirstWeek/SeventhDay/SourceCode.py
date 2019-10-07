@@ -49,7 +49,7 @@ file.close()
 # with open('log.txt', mode='r', encoding='utf-8') as file:
 #     for line, item in enumerate(file, 1):
 #         print(line, item.replace('\n', ''))
-    # 如果我们便利一个file中的每一行数据, 可以通过for循环这个file对象， 也可以通过for循环去打开file.readline()获取数据
+# 如果我们便利一个file中的每一行数据, 可以通过for循环这个file对象， 也可以通过for循环去打开file.readline()获取数据
 
 # with open('log.txt', mode='r', encoding='utf-8') as file:
 #     data = file.readlines()  # file.readlines() 返回一个完整的文件内容的列表，每一行用’，‘分割
@@ -108,6 +108,7 @@ def recurstion(a, b):
     """
     return {key: value for key, value in zip(a, b)}
 
+
 def sum(a, b):
     """
 
@@ -117,10 +118,11 @@ def sum(a, b):
     """
     return a + b
 
+
 print(sum(3, 4))
 
-sum = lambda a, b: a + b
 
+def sum(a, b): return a + b
 
 
 # 写一个计算器
@@ -151,4 +153,4 @@ def 计算器(*args, seq='+'):
     return '除法暂时不做处理'
 
 
-print(计算器(1, 2, 4, 100,seq='*'))
+print(计算器(1, 2, 4, 100, seq='*'))

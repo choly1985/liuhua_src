@@ -1,3 +1,12 @@
+'''
+@Description: python
+@Version: 1.0
+@Autor: liuhua
+@QQ: 434375025@qq.com
+@Link: https://github.com/choly1985
+@Date: 2018-11-08 20:56:31
+@LastEditors: liuhua
+'''
 """
 @Name: SourceCode
 @Version: 
@@ -5,12 +14,14 @@
 @Author: liujinjia
 @Data: 2017/11/18
 """
-import json
 
 # python中的类
 # python中是通过class关键字， 来定义一个类
 
 
+
+
+import json
 class MyFirstClass:
     """ 这是一个测试类 """
     # object = MyFirstClass(name, age, city)

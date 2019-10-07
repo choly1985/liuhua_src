@@ -11,6 +11,7 @@ import os
 
 class Student:
     """ 他是一个学生信息管理的类 """
+
     def __init__(self, name, age, sex, classinfo):
         """
             类在初始化的时候接受三个必传参数
@@ -25,7 +26,8 @@ class Student:
         self.user_info_back = self.user_info
         self.users_path = 'Users'
         self.titles = ('用户名', '年龄', '性别', '班级')
-        self.user_info_dict = {key: value for key, value in zip(self.titles, self.user_info)}
+        self.user_info_dict = {key: value for key,
+                               value in zip(self.titles, self.user_info)}
 
     def save_userinfo(self):
         """
@@ -45,7 +47,8 @@ class Student:
             return '用户信息已存在'
 
         with open('{}/{}.json'.format(self.users_path, self.user_info_back[0]), 'wb') as file:
-            file.write(json.dumps(self.user_info_dict, indent=4, ensure_ascii=False).encode())
+            file.write(json.dumps(self.user_info_dict,
+                                  indent=4, ensure_ascii=False).encode())
 
     def get_userinfo(self):
         """
@@ -60,7 +63,7 @@ class Student:
             else:
                 return '用户信息不存在请查询其他用户'
         print(json.dumps(self.user_info_dict, indent=4, ensure_ascii=False))
-    
+
     def del_userinfo(self):
         """
             删除掉这个类实例保存的用户信息
@@ -78,7 +81,7 @@ class Student:
         if 'user_info' not in dir(self):
             return '用户信息已删除'
         return '<Student "{}">'.format(self.user_info_back[0])
-    
+
 
 def func(*args, **kwargs):
     return args, kwargs
@@ -86,14 +89,14 @@ def func(*args, **kwargs):
 
 class Fruits:
     """ 这是一个水果的类 """
-    
+
     def apple(self):
         """
             return apples
         :return:
         """
         print('这里有一个苹果')
-    
+
     @classmethod
     def banana(cls):
         """
@@ -101,14 +104,14 @@ class Fruits:
         :return:
         """
         print('这里有一个香蕉')
-    
+
     def orange(self):
         """
             return orange
         :return:
         """
         print('这里有一个橘子')
-        
+
     def all_fruits(self):
         self.apple()
         self.banana()
@@ -117,18 +120,19 @@ class Fruits:
 
 class Sum:
     """ pass """
+
     def __init__(self, num_a, num_b):
         self.numbers = [num_a, num_b]
-    
+
     def return_sum(self):
         return sum(self.numbers)
-    
+
     def modify_num(self, num_index: int, value):
         try:
             self.numbers[num_index] = value
         except IndexError:
             print('超过最大index， 请重新输入')
-    
+
     def __repr__(self):
         return '<Sum ({} + {} : {})>'.format(*self.numbers, self.return_sum())
 

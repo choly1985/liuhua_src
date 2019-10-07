@@ -1,10 +1,13 @@
-"""
-@Name: SourceCode
-@Version: 
-@Projec
-@Author: liujinjia
-@Data: 2017/11/20
-"""  # oop 面向对象编程的三大特性
+'''
+@Description: python
+@Version: 1.0
+@Autor: liuhua
+@QQ: 434375025@qq.com
+@Link: https://github.com/choly1985
+@Date: 2018-11-08 20:56:31
+@LastEditors: liuhua
+'''
+# oop 面向对象编程的三大特性
 # 封装 把重复的代码整合成一个通过不同参数而返回相同操作的过程 买水果这个过程中， 买可以封装为一个类方法
 # 多态 多态是写一个父类， 抽象类不做实现， 只做定义
 # 继承 首先我们写了一个Fruits类， Apple -> 脆的， 面的， 青苹果， 红苹果
@@ -28,6 +31,7 @@ class Fruits(metaclass=ABCMeta):
 
     @abstractmethod
     def throw(self):
+        pass
 
     @abstractmethod
     def sell(self):
