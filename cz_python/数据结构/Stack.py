@@ -48,3 +48,5 @@ if __name__ == "__main__":
     print(s.pop())
     print(s.pop())
     print(s.pop())
+    a = 1
+    print('a', 'b')
