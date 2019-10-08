@@ -50,13 +50,14 @@ html = requests.get('http://testerlife.com').text
 
 class TesterlifeCrawl:
     """ 这是一个爬虫类 """
+
     def __init__(self):
         """ pass """
         self.page_url = 'http://testerlife.com'
         self.__name = 'testerlife'
         self.__modify_xpath = None
         self.html = self.get_page_html()
-    
+
     def get_page_html(self):
         """ pass """
         resp = requests.get(self.page_url)
@@ -67,7 +68,7 @@ class TesterlifeCrawl:
         if resp.encoding != 'utf-8':
             resp.encoding = 'utf-8'
         return resp.text
-    
+
     def parse(self, xpath):
         """
             接受一个html 和一个xpath路径， 并返回html解析后的结果
@@ -78,11 +79,11 @@ class TesterlifeCrawl:
         result = etree.HTML(self.html).xpath(xpath)
         self.__modify_xpath = None
         return result
-    
+
     def set_xpaths(self, xpath):
         """ 接受一个xpath参数 """
         self.__modify_xpath = xpath
-    
+
     def __repr__(self):
         if self.__modify_xpath:
             return json.dumps(self.parse(self.__modify_xpath), ensure_ascii=False, indent=4)
@@ -91,6 +92,7 @@ class TesterlifeCrawl:
 
 class TesterHome(TesterlifeCrawl):
     """ pass """
+
     def __init__(self):
         """ pass """
         super(TesterHome, self).__init__()
@@ -109,22 +111,23 @@ class QiuBai(TesterlifeCrawl):
 
 class Crawl:
     """ pass """
+
     def __init__(self, url, name):
         self.url, self.name = url, name
-    
+
     def request(self, url):
         resp = requests.get(url)
         if resp.encoding != 'utf-8':
             resp.encoding = 'utf-8'
         return resp.text
-    
+
     def parse(self, html, xpaths):
         element = etree.HTML(html)
         if isinstance(xpaths, (tuple, list)):
             # return list(filter(lambda x: element.xpath(x), xpaths))
             return [element.xpath(xpath) for xpath in xpaths]
         return element.xpath(xpaths)
-    
+
     def output(self, url, xpath):
         html = self.request(url)
         return self.parse(html, xpath)
@@ -133,10 +136,10 @@ class Crawl:
 class QiuShiBaiKe(Crawl):
     def __init__(self, url, name):
         super(QiuShiBaiKe, self).__init__(url, name)
-    
+
     def allinfo(self, xpaths):
         return json.dumps(self.output(self.url, xpaths), ensure_ascii=False, indent=4)
-        
+
 
 if __name__ == '__main__':
     qb = QiuShiBaiKe('https://www.qiushibaike.com/', 'qb')
