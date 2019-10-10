@@ -1,9 +1,12 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @Date    : 2019-08-02 15:19:49
-# @Author  : liuhua (434375025@qq.com)
-# @Link    : https://github.com/choly1985
-# @Version : $Id$
+'''
+@Description: python
+@Version: 1.0
+@Autor: liuhua
+@QQ: 434375025@qq.com
+@Link: https://github.com/choly1985
+@Date: 2019-08-02 15:20:06
+@LastEditors: liuhua
+'''
 
 
 import smtplib
@@ -37,13 +40,13 @@ def send_email(file_new):
 
 def new_report(testreport):
     lists = os.listdir(testreport)
-    lists.sort(key=lambda fn: os.path.gettime(testreport + r"\\" + fn))
+    lists.sort(key=lambda fn: os.path.getmtime(testreport + r"\\" + fn))
     file_new = os.path.join(testreport, lists[-1])
     print(file_new)
     return file_new
 
 
-# if __name__ == '__main__':
-#     test_report = r'C:\Users\liuhua2\Desktop\result.html'
-#     new_report1 = new_report(test_report)
-# send_email(r'C:\Users\liuhua2\Desktop\result.html')
+if __name__ == '__main__':
+    test_report = r'C:\Users\liuhua2\Desktop\result'
+    new_report1 = new_report(test_report)
+    # send_email(r'C:\Users\liuhua2\Desktop\result.html')

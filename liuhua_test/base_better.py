@@ -45,7 +45,7 @@ class login_gb(unittest.TestCase):
             lambda x: x.find_element_by_id('js-btnSubmit')).click()
 
         # 收藏页添加物品至购物车
-        time.sleep(1)
+        time.sleep(2)
         above = WebDriverWait(self.driver, 20).until(lambda x: x.find_element_by_xpath(
             '//*[@id="ucenter_content"]/div/div/ul/li[1]/a/img'))
         ActionChains(self.driver).move_to_element(above).perform()

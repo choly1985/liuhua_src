@@ -319,7 +319,7 @@ import logging
 import unittest
 from selenium import webdriver
 
-log_path = r"C:\Users\Administrator\Desktop\Seleium"
+log_path = r"C:\Users\liuhua2\Desktop\Seleium"
 
 
 class print_log():
