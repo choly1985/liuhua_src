@@ -1,3 +1,12 @@
+'''
+@Description: python
+@Version: 1.0
+@Autor: liuhua
+@QQ: 434375025@qq.com
+@Link: https://github.com/choly1985
+@Date: 2019-07-29 18:43:08
+@LastEditors: liuhua
+'''
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Date    : 2019-07-27 15:48:19
@@ -38,7 +47,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 # driver.quit()
 
 # 2.2常用的8中元素定位
-#<input id="kw" class="s_ipt" type="text" autocomplete="off" maxlength="100" name="wd">
+# <input id="kw" class="s_ipt" type="text" autocomplete="off" maxlength="100" name="wd">
 
 
 # driver.get('https://www.baidu.com')
@@ -364,4 +373,3 @@ from selenium.webdriver.support.select import Select
 print('hello world!!!!!!!!!!!!!!!123123!')
 print(12345)
 print(123123)
-

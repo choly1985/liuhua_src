@@ -798,8 +798,6 @@ class 搞事情(object):
         for 关键字, 值 in 实例对象.不确定关键字字典.items():
             实例对象.打印(关键字, 值)
 
-
-
 if __name__ == '__main__':
     # datas = Datas('1459')
     # datas.make_user_json_and_write_file()
@@ -833,5 +831,4 @@ if __name__ == '__main__':
 
     搞 = 搞事情(1, 2, 3, 4, 5, 6, abc=123, bcd='123', abcd='1234')
     搞.遍历不确定参数元祖()
-    搞.遍历字典中的元素()
-    
+    搞.遍历字典中的元素()       
