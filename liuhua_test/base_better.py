@@ -7,7 +7,6 @@
 @Date: 2019-08-07 00:00:53
 @LastEditors: liuhua
 '''
-
 import sys
 import os
 from selenium import webdriver
@@ -149,7 +148,6 @@ class login_gb(unittest.TestCase):
             "div.address_data>input[name='passportSerial'][class='address_input']")).clear()
         WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
             "div.address_data>input[name='passportSerial'][class='address_input']")).send_keys("asdsadasd")
-
         WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
             "div.address_data>input[name='passportIssueDate'][class='address_input']")).clear()
         WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
