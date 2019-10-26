@@ -125,7 +125,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 # driver.maximize_window()
 # driver.get('http://www.baidu.com/')
 # driver.implicitly_wait(5)
-# # mouse = driver.find_element_by_xpath("//div[@id='u1']/a[8][text()='设置']")
+# mouse = driver.find_element_by_xpath("//div[@id='u1']/a[8][text()='设置']")
 # mouse = driver.find_element_by_xpath("//div[@id='u1']/a[8]")
 # print(mouse)
 # ActionChains(driver).move_to_element(mouse).perform()
