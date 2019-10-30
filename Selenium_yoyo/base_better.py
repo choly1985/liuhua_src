@@ -21,13 +21,25 @@ from selenium.webdriver.common.keys import Keys
 class login_gb(unittest.TestCase):
     def setUp(self):
         self.start = time.clock()
-        self.profile_directory = "C:\\Users\\liuhua2\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\p18j8opt.default"
-        self.profile = webdriver.FirefoxProfile(self.profile_directory)
-        self.path = r"D:\Program Files\python\Scripts\geckodriver.exe"
-        self.driver = webdriver.Firefox(firefox_profile=self.profile,
-                                        executable_path=self.path)
+        # self.profile_directory = "C:\\Users\\liuhua2\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\p18j8opt.default"
+        # self.profile = webdriver.FirefoxProfile(self.profile_directory)
+        # self.path = r"D:\Program Files\python\Scripts\geckodriver.exe"
+        # self.driver = webdriver.Firefox(firefox_profile=self.profile,
+        #                                 executable_path=self.path)
         # self.driver = webdriver.Firefox()
+        options = webdriver.ChromeOptions()
+        # 禁止浏览器通知
+        prefs = {
+            'profile.default_content_setting_values':
+            {
+                'notifications': 2
+            }
+        }
+        options.add_experimental_option('prefs', prefs)
+        self.driver = webdriver.Chrome(chrome_options=options)
+
         self.driver.maximize_window()
+        time.sleep(2)
 
     def tearDown(self):
         self.driver.quit()
@@ -42,14 +54,15 @@ class login_gb(unittest.TestCase):
             lambda x: x.find_element_by_id('password')).send_keys('aaaa1234')
         WebDriverWait(self.driver, 20).until(
             lambda x: x.find_element_by_id('js-btnSubmit')).click()
-
         # 收藏页添加物品至购物车
-        time.sleep(2)
+        time.sleep(5)
         above = WebDriverWait(self.driver, 20).until(lambda x: x.find_element_by_xpath(
             '//*[@id="ucenter_content"]/div/div/ul/li[1]/a/img'))
         ActionChains(self.driver).move_to_element(above).perform()
         WebDriverWait(self.driver, 10).until(lambda x: x.find_element_by_xpath(
             '//*[@id="ucenter_content"]/div/div/ul/li[1]/a/div/span[1]/i')).click()
+        # self.driver.find_element_by_xpath(
+        # '//*[@id="ucenter_content"]/div/div/ul/li[1]/a/div/span[1]/i').click()
         time.sleep(2)
 
         # 点击购物车
@@ -85,10 +98,10 @@ class login_gb(unittest.TestCase):
         WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
             "div.address_data>input[name='email'][class='address_input']")).send_keys("lh100@qq.com")
 
-        WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
-            "div.address_data>input[name='postalCode'][class='address_input']")).clear()
-        WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
-            "div.address_data>input[name='postalCode'][class='address_input']")).send_keys("13165-000")
+        WebDriverWait(self.driver, 15).until(lambda x: x.find_element_by_xpath(
+            "//input[@placeholder='Street address, flat,suite,unit,building,floor,etc']")).clear()
+        WebDriverWait(self.driver, 15).until(lambda x: x.find_element_by_xpath(
+            "//input[@placeholder='Street address, flat,suite,unit,building,floor,etc']")).send_keys("13165-000")
 
         WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
             "div.address_data>input[name='addressLine1'][class='address_input']")).clear()
@@ -106,15 +119,15 @@ class login_gb(unittest.TestCase):
 
         # 编辑国家
         WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_xpath(
-            "/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/form/div[7]/div[1]/div/div/ul/li[45]")).click()
+            "//*[@id ='siteWrap']/div/div/div[2]/div[1]/div[2]/div/form/div[7]/div[1]/div/div/ul/li[1]")).click()
 
         # 点击编辑州省下拉框
         WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_xpath(
-            "/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/form/div[8]/div[1]/div/p/i")).click()
+            "//*[@id='siteWrap']/div/div/div[2]/div[1]/div[2]/div/form/div[8]/div[1]/div/div/ul/li[1]")).click()
 
         # 编辑州省
         WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_xpath(
-            "/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/form/div[8]/div[1]/div/div/ul/li[1]")).click()
+            "//*[@id='siteWrap']/div/div/div[2]/div[1]/div[2]/div/form/div[9]/div[1]/div/div/ul/li[1]")).click()
 
         # 点击编辑城市下拉框
         WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_xpath(
@@ -197,7 +210,6 @@ class login_gb(unittest.TestCase):
             lambda x: x.find_element_by_css_selector("button#btnLogin")).click()
         self.driver.switch_to_default_content()
 
-        time.sleep(0.5)
         WebDriverWait(self.driver, 15).until(lambda x: x.find_element_by_id(
             "confirmButtonTop"))
         time.sleep(10)
