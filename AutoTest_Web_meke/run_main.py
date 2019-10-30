@@ -7,9 +7,9 @@
 @Date: 2019-10-29 15:28:01
 @LastEditors: liuhua
 '''
-import base_node
+from base_node.read_init import read_ini
 import sys
-print(sys.path)
+
 sys.path.append(
     r'F:\Src\LearningPython\AutoTest_Web_meke\base_node\auto_test_web.py')
 
@@ -32,8 +32,4 @@ if __name__ == '__main__':
     # #     print('打开url正确')
     # # test_driver.save_png()
     # test_driver.quit_browser()
-    a = 1
-    if a == 1:
-        pass
-    elif a == 2:
-        pass
+    pass

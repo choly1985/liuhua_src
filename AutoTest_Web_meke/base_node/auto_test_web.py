@@ -129,6 +129,19 @@ class AutoTestBase(object):
             element = self.driver.find_element_by_css_selector(value)
         elif by == 'class':
             element = self.driver.find_element_by_class_name(value)
-        # else:
-        #     element = self.driver.find_element_by_xpath(value)
-        return element
+        elif by == 'xpath':
+            element = self.driver.find_element_by_xpath(value)
+        elif by == 'text':
+            element = self.driver.find_element_by_link_text(value)
+        elif by == 'tag':
+            element = self.driver.find_element_by_tag_name(value)
+        else:
+            element = self.driver.find_element_by_partial_link_text()
+        return self.element_isdisplay(element)
+
+    def element_isdisplay(self, element):
+        flag = element.is_displayed()
+        if flag == True:
+            return element
+        else:
+            return False
