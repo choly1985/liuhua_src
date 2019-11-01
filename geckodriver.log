@@ -35,7 +35,7 @@ processFileChanges@XPIDatabase.jsm:2789:31
 getNewSideloads@XPIProvider.jsm:2762:28
 1565160754196	Marionette	WARN	TimedPromise timed out after 0 ms: stacktrace:
 bail@chrome://marionette/content/sync.js:223:64
-JavaScript error: https://order.gearbest.net/checkout/address/index line 28 > scriptElement, line 1: ReferenceError: _user_get_province is not defined
+JavaScript error: https://order.test.net/checkout/address/index line 28 > scriptElement, line 1: ReferenceError: _user_get_province is not defined
 JavaScript warning: https://www.paypalobjects.com/gajs/analytics.js, line 29: unreachable code after return statement
 JavaScript warning: https://www.paypalobjects.com/gajs/analytics.js, line 29: unreachable code after return statement
 JavaScript warning: https://www.paypalobjects.com/gajs/analytics.js, line 29: unreachable code after return statement

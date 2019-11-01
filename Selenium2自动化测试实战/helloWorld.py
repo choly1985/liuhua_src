@@ -34,7 +34,7 @@ from selenium.webdriver.common.keys import Keys
 #         self.driver = webdriver.Firefox()
 #         self.driver.maximize_window()
 #         self.driver.implicitly_wait(2)
-#         self.driver.get("https://login.gearbest.net/m-users-a-sign.htm?type=1")
+#         self.driver.get("https://login.test.net/m-users-a-sign.htm?type=1")
 
 #     def tearDown(self):
 #         self.driver.quit()
@@ -45,7 +45,7 @@ from selenium.webdriver.common.keys import Keys
 #         time.sleep(2)
 #         self.driver.find_element_by_id('js-btnSubmit').click()
 #         try:
-#             assert 'GearBest' in self.driver.title
+#             assert 'test' in self.driver.title
 #             print('Test login pass')
 #         except Exception as e:
 
@@ -76,7 +76,7 @@ class login_gb(unittest.TestCase):
         self.driver.quit()
 
     # def test_login_gb(self):
-    #     self.driver.get("https://login.gearbest.net/m-users-a-sign.htm?type=1")
+    #     self.driver.get("https://login.test.net/m-users-a-sign.htm?type=1")
     #     time.sleep(1)
     #     self.driver.find_element_by_id('email').send_keys('lh100@qq.com')
     #     self.driver.find_element_by_id('password').send_keys('aaaa1234')
@@ -84,7 +84,7 @@ class login_gb(unittest.TestCase):
     #     # self.driver.implicitly_wait(4)  # 等待页面加载
     #     time.sleep(8)
     #     try:
-    #         if 'Gearbest' in self.driver.title:
+    #         if 'test' in self.driver.title:
     #             print('Login success')
     #     except Exception as e:
     #         print('Login fail')
@@ -248,7 +248,7 @@ class login_gb(unittest.TestCase):
 
     #     time.sleep(15)
     #     try:
-    #         if 'Gearbest' in self.driver.title:
+    #         if 'test' in self.driver.title:
     #             print('pay success')
     #     except Exception as e:
     #         print('pay fail')
