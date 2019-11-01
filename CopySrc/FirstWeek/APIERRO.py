@@ -7,7 +7,7 @@ headerdata = {
 }
 postData = json.dumps({
     "header": {
-        "service": "com.globalegrow.member.spi.inter.IMemUserBaseInnerService",
+        "service": "com.test.member.spi.inter.IMemUserBaseInnerService",
         "method": "login",
         "domain": "",
         "version": "1.0.0",

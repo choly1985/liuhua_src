@@ -199,7 +199,7 @@ class login_gb(unittest.TestCase):
         WebDriverWait(self.driver, 8).until(
             lambda x: x.find_element_by_css_selector("input#email")).clear()
         WebDriverWait(self.driver, 8).until(lambda x: x.find_element_by_css_selector(
-            "input#email")).send_keys("liuhua2@globalegrow.com")
+            "input#email")).send_keys("liuhua2@test.com")
 
         WebDriverWait(self.driver, 8).until(
             lambda x: x.find_element_by_css_selector("input#password")).clear()

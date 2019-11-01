@@ -226,7 +226,7 @@ class login_gb(unittest.TestCase):
 
     #     self.driver.find_element_by_css_selector("input#email").clear()
     #     self.driver.find_element_by_css_selector(
-    #         "input#email").send_keys("liuhua2@globalegrow.com")
+    #         "input#email").send_keys("liuhua2@test.com")
 
     #     self.driver.find_element_by_css_selector(
     #         "input#password").clear()
@@ -336,10 +336,10 @@ def send_email(file_new):
 
     # sender = 'choly1985@163.com'
     # #receiver = '958905266@qq.com'
-    # receiver = 'liuhua2@globalegrow.com'
+    # receiver = 'liuhua2@test.com'
 
-    sender = 'liuhua2@globalegrow.com'
-    receiver = 'liuhua2@globalegrow.com'
+    sender = 'liuhua2@test.com'
+    receiver = 'liuhua2@test.com'
 
     msgRoot = MIMEMultipart('related')
     msgRoot['from'] = sender
@@ -367,9 +367,9 @@ def send_email(file_new):
         # smtp.login("choly1985@163.com", 'xlab0628')
 
         # ssl 邮件发送
-        smtp = smtplib.SMTP_SSL('newmailf.globalegrow.com', port=465)
-        smtp.connect('newmailf.globalegrow.com', port=465)
-        smtp.login('liuhua2@globalegrow.com', 'JcXrsP3HXWGiTrYr')
+        smtp = smtplib.SMTP_SSL('newmailf.test.com', port=465)
+        smtp.connect('newmailf.test.com', port=465)
+        smtp.login('liuhua2@test.com', 'xxxxxx')
 
         smtp.sendmail(sender, receiver, msgRoot.as_string())
         smtp.quit()

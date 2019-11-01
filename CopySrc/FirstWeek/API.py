@@ -1,3 +1,12 @@
+'''
+@Description: python
+@Version: 1.0
+@Autor: liuhua
+@QQ: 434375025@qq.com
+@Link: https://github.com/choly1985
+@Date: 2019-07-21 22:43:05
+@LastEditors: liuhua
+'''
 import json
 import urllib.request
 import keyword
@@ -6,7 +15,7 @@ import string
 url = 'http://10.40.2.62:2087/gateway/'
 values = ({
     "header": {
-        "service": "com.globalegrow.member.spi.inter.IMemUserBaseInnerService",
+        "service": "com.test.member.spi.inter.IMemUserBaseInnerService",
         "method": "login",
         "domain": "",
         "version": "1.0.0",
