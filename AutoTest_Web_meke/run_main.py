@@ -33,3 +33,5 @@ if __name__ == '__main__':
     # # test_driver.save_png()
     # test_driver.quit_browser()
     pass
+    arr_num = ['{}'.format(i) for i in range(1, 201)]
+    print(arr_num)
