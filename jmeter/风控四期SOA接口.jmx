@@ -1,0 +1,2974 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="4.0" jmeter="4.0 r1823414">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP 默认请求类型json" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Content-Type</stringProp>
+            <stringProp name="Header.value">application/json</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">User-Agent</stringProp>
+            <stringProp name="Header.value">liuhua2</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP 默认请求地址" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">${ip2}</stringProp>
+        <stringProp name="HTTPSampler.port">${port}</stringProp>
+        <stringProp name="HTTPSampler.protocol"></stringProp>
+        <stringProp name="HTTPSampler.contentEncoding">${encodeMode}</stringProp>
+        <stringProp name="HTTPSampler.path">${path}</stringProp>
+        <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <collectionProp name="CookieManager.cookies"/>
+        <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+      </CookieManager>
+      <hashTree/>
+      <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+        <stringProp name="filename"></stringProp>
+        <stringProp name="parameters"></stringProp>
+        <boolProp name="resetInterpreter">false</boolProp>
+        <stringProp name="script">String s=new String(prev.getResponseData(),&quot;UTF-8&quot;);
+        char aChar;
+        int len= s.length();
+        StringBuffer outBuffer=new StringBuffer(len);
+        for(int x =0; x &lt;len;){
+            aChar= s.charAt(x++);
+            if(aChar==&apos;\\&apos;){
+                aChar= s.charAt(x++);
+                if(aChar==&apos;u&apos;){
+                    int value =0;
+                    for(int i=0;i&lt;4;i++){
+                        aChar= s.charAt(x++);
+                        switch(aChar){
+                            case&apos;0&apos;:
+                            case&apos;1&apos;:
+                            case&apos;2&apos;:
+                            case&apos;3&apos;:
+                            case&apos;4&apos;:
+                            case&apos;5&apos;:
+                            case&apos;6&apos;:
+                            case&apos;7&apos;:
+                            case&apos;8&apos;:
+                            case&apos;9&apos;:
+                                value=(value &lt;&lt;4)+aChar-&apos;0&apos;;
+                                break;
+                            case&apos;a&apos;:
+                            case&apos;b&apos;:
+                            case&apos;c&apos;:
+                            case&apos;d&apos;:
+                            case&apos;e&apos;:
+                            case&apos;f&apos;:
+                                value=(value &lt;&lt;4)+10+aChar-&apos;a&apos;;
+                                break;
+                            case&apos;A&apos;:
+                            case&apos;B&apos;:
+                            case&apos;C&apos;:
+                            case&apos;D&apos;:
+                            case&apos;E&apos;:
+                            case&apos;F&apos;:
+                                value=(value &lt;&lt;4)+10+aChar-&apos;A&apos;;
+                                break;
+                            default:
+                                throw new IllegalArgumentException(
+                                        &quot;Malformed   \\uxxxx  encoding.&quot;);}}
+                    outBuffer.append((char) value);}else{
+                    if(aChar==&apos;t&apos;)
+                        aChar=&apos;\t&apos;;
+                    else if(aChar==&apos;r&apos;)
+                    aChar=&apos;\r&apos;;
+                    else if(aChar==&apos;n&apos;)
+                    aChar=&apos;\n&apos;;
+                    else if(aChar==&apos;f&apos;)
+                    aChar=&apos;\f&apos;;
+                    outBuffer.append(aChar);}}else
+                outBuffer.append(aChar);}
+        prev.setResponseData(outBuffer.toString());</stringProp>
+      </BeanShellPostProcessor>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="用户环境变量" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="ip2" elementType="Argument">
+            <stringProp name="Argument.name">ip2</stringProp>
+            <stringProp name="Argument.value">10.40.2.62</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="port" elementType="Argument">
+            <stringProp name="Argument.name">port</stringProp>
+            <stringProp name="Argument.value">2087</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="path" elementType="Argument">
+            <stringProp name="Argument.name">path</stringProp>
+            <stringProp name="Argument.value">/gateway/</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="token2" elementType="Argument">
+            <stringProp name="Argument.name">token2</stringProp>
+            <stringProp name="Argument.value">487d842de4e1c9b9c99ac868c7af15a4</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="encodeMode" elementType="Argument">
+            <stringProp name="Argument.name">encodeMode</stringProp>
+            <stringProp name="Argument.value">utf-8</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="风控四期SOA接口" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="请求风控接口" enabled="true"/>
+        <hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="风控审核流接口" enabled="false"/>
+          <hashTree>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>true</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <sentBytes>true</sentBytes>
+                  <threadCounts>true</threadCounts>
+                  <idleTime>true</idleTime>
+                  <connectTime>true</connectTime>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="querySubOrderList查询子订单列表" enabled="false"/>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="queryRiskReviewRemarkByType根据备注类型查询备注文案" enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+	&quot;header&quot;: {&#xd;
+		&quot;service&quot;: &quot;com.globalegrow.spi.mpay.inter.PayRiskReviewRemarkService&quot;,&#xd;
+		&quot;method&quot;: &quot;queryRiskReviewRemarkByType&quot;,&#xd;
+		&quot;domain&quot;: &quot;&quot;,&#xd;
+		&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+		&quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+	},&#xd;
+	&quot;body&quot;: {&quot;remarkType&quot;:9}&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path"></stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="savePayRiskReviewRemark保存备注类型的备注文案" enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+	&quot;header&quot;: {&#xd;
+		&quot;service&quot;: &quot;com.globalegrow.spi.mpay.inter.PayRiskReviewRemarkService&quot;,&#xd;
+		&quot;method&quot;: &quot;savePayRiskReviewRemark&quot;,&#xd;
+		&quot;domain&quot;: &quot;&quot;,&#xd;
+		&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+		&quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+	},&#xd;
+	&quot;body&quot;: {&#xd;
+		&quot;remarkType&quot;:&quot;7&quot;,&#xd;
+		&quot;reviewRemarkDtoList&quot;:[&#xd;
+			{&quot;remark&quot;:&quot;bbb&quot;}&#xd;
+			]&#xd;
+	}&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path"></stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="queryRiskReviewRemarkGroup根据类型分组查询风控审核备注" enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+	&quot;header&quot;: {&#xd;
+		&quot;service&quot;: &quot;com.globalegrow.spi.mpay.inter.PayRiskReviewRemarkService&quot;,&#xd;
+		&quot;method&quot;: &quot;queryRiskReviewRemarkGroup&quot;,&#xd;
+		&quot;domain&quot;: &quot;&quot;,&#xd;
+		&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+		&quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+	},&#xd;
+	&quot;body&quot;: {}&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path"></stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="queryRiskReviewRemarkByType查询风控事件操作日志" enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+	&quot;header&quot;: {&#xd;
+		&quot;service&quot;: &quot;com.globalegrow.spi.mpay.inter.PayRiskReviewOperateLogService&quot;,&#xd;
+		&quot;method&quot;: &quot;queryRiskEventOperateLog&quot;,&#xd;
+		&quot;domain&quot;: &quot;&quot;,&#xd;
+		&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+		&quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+	},&#xd;
+	&quot;body&quot;: {&#xd;
+		&quot;riskEventId&quot;:123,&#xd;
+		&quot;occurenctType&quot;:2&#xd;
+	}&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path"></stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="queryRiskReviewRemarkByType保存风控事件操作日志" enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+	&quot;header&quot;: {&#xd;
+		&quot;service&quot;: &quot;com.globalegrow.spi.mpay.inter.PayRiskReviewOperateLogService&quot;,&#xd;
+		&quot;method&quot;: &quot;saveRiskEventOperateLog&quot;,&#xd;
+		&quot;domain&quot;: &quot;&quot;,&#xd;
+		&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+		&quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+	},&#xd;
+	&quot;body&quot;: {&#xd;
+		&quot;operateLogDtoList&quot;:[{&#xd;
+			&quot;userId&quot;:1,&#xd;
+			&quot;userName&quot;:&quot;zhangsan&quot;,&#xd;
+			&quot;occurenctType&quot;:2,&#xd;
+			&quot;paySn&quot;:&quot;11111111111111&quot;,&#xd;
+			&quot;riskEventId&quot;:5655443433,&#xd;
+			&quot;operateType&quot;:0,&#xd;
+			&quot;content&quot;:&quot;去信模板1 顾客邮箱：123132@qq.com&quot;&#xd;
+		}]&#xd;
+	}&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path"></stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="addSelectedTaskAssign选中任务指派" enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+	&quot;header&quot;: {&#xd;
+		&quot;service&quot;: &quot;com.globalegrow.spi.mpay.inter.PayRiskEventReviewService&quot;,&#xd;
+		&quot;method&quot;: &quot;addSelectedTaskAssign&quot;,&#xd;
+		&quot;domain&quot;: &quot;&quot;,&#xd;
+		&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+		&quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+	},&#xd;
+	&quot;body&quot;: {&#xd;
+		&quot;userId&quot;:2,&#xd;
+		&quot;userName&quot;:&quot;lisi&quot;,&#xd;
+		&quot;occurenctType&quot;:2,&#xd;
+		&quot;riskEventInfoList&quot;:[{&#xd;
+			&quot;riskEventId&quot;:1,&#xd;
+			&quot;paySn&quot;:&quot;1111111111&quot;&#xd;
+		},{&#xd;
+			&quot;riskEventId&quot;:3,&#xd;
+			&quot;paySn&quot;:&quot;22222222&quot;&#xd;
+		}],&#xd;
+		&quot;assignUserDtoList&quot;:[&#xd;
+			{&#xd;
+				&quot;userId&quot;:1,&#xd;
+				&quot;userName&quot;:&quot;zhangsan222&quot;&#xd;
+			},{&#xd;
+				&quot;userId&quot;:2,&#xd;
+				&quot;userName&quot;:&quot;lisi&quot;,&#xd;
+				&quot;assignLimit&quot;:5&#xd;
+			},{&#xd;
+				&quot;userId&quot;:3,&#xd;
+				&quot;userName&quot;:&quot;wangwu&quot;,&#xd;
+				&quot;assignLimit&quot;:7&#xd;
+			}]&#xd;
+	}&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path"></stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="queryRiskEventReviewHome风控主页" enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+	&quot;header&quot;: {&#xd;
+		&quot;service&quot;: &quot;com.globalegrow.spi.mpay.inter.PayRiskEventReviewService&quot;,&#xd;
+		&quot;method&quot;: &quot;queryRiskEventReviewHome&quot;,&#xd;
+		&quot;domain&quot;: &quot;&quot;,&#xd;
+		&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+		&quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+	},&#xd;
+	&quot;body&quot;: {&#xd;
+		&quot;userId&quot;:179,&#xd;
+		&quot;userName&quot;:&quot;liuhua2&quot;&#xd;
+	}&#xd;
+}&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path"></stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="queryPendingAssignTaskCount批量审核风控事件" enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+	&quot;header&quot;: {&#xd;
+		&quot;service&quot;: &quot;com.globalegrow.spi.mpay.inter.PayRiskEventReviewService&quot;,&#xd;
+		&quot;method&quot;: &quot;batchReviewRiskEvent&quot;,&#xd;
+		&quot;domain&quot;: &quot;&quot;,&#xd;
+		&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+		&quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+	},&#xd;
+	&quot;body&quot;: {&#xd;
+		&quot;userId&quot;:1,&#xd;
+		&quot;userName&quot;:&quot;zhangsan&quot;,&#xd;
+		&quot;assignUserId&quot;:2,&#xd;
+		&quot;assignUserName&quot;:&quot;lisi&quot;,&#xd;
+		&quot;status&quot;:1,&#xd;
+		&quot;remark&quot;:&quot;11111&quot;,&#xd;
+		&quot;occurenctType&quot;:2,&#xd;
+		&quot;riskEventInfoList&quot;:[{&quot;riskEventId&quot;:1,&quot;paySn&quot;:&quot;11111111&quot;}]&#xd;
+	}&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path"></stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="queryPayRiskEventInfo查询风控事件审核信息" enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+	&quot;header&quot;: {&#xd;
+		&quot;service&quot;: &quot;com.globalegrow.spi.mpay.inter.PayRiskEventReviewService&quot;,&#xd;
+		&quot;method&quot;: &quot;queryPayRiskEventInfo&quot;,&#xd;
+		&quot;domain&quot;: &quot;&quot;,&#xd;
+		&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+		&quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+	},&#xd;
+	&quot;body&quot;: {&#xd;
+		&quot;occurenctType&quot;:2,&#xd;
+		&quot;riskEventId&quot;:1&#xd;
+	}&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path"></stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="querySubOrderList查询子订单列表-无子订单" enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+     &quot;header&quot;: {&#xd;
+          &quot;service&quot;: &quot;com.globalegrow.spi.mpay.inter.PayRiskEventReviewService&quot;,&#xd;
+          &quot;method&quot;: &quot;querySubOrderList&quot;,&#xd;
+          &quot;domain&quot;: &quot;&quot;,&#xd;
+          &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+          &quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+     },&#xd;
+     &quot;body&quot;: {&#xd;
+          &quot;siteCode&quot;:&quot;GB&quot;,&#xd;
+          &quot;userId&quot;:6454350836788105216,&#xd;
+          &quot;parentOrderSn&quot;:&quot;19011700946017470197&quot;&#xd;
+     }&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path"></stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="querySmsAnnexInfo查询SMS附件信息" enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+	&quot;header&quot;: {&#xd;
+		&quot;service&quot;: &quot;com.globalegrow.spi.mpay.inter.PayRiskEventReviewService&quot;,&#xd;
+		&quot;method&quot;: &quot;querySmsAnnexInfo&quot;,&#xd;
+		&quot;domain&quot;: &quot;&quot;,&#xd;
+		&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+		&quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+	},&#xd;
+	&quot;body&quot;: {&#xd;
+		&quot;customerEmail&quot;:&quot;aaaa&quot;&#xd;
+	}&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path"></stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="querySubOrderList查询子订单列表--有2个子订单" enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+     &quot;header&quot;: {&#xd;
+          &quot;service&quot;: &quot;com.globalegrow.spi.mpay.inter.PayRiskEventReviewService&quot;,&#xd;
+          &quot;method&quot;: &quot;querySubOrderList&quot;,&#xd;
+          &quot;domain&quot;: &quot;&quot;,&#xd;
+          &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+          &quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+     },&#xd;
+     &quot;body&quot;: {&#xd;
+          &quot;siteCode&quot;:&quot;GB&quot;,&#xd;
+          &quot;userId&quot;:6454350836788105216,&#xd;
+          &quot;parentOrderSn&quot;:&quot;19030700946014091449&quot;&#xd;
+     }&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path"></stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="查询待分配任务数" enabled="false"/>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="queryPendingAssignTaskCount查询待分配任务数" enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+	&quot;header&quot;: {&#xd;
+		&quot;service&quot;: &quot;com.globalegrow.spi.mpay.inter.PayRiskEventReviewService&quot;,&#xd;
+		&quot;method&quot;: &quot;queryPendingAssignTaskCount&quot;,&#xd;
+		&quot;domain&quot;: &quot;&quot;,&#xd;
+		&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+		&quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+	},&#xd;
+	&quot;body&quot;: {&#xd;
+	}&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path"></stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
+                <stringProp name="ConstantTimer.delay">300</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="待分配问题指派" enabled="false"/>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="addPendingAllocationTaskAssign待分配问题指派" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+	&quot;header&quot;: {&#xd;
+		&quot;service&quot;: &quot;com.globalegrow.spi.mpay.inter.PayRiskEventReviewService&quot;,&#xd;
+		&quot;method&quot;: &quot;addPendingAllocationTaskAssign&quot;,&#xd;
+		&quot;domain&quot;: &quot;&quot;,&#xd;
+		&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+		&quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+	},&#xd;
+	&quot;body&quot;: {&#xd;
+	&quot;assignTaskCount&quot;: 2,&#xd;
+	&quot;assignUserDtoList&quot;: [{&#xd;
+		&quot;assignLimit&quot;: 1,&#xd;
+		&quot;userId&quot;: 182,&#xd;
+		&quot;userName&quot;: &quot;zhaoyang2&quot;&#xd;
+	},&#xd;
+	{&#xd;
+		&quot;assignLimit&quot;: 1,&#xd;
+		&quot;userId&quot;: 190,&#xd;
+		&quot;userName&quot;: &quot;jiangjiahao&quot;&#xd;
+	}],&#xd;
+	&quot;occurenctType&quot;: 2,&#xd;
+	&quot;userId&quot;: 2,&#xd;
+	&quot;userName&quot;: &quot;zhangwei&quot;&#xd;
+}&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path"></stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="查看名单命中情况" enabled="false"/>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="queryBlackListMissInfo查看名单命中情况" enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+	&quot;header&quot;: {&#xd;
+		&quot;service&quot;: &quot;com.globalegrow.spi.mpay.inter.PayRiskEventReviewService&quot;,&#xd;
+		&quot;method&quot;: &quot;queryBlackListMissInfo&quot;,&#xd;
+		&quot;domain&quot;: &quot;&quot;,&#xd;
+		&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+		&quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+	},&#xd;
+	&quot;body&quot;: {&#xd;
+		&quot;occurenctType&quot;:3,&#xd;
+		&quot;riskEventId&quot;:51&#xd;
+	}&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path"></stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="调用风控接口" enabled="true"/>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="paypal事后风控调用" enabled="false">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+	&quot;header&quot;: {&#xd;
+		&quot;service&quot;: &quot;com.globalegrow.spi.pay.inter.PayRiskService&quot;,&#xd;
+		&quot;method&quot;: &quot;payAfterRiskControl&quot;,&#xd;
+		&quot;domain&quot;: &quot;&quot;,&#xd;
+		&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+		&quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+	},&#xd;
+	&quot;body&quot;:{&#xd;
+	&quot;billingAddressDto&quot;: null,&#xd;
+	&quot;cardDto&quot;: null,&#xd;
+	&quot;cyberSession&quot;: null,&#xd;
+	&quot;goodAttributeList&quot;: [{&#xd;
+		&quot;categoryName&quot;: &quot;Bags &amp; Shoes&quot;,&#xd;
+		&quot;id&quot;: 0,&#xd;
+		&quot;productName&quot;: &quot;Large-capacity Sports Handbag Shoulder Travel Bag&quot;,&#xd;
+		&quot;productSKU&quot;: &quot;261189102&quot;,&#xd;
+		&quot;quantity&quot;: 1,&#xd;
+		&quot;unitPrice&quot;: 227.89&#xd;
+	}],&#xd;
+	&quot;googlePayCbyDto&quot;: null,&#xd;
+	&quot;merchantDefinedData&quot;: {&#xd;
+		&quot;customFieldList&quot;: [{&#xd;
+			&quot;id&quot;: &quot;1&quot;,&#xd;
+			&quot;values&quot;: [&quot;10.33.1.112&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;2&quot;,&#xd;
+			&quot;values&quot;: [&quot;261189102&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;3&quot;,&#xd;
+			&quot;values&quot;: [&quot;lh200@qq.com&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;4&quot;,&#xd;
+			&quot;values&quot;: [&quot;lh200@qq.com&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;6&quot;,&#xd;
+			&quot;values&quot;: [&quot;BR&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;8&quot;,&#xd;
+			&quot;values&quot;: [&quot;liu&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;9&quot;,&#xd;
+			&quot;values&quot;: [&quot;Amazonas&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;10&quot;,&#xd;
+			&quot;values&quot;: [&quot;City&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;11&quot;,&#xd;
+			&quot;values&quot;: [&quot;Address line2&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;12&quot;,&#xd;
+			&quot;values&quot;: [&quot;98092&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;13&quot;,&#xd;
+			&quot;values&quot;: [&quot;3077213039&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;24&quot;,&#xd;
+			&quot;values&quot;: [&quot;10.33.1.112&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;25&quot;,&#xd;
+			&quot;values&quot;: [&quot;qq.com&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;30&quot;,&#xd;
+			&quot;values&quot;: [&quot;10.33.1.112&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;31&quot;,&#xd;
+			&quot;values&quot;: [&quot;10.33.1.112&quot;]&#xd;
+		}]&#xd;
+	},&#xd;
+	&quot;payOrderInfoDto&quot;: {&#xd;
+		&quot;appVersion&quot;: &quot;0&quot;,&#xd;
+		&quot;channelCode&quot;: &quot;PAYPAL&quot;,&#xd;
+		&quot;checkoutType&quot;: 0,&#xd;
+		&quot;couponNo&quot;: null,&#xd;
+		&quot;currencyCode&quot;: &quot;USD&quot;,&#xd;
+		&quot;cyberSession&quot;: &quot;f08ac93d-980f-4a75-99b4-b0b1995672a1&quot;,&#xd;
+		&quot;cybersourceCopyOrManual&quot;: null,&#xd;
+		&quot;discountCurrencyAmount&quot;: 22.0,&#xd;
+		&quot;dropShipping&quot;: &quot;F&quot;,&#xd;
+		&quot;ebanxCpf&quot;: null,&#xd;
+		&quot;hasGuessCheckout&quot;: null,&#xd;
+		&quot;hasShippedRecords&quot;: 0,&#xd;
+		&quot;hasUseCoupon&quot;: 0,&#xd;
+		&quot;hasUseIntegral&quot;: 1,&#xd;
+		&quot;installments&quot;: null,&#xd;
+		&quot;insuranceFeeCurrencyAmount&quot;: 0.0,&#xd;
+		&quot;insuranceFeeSum&quot;: 0.0,&#xd;
+		&quot;logisticsGroupName&quot;: &quot;Unregistered Air Mail&quot;,&#xd;
+		&quot;logisticsLevel&quot;: &quot;1&quot;,&#xd;
+		&quot;logisticsMethod&quot;: &quot;Sweden surface mail&quot;,&#xd;
+		&quot;orderAmount&quot;: 236.77,&#xd;
+		&quot;orderCreateTime&quot;: 1551943279,&#xd;
+		&quot;parentOrderSn&quot;: &quot;test${__RandomString(12,0123456789)}&quot;,&#xd;
+		&quot;payAmount&quot;: 231.88,&#xd;
+		&quot;payCurrencyAmount&quot;: 231.88,&#xd;
+		&quot;payCurrencyCode&quot;: &quot;USD&quot;,&#xd;
+		&quot;payCurrencyRate&quot;: 1.0,&#xd;
+		&quot;paySn&quot;: &quot;Test${__RandomString(12,0123456789)}&quot;,&#xd;
+		&quot;platform&quot;: 1,&#xd;
+		&quot;profileId&quot;: null,&#xd;
+		&quot;shippingFeeCurrencyAmount&quot;: 0.0,&#xd;
+		&quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+		&quot;transactionId&quot;: &quot;4HC637232E496922M&quot;,&#xd;
+		&quot;userIp&quot;: &quot;10.33.1.112&quot;&#xd;
+	},&#xd;
+	&quot;paypalInfoDto&quot;: {&#xd;
+		&quot;accountHolder&quot;: &quot;lhtest lhtest&quot;,&#xd;
+		&quot;addressLine1&quot;: &quot;1 Main St&quot;,&#xd;
+		&quot;addressStatus&quot;: &quot;Confirmed&quot;,&#xd;
+		&quot;cardHolder&quot;: null,&#xd;
+		&quot;city&quot;: &quot;San Jose&quot;,&#xd;
+		&quot;counterpartyStatus&quot;: &quot;verified&quot;,&#xd;
+		&quot;countryCode&quot;: &quot;US&quot;,&#xd;
+		&quot;email&quot;: &quot;liuhua2@globalegrow.com&quot;,&#xd;
+		&quot;name&quot;: &quot;lhtest lhtest&quot;,&#xd;
+		&quot;payerId&quot;: &quot;M28TJBG4LZSKG&quot;,&#xd;
+		&quot;phoneNumber&quot;: &quot;3077213039&quot;,&#xd;
+		&quot;postalCode&quot;: &quot;95131&quot;,&#xd;
+		&quot;protectionEligibility&quot;: &quot;Eligible&quot;,&#xd;
+		&quot;state&quot;: &quot;CA&quot;&#xd;
+	},&#xd;
+	&quot;riskControlInfo&quot;: {&#xd;
+		&quot;afsResult&quot;: null,&#xd;
+		&quot;cyberRequestId&quot;: null,&#xd;
+		&quot;cybersourceDecision&quot;: null,&#xd;
+		&quot;has3d&quot;: false,&#xd;
+		&quot;middleRiskResult&quot;: null,&#xd;
+		&quot;reasonCode&quot;: null,&#xd;
+		&quot;risk3dResult&quot;: null,&#xd;
+		&quot;thirdRiskScore&quot;: null&#xd;
+	},&#xd;
+	&quot;shippingAddressDto&quot;: {&#xd;
+		&quot;address1&quot;: &quot;Address line1&quot;,&#xd;
+		&quot;address2&quot;: &quot;Address line2&quot;,&#xd;
+		&quot;city&quot;: &quot;City&quot;,&#xd;
+		&quot;countryCode&quot;: &quot;BR&quot;,&#xd;
+		&quot;email&quot;: &quot;lh200@qq.com&quot;,&#xd;
+		&quot;firstName&quot;: &quot;liu&quot;,&#xd;
+		&quot;fullAddress&quot;: &quot;Address line1 Address line2&quot;,&#xd;
+		&quot;fullName&quot;: &quot;liu hua&quot;,&#xd;
+		&quot;grayFullAddress&quot;: &quot;BR Amazonas City Address line1 Address line2&quot;,&#xd;
+		&quot;lastName&quot;: &quot;hua&quot;,&#xd;
+		&quot;phoneNumber&quot;: &quot;3077213039&quot;,&#xd;
+		&quot;postalCode&quot;: &quot;98092&quot;,&#xd;
+		&quot;state&quot;: &quot;Amazonas&quot;&#xd;
+	},&#xd;
+	&quot;skuList&quot;: [&quot;261189102&quot;],&#xd;
+	&quot;sourceId&quot;: &quot;1456e5a9-bc6d-4f69-af84-19fd7bd6c498&quot;,&#xd;
+	&quot;userInfoDto&quot;: {&#xd;
+		&quot;accountAge&quot;: 135,&#xd;
+		&quot;couponNo&quot;: &quot;&quot;,&#xd;
+		&quot;createTime&quot;: 1540276699,&#xd;
+		&quot;growthScore&quot;: 14,&#xd;
+		&quot;hasGuessCheckout&quot;: 0,&#xd;
+		&quot;payeeId&quot;: null,&#xd;
+		&quot;userEmail&quot;: &quot;lh200@qq.com&quot;,&#xd;
+		&quot;userId&quot;: 6454350836788105216,&#xd;
+		&quot;userIp&quot;: &quot;10.33.1.112&quot;,&#xd;
+		&quot;userLevel&quot;: 1&#xd;
+	}&#xd;
+}&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path"></stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="模拟事中风控调用" enabled="false">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+	&quot;header&quot;: {&#xd;
+		&quot;service&quot;: &quot;com.globalegrow.spi.pay.inter.PayRiskService&quot;,&#xd;
+		&quot;method&quot;: &quot;checkBeforRiskControl&quot;,&#xd;
+		&quot;domain&quot;: &quot;&quot;,&#xd;
+		&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+		&quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+	},&#xd;
+	&quot;body&quot;:{&#xd;
+	&quot;callCount&quot;: 1,&#xd;
+	&quot;callRiskCount&quot;: 0,&#xd;
+	&quot;checkoutReq&quot;: {&#xd;
+		&quot;appVersion&quot;: &quot;0&quot;,&#xd;
+		&quot;billingAddressInfo&quot;: null,&#xd;
+		&quot;cancelUrl&quot;: &quot;https://www.gearbest.net/payment/result?type=cancel&quot;,&#xd;
+		&quot;checkoutOrderTag&quot;: null,&#xd;
+		&quot;checkoutType&quot;: 0,&#xd;
+		&quot;dropShipping&quot;: &quot;F&quot;,&#xd;
+		&quot;isPromotionGoods&quot;: false,&#xd;
+		&quot;lang&quot;: &quot;en&quot;,&#xd;
+		&quot;notifyUrl&quot;: &quot;https://www.gearbest.net/api/payment/notify&quot;,&#xd;
+		&quot;orderInfos&quot;: [{&#xd;
+			&quot;activityDeductAmount&quot;: 0.0,&#xd;
+			&quot;contrabands&quot;: [1],&#xd;
+			&quot;couponDeductAmount&quot;: 0.0,&#xd;
+			&quot;createTime&quot;: 1543894080,&#xd;
+			&quot;currencyCode&quot;: &quot;USD&quot;,&#xd;
+			&quot;currencyRate&quot;: 1.0,&#xd;
+			&quot;expireTime&quot;: 1553566989,&#xd;
+			&quot;exponent&quot;: 2,&#xd;
+			&quot;handlingFee&quot;: null,&#xd;
+			&quot;hasUseCoupon&quot;: 0,&#xd;
+			&quot;insuranceFee&quot;: 0.0,&#xd;
+			&quot;integralDeductAmount&quot;: 0.0,&#xd;
+			&quot;logisticCouponDeductAmount&quot;: 0.0,&#xd;
+			&quot;logisticsGroupName&quot;: &quot;Unregistered Air Mail(no tracking information)&quot;,&#xd;
+			&quot;logisticsLevel&quot;: &quot;2&quot;,&#xd;
+			&quot;logisticsMethod&quot;: &quot;Netherlands Post surface mail&quot;,&#xd;
+			&quot;orderAddressInfo&quot;: {&#xd;
+				&quot;addressLine1&quot;: &quot;Langer Anger 121&quot;,&#xd;
+				&quot;addressLine2&quot;: &quot;testAddressLine2&quot;,&#xd;
+				&quot;city&quot;: &quot;Heidelberg&quot;,&#xd;
+				&quot;countryCode&quot;: &quot;BR&quot;,&#xd;
+				&quot;countryName&quot;: &quot;Brazil&quot;,&#xd;
+				&quot;email&quot;: &quot;lh200@qq.com&quot;,&#xd;
+				&quot;firstName&quot;: &quot;test&quot;,&#xd;
+				&quot;lastName&quot;: &quot;test&quot;,&#xd;
+				&quot;postalCode&quot;: &quot;01519000&quot;,&#xd;
+				&quot;state&quot;: &quot;Amapa&quot;,&#xd;
+				&quot;telephone&quot;: &quot;1199998888&quot;&#xd;
+			},&#xd;
+			&quot;orderAmount&quot;: 65.1,&#xd;
+			&quot;orderCurrencyAmount&quot;: null,&#xd;
+			&quot;orderGoodsInfos&quot;: [{&#xd;
+				&quot;catName&quot;: &quot;Luggage &amp; Travel Bags&quot;,&#xd;
+				&quot;catalogue&quot;: &quot;Bags &amp; Shoes&lt;Luggage &amp; Travel Bags&quot;,&#xd;
+				&quot;categoryId&quot;: 12414,&#xd;
+				&quot;categoryName&quot;: &quot;Bags &amp; Shoes&quot;,&#xd;
+				&quot;goodsSn&quot;: &quot;261189102&quot;,&#xd;
+				&quot;price&quot;: 20.9,&#xd;
+				&quot;qty&quot;: 1,&#xd;
+				&quot;title&quot;: &quot;Large-capacity Sports Handbag Shoulder Travel Bag&quot;&#xd;
+			}],&#xd;
+			&quot;orderSn&quot;: &quot;test20100322_0001&quot;,&#xd;
+			&quot;orderType&quot;: 0,&#xd;
+			&quot;shippingFee&quot;: 35.71,&#xd;
+			&quot;taxesAmount&quot;: 8.49,&#xd;
+			&quot;trackingFee&quot;: 0.0,&#xd;
+			&quot;userEmail&quot;: &quot;lh200@qq.com&quot;,&#xd;
+			&quot;userId&quot;: 20843414&#xd;
+		}],&#xd;
+		&quot;parentOrderSn&quot;: &quot;test20100322_0001&quot;,&#xd;
+		&quot;payAmount&quot;: 65.1,&#xd;
+		&quot;payCurrencyAmount&quot;: null,&#xd;
+		&quot;pipelineCode&quot;: &quot;GB&quot;,&#xd;
+		&quot;platform&quot;: 1,&#xd;
+		&quot;returnUrl&quot;: &quot;https://www.gearbest.net/payment/result?type=success&quot;,&#xd;
+		&quot;roundType&quot;: null,&#xd;
+		&quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+		&quot;swellOrderAmount&quot;: 65.1,&#xd;
+		&quot;userInfo&quot;: {&#xd;
+			&quot;couponNo&quot;: &quot;&quot;,&#xd;
+			&quot;createTime&quot;: 1512955637,&#xd;
+			&quot;growthScore&quot;: 75,&#xd;
+			&quot;hasGuessCheckout&quot;: 0,&#xd;
+			&quot;hasShippedRecords&quot;: 0,&#xd;
+			&quot;isNewUser&quot;: 0,&#xd;
+			&quot;userEmail&quot;: &quot;lh200@qq.com&quot;,&#xd;
+			&quot;userId&quot;: 20843414,&#xd;
+			&quot;userIp&quot;: &quot;10.33.1.202&quot;,&#xd;
+			&quot;userLevel&quot;: 1&#xd;
+		}&#xd;
+	},&#xd;
+	&quot;hasCheckAfterRisk&quot;: false,&#xd;
+	&quot;hasCheckBeforeRisk&quot;: false,&#xd;
+	&quot;payChannelInfo&quot;: {&#xd;
+		&quot;adnTrspIssuerId&quot;: null,&#xd;
+		&quot;adyenDeviceFingerprint&quot;: null,&#xd;
+		&quot;adyenccCardEncrypted&quot;: &quot;adyenjs_0_1_18$dIjlztTEICxkWlsDB6EUj8ij9NE0ZIWJSrmD4mIPB1kb4Ev6g/62AjzPb6b3FnabIkh3V4Uz2dUD3fMxCErMCrXGtqfTxk1woy0LdT8ubxO+uLguWzbLREs2JoBeKikQ0OG89Gz4zp+1dNTs8G1P9hOKuETHA8jUfmXA8gAzrEfEL55tU6xFeVjYfWkQsaapJt76usM+SmgwKF+ee5TkQCXP0A2WkKvI5vvOyJepzEM60gCTitxe4duoGF9OIFhOrKA0HepGGxOIUi0iL7fcrgxZg422aQkHhga9pYaJtbvjsmX/fbuvuddQaiwLN5HiF1WLmyZY77vWAylYL8TQRg==$JWPTOD0SAKi+7lrjHt1eYtrdxnCXVxdIVqb5sGtKVvhv0o6QXM3DIqwjQiN4s6gLhZhZLaSOfypXqkJD+9lyEETt7e5UN0H/Gotg5nzclc6p5oTyMtXbjOQ85ReY/YvzNhHd+UCglo0DlHW4LEXX35yHxokD8zWPyKFuYWzxbv1jILpjCfcdLeFtiAEx3iqQu6G89ol225rgrjvqqjSZ+jDvtCXChCBIBOiHJm6PISocMEQw9gSCTMIG0McP6YPcNQ7Gj+6m4FyPj3eWq1hjVgpxyc9EAoj3GAQKAOjABCYEsapV2dj6iMwTCS5k/+aAgHG7fmKVRBSlIVdJM46oSGUGowwlnxNJ9dAMDh0rq9dC8DvRuOX2dYuV6w==&quot;,&#xd;
+		&quot;billingAddressInfo&quot;: {&#xd;
+			&quot;addressLine1&quot;: &quot;Langer Anger 121&quot;,&#xd;
+			&quot;addressLine2&quot;: &quot;testAddressLine2&quot;,&#xd;
+			&quot;city&quot;: &quot;Heidelberg&quot;,&#xd;
+			&quot;countryCode&quot;: &quot;BR&quot;,&#xd;
+			&quot;email&quot;: &quot;lh200@qq.com&quot;,&#xd;
+			&quot;firstName&quot;: &quot;test&quot;,&#xd;
+			&quot;lastName&quot;: &quot;test&quot;,&#xd;
+			&quot;postalCode&quot;: &quot;01519000&quot;,&#xd;
+			&quot;state&quot;: &quot;Amapa&quot;,&#xd;
+			&quot;streetNumber&quot;: null,&#xd;
+			&quot;telephone&quot;: &quot;1199998888&quot;&#xd;
+		},&#xd;
+		&quot;cardInfo&quot;: {&#xd;
+			&quot;cardHolder&quot;: &quot;test&quot;,&#xd;
+			&quot;cardNo&quot;: &quot;6011111111111117&quot;,&#xd;
+			&quot;cardType&quot;: &quot;DISCOVER&quot;,&#xd;
+			&quot;cvv&quot;: &quot;100&quot;,&#xd;
+			&quot;month&quot;: &quot;10&quot;,&#xd;
+			&quot;year&quot;: &quot;20&quot;&#xd;
+		},&#xd;
+		&quot;channelCode&quot;: &quot;checkout_credit&quot;,&#xd;
+		&quot;cybersourceCopyOrManual&quot;: &quot;copy&quot;,&#xd;
+		&quot;ebanxCpf&quot;: null,&#xd;
+		&quot;ebanxCpfType&quot;: null,&#xd;
+		&quot;ebanxInstallmentId&quot;: null,&#xd;
+		&quot;ebanxInstallments&quot;: null,&#xd;
+		&quot;ebanxPaymentTypeCode&quot;: null,&#xd;
+		&quot;gcCseData&quot;: &quot;eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZDQkMtSFM1MTIiLCJraWQiOiJiZWI1ZDRhMy1lZmE5LTQ1ZTktYjBiZS0xODI0NzI0MGU1NzIifQ.MvkU6twCqjCR74oRWSzXUVE4ugfW2HF_NWR8k0eFYZLtPMbUcVFThFWfSINjU1HslxzPcbtmaVjJv6AJI9h6CU8n53Ct5vci_f97XTuzv5cEp8zoqunesMwQNRAVFP4c66_6jfBt-711PEBw1E-FHQcFpuQvne9e9WqWb9UvKvpq8dknQgqlF33edFXOpd5Q3vrD4u0IM0A5mmm8zPU2LOCRTGGLRMp6FIfpbEjwXzE2mfq4Tz_bzm8aB4i_f-3_5ttgQZDZE2q6hxGcxOgQnZgnw1cCE0z-KahAUdDlAnqB1TW3z926t6KywaIIGVkxkaHkaHgeJjMEYPImbNn8dQ.j0injsYOL8YDShEmKgAq-w.UoCpg-amJssmoDsKYgZueJ5Zp9ueYcyq50s6g_gUhXh34T9hnZT5cY9NmvIi2LAaoGBCRCzdMYTLL2r9rWN1V6vGZJpj2wAZu79kDk1gwQn07j04JK5gVRmCID4_1QqezRS3u6teEya5vKBkgnEGVy1rys2XYj-L_soKmLfUiosrP0CcgYUBkcpnQFbu0Htywx2SB7AOWbzzWEuaJXch95H13GjF1lXjDTFSxDynzFibgO6fL8mLZX90FgQ1imkuj3YAFpAK9dzl3WhkWlCH8ykK4v5h28PU3dIrHbTlA1mYJA6xDnZJ2bcIGSJhBMyI2n6ABMr73aq6Ig8bHTAkplApM8IFi0KBo18SKJMYo0M.U2prKr_cvrEFve-g6bdTNdklR4gUbVUr5_zbzlPBKKA&quot;,&#xd;
+		&quot;giftCardSn&quot;: null,&#xd;
+		&quot;idealIssuerId&quot;: null,&#xd;
+		&quot;instalmentInfo&quot;: null,&#xd;
+		&quot;isVerify3ds&quot;: false,&#xd;
+		&quot;payChannelAccount&quot;: {&#xd;
+			&quot;account&quot;: &quot;sk_test_175a6433-8db6-422b-b25f-1ec73cbe47df&quot;,&#xd;
+			&quot;authCode&quot;: &quot;{\&quot;Authorization\&quot;:\&quot;sk_test_175a6433-8db6-422b-b25f-1ec73cbe47df\&quot;}&quot;&#xd;
+		},&#xd;
+		&quot;payuTrccInstallments&quot;: null,&#xd;
+		&quot;profileID&quot;: null,&#xd;
+		&quot;pseBankCode&quot;: null,&#xd;
+		&quot;qiwiTel&quot;: null,&#xd;
+		&quot;riskChannel&quot;: null,&#xd;
+		&quot;worldpayAcceptHeader&quot;: &quot;*/*&quot;,&#xd;
+		&quot;worldpayCseData&quot;: &quot;eyJhbGciOiJSU0ExXzUiLCJlbmMiOiJBMjU2R0NNIiwia2lkIjoiMSIsImNvbS53b3JsZHBheS5hcGlWZXJzaW9uIjoiMS4wIiwiY29tLndvcmxkcGF5LmxpYlZlcnNpb24iOiIxLjAuMSIsImNvbS53b3JsZHBheS5jaGFubmVsIjoiamF2YXNjcmlwdCJ9.SSRLIJjGY3uni14r-nkPPte9VOMX4e8k2lgRO2wdBkeYY0giXY64S5jbbPEDFMGBWUd9GmfCWTFametBPviYF4lacLfwgOIVpjznEuyK_alRe9_zUt0dg9DCm9slItwOD30Nq5e1SrEAPzd1LXuIVI-uR5C3iwWbTO4ArOUNp6u4Tct-5BfL5JUlJpiRYxsOwi0fCnLL5YfsERqJSyM_ioH_Y2WD0z7sfUsKBEQxBvWnYU_ghVJbj5JenUhICEFEFNIUST_PhGsslhPVI7CdgUAlAxoensIIRv4KzDzQWRmOwmUHqOM7W0BjGYvKzn6VIs0nDqPZWKu8mgVJS5abWg.LY9nE1KuFJ7wikM5.1WibZUzdd0NCEEnbSusHpCp1Z-Ly-IdiquUWSNXC-mxE5FK-8G-oFpV13Ij9r0dIIeL4tEuANmtCEFNwVXgVRnExar3xp9Sg332xSkS2a4kIzg0800hTXyBEd1WpF4exb9UeNF5thETOTsAF.0gJYNyBYug7IHuDSEVLz0A&quot;,&#xd;
+		&quot;worldpayUserAgentHeader&quot;: &quot;liuhua1&quot;&#xd;
+	},&#xd;
+	&quot;payChannels&quot;: [{&#xd;
+		&quot;channelCode&quot;: &quot;checkout_credit&quot;&#xd;
+	},&#xd;
+	{&#xd;
+		&quot;channelCode&quot;: &quot;worldpay&quot;&#xd;
+	}],&#xd;
+	&quot;payGateway&quot;: {&#xd;
+		&quot;cancelUrl&quot;: &quot;https://www.gearbest.net/payment/result?type=cancel&quot;,&#xd;
+		&quot;channelCode&quot;: &quot;checkout_credit&quot;,&#xd;
+		&quot;checkoutType&quot;: 0,&#xd;
+		&quot;completedTime&quot;: null,&#xd;
+		&quot;countryCode&quot;: &quot;BR&quot;,&#xd;
+		&quot;createTime&quot;: 1543936347,&#xd;
+		&quot;currencyChannel&quot;: 0,&#xd;
+		&quot;currencyCode&quot;: &quot;USD&quot;,&#xd;
+		&quot;currencyRate&quot;: 1.0,&#xd;
+		&quot;errorCode&quot;: null,&#xd;
+		&quot;exponent&quot;: 2,&#xd;
+		&quot;id&quot;: null,&#xd;
+		&quot;installmentInterestAmount&quot;: 0,&#xd;
+		&quot;isVerify3ds&quot;: false,&#xd;
+		&quot;lang&quot;: &quot;en&quot;,&#xd;
+		&quot;notifyUrl&quot;: &quot;https://www.gearbest.net/api/payment/notify&quot;,&#xd;
+		&quot;parentOrderSn&quot;: &quot;est${__RandomString(12,0123456789)}&quot;,&#xd;
+		&quot;parentTradeSn&quot;: &quot;T181204009027231227XNF&quot;,&#xd;
+		&quot;payAccount&quot;: &quot;sk_test_175a6433-8db6-422b-b25f-1ec73cbe47df&quot;,&#xd;
+		&quot;payAmount&quot;: 66,&#xd;
+		&quot;payCurrencyAmount&quot;: 66,&#xd;
+		&quot;payDeductAmount&quot;: 0,&#xd;
+		&quot;paySn&quot;: &quot;Test${__RandomString(12,0123456789)}&quot;,&#xd;
+		&quot;payStatus&quot;: 0,&#xd;
+		&quot;pipelineCode&quot;: &quot;GB&quot;,&#xd;
+		&quot;platform&quot;: 1,&#xd;
+		&quot;refundAmount&quot;: null,&#xd;
+		&quot;refundTime&quot;: null,&#xd;
+		&quot;refundType&quot;: null,&#xd;
+		&quot;returnUrl&quot;: &quot;https://www.gearbest.net/payment/result?type=success&quot;,&#xd;
+		&quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+		&quot;tradeSn&quot;: &quot;T181204009027231227XNF&quot;,&#xd;
+		&quot;transactionId&quot;: &quot;&quot;,&#xd;
+		&quot;updateTime&quot;: 1543936347,&#xd;
+		&quot;userEmail&quot;: &quot;lh200@qq.com&quot;,&#xd;
+		&quot;userId&quot;: 20843414,&#xd;
+		&quot;userIp&quot;: &quot;10.33.1.110&quot;,&#xd;
+		&quot;verify3dsResult&quot;: null&#xd;
+	},&#xd;
+	&quot;payOrderInfo&quot;: {&#xd;
+		&quot;appVersion&quot;: &quot;0&quot;,&#xd;
+		&quot;billingAddressInfo&quot;: null,&#xd;
+		&quot;cancelUrl&quot;: &quot;https://www.gearbest.net/payment/result?type=cancel&quot;,&#xd;
+		&quot;checkoutType&quot;: 0,&#xd;
+		&quot;contrands&quot;: [1],&#xd;
+		&quot;discountCurrencyAmount&quot;: 0.0,&#xd;
+		&quot;handlingFeeCurrencyAmount&quot;: 0,&#xd;
+		&quot;hasShippedRecords&quot;: 0,&#xd;
+		&quot;hasUseCoupon&quot;: 0,&#xd;
+		&quot;hasUseIntegral&quot;: 1,&#xd;
+		&quot;insuranceFeeCurrencyAmount&quot;: 0.0,&#xd;
+		&quot;lang&quot;: &quot;en&quot;,&#xd;
+		&quot;logisticsGroupName&quot;: &quot;Unregistered Air Mail(no tracking information)&quot;,&#xd;
+		&quot;logisticsLevel&quot;: &quot;2&quot;,&#xd;
+		&quot;logisticsMethod&quot;: &quot;Netherlands Post surface mail&quot;,&#xd;
+		&quot;notifyUrl&quot;: &quot;https://www.gearbest.net/api/payment/notify&quot;,&#xd;
+		&quot;orderAddressInfo&quot;: {&#xd;
+			&quot;addressLine1&quot;: &quot;Langer Anger 121&quot;,&#xd;
+			&quot;addressLine2&quot;: &quot;testAddressLine2&quot;,&#xd;
+			&quot;city&quot;: &quot;Heidelberg&quot;,&#xd;
+			&quot;countryCode&quot;: &quot;BR&quot;,&#xd;
+			&quot;email&quot;: &quot;lh200@qq.com&quot;,&#xd;
+			&quot;firstName&quot;: &quot;test&quot;,&#xd;
+			&quot;fullAddress&quot;: &quot;Langer Anger 121 testAddressLine2&quot;,&#xd;
+			&quot;fullName&quot;: &quot;test test&quot;,&#xd;
+			&quot;lastName&quot;: &quot;test&quot;,&#xd;
+			&quot;postalCode&quot;: &quot;01519000&quot;,&#xd;
+			&quot;state&quot;: &quot;Amapa&quot;,&#xd;
+			&quot;telephone&quot;: &quot;1199998888&quot;&#xd;
+		},&#xd;
+		&quot;orderAmount&quot;: 65.1,&#xd;
+		&quot;orderCreateTime&quot;: 1543894080,&#xd;
+		&quot;orderCurrencyAmount&quot;: 65.10,&#xd;
+		&quot;orderCurrencyCode&quot;: &quot;USD&quot;,&#xd;
+		&quot;orderCurrencyRate&quot;: 1.0,&#xd;
+		&quot;orderExponent&quot;: 2,&#xd;
+		&quot;orderGoodsInfos&quot;: [{&#xd;
+			&quot;categoryId&quot;: 12414,&#xd;
+			&quot;categoryName&quot;: &quot;Bags &amp; Shoes&quot;,&#xd;
+			&quot;goodsSn&quot;: &quot;261189102&quot;,&#xd;
+			&quot;price&quot;: 20.9,&#xd;
+			&quot;qty&quot;: 1,&#xd;
+			&quot;title&quot;: &quot;Large-capacity Sports Handbag Shoulder Travel Bag&quot;&#xd;
+		}],&#xd;
+		&quot;orderInfos&quot;: [{&#xd;
+			&quot;orderAmount&quot;: 65.1,&#xd;
+			&quot;orderCreateTime&quot;: 1543894080,&#xd;
+			&quot;orderCurrencyAmount&quot;: 65.10,&#xd;
+			&quot;orderCurrencyCode&quot;: &quot;USD&quot;,&#xd;
+			&quot;orderCurrencyRate&quot;: 1.0,&#xd;
+			&quot;orderExponent&quot;: 2,&#xd;
+			&quot;orderSn&quot;: &quot;wrwr232113000902715361110&quot;&#xd;
+		}],&#xd;
+		&quot;orderType&quot;: 0,&#xd;
+		&quot;paidAmount&quot;: 0,&#xd;
+		&quot;paidCurrencyAmount&quot;: null,&#xd;
+		&quot;parentOrderSn&quot;: &quot;est${__RandomString(12,0123456789)}&quot;,&#xd;
+		&quot;payActivityDto&quot;: null,&#xd;
+		&quot;payAmount&quot;: 65.1,&#xd;
+		&quot;payCurrencyAmount&quot;: 65.10,&#xd;
+		&quot;payCurrencyCode&quot;: &quot;USD&quot;,&#xd;
+		&quot;payCurrencyRate&quot;: 1.0,&#xd;
+		&quot;payDeductAmount&quot;: 0,&#xd;
+		&quot;payDeductCurrencyAmount&quot;: null,&#xd;
+		&quot;payExponent&quot;: 2,&#xd;
+		&quot;pipelineCode&quot;: &quot;GB&quot;,&#xd;
+		&quot;platform&quot;: 1,&#xd;
+		&quot;returnUrl&quot;: &quot;https://www.gearbest.net/payment/result?type=success&quot;,&#xd;
+		&quot;shippingFeeCurrencyAmount&quot;: 35.71,&#xd;
+		&quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+		&quot;skuList&quot;: [&quot;261189102&quot;],&#xd;
+		&quot;taxesAmount&quot;: 8.49,&#xd;
+		&quot;taxesCurrencyAmount&quot;: 8.49,&#xd;
+		&quot;trackingFeeCurrencyAmount&quot;: 0.0,&#xd;
+		&quot;userCreateTime&quot;: 1512955637,&#xd;
+		&quot;userEmail&quot;: &quot;lh200@qq.com&quot;,&#xd;
+		&quot;userId&quot;: 20843414,&#xd;
+		&quot;userIp&quot;: &quot;10.33.1.110&quot;,&#xd;
+		&quot;walletAmount&quot;: null,&#xd;
+		&quot;walletCurrencyAmount&quot;: null,&#xd;
+		&quot;walletFullPay&quot;: false&#xd;
+	},&#xd;
+	&quot;payTradeInfo&quot;: {&#xd;
+		&quot;parentTradeSn&quot;: &quot;T181204009027231227XNF&quot;,&#xd;
+		&quot;payGatewayOrders&quot;: [{&#xd;
+			&quot;currencyCode&quot;: &quot;USD&quot;,&#xd;
+			&quot;currencyRate&quot;: 1.0,&#xd;
+			&quot;exponent&quot;: 2,&#xd;
+			&quot;id&quot;: null,&#xd;
+			&quot;orderAmount&quot;: 65.1,&#xd;
+			&quot;orderCurrencyAmount&quot;: 65.10,&#xd;
+			&quot;orderSn&quot;: &quot;wrwr232113000902715361110&quot;,&#xd;
+			&quot;orderTime&quot;: 1543894080,&#xd;
+			&quot;parentOrderSn&quot;: &quot;wrwr232113000902715361110&quot;,&#xd;
+			&quot;parentTradeSn&quot;: &quot;T181204009027231227XNF&quot;,&#xd;
+			&quot;pipelineCode&quot;: &quot;GB&quot;,&#xd;
+			&quot;platform&quot;: 1,&#xd;
+			&quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+			&quot;tradeSn&quot;: &quot;T181204009027231227XNF&quot;,&#xd;
+			&quot;updateTime&quot;: 1543936347,&#xd;
+			&quot;userId&quot;: 20843414&#xd;
+		}],&#xd;
+		&quot;payGateways&quot;: null,&#xd;
+		&quot;tradeSn&quot;: &quot;T181204009027231227XNF&quot;&#xd;
+	},&#xd;
+	&quot;retrying&quot;: false,&#xd;
+	&quot;riskControlInfo&quot;: null,&#xd;
+	&quot;riskRuleInfo&quot;: null,&#xd;
+	&quot;toPayReq&quot;: {&#xd;
+		&quot;adnTrspIssuerId&quot;: null,&#xd;
+		&quot;adyenDeviceFingerprint&quot;: null,&#xd;
+		&quot;adyenccCardEncrypted&quot;: &quot;adyenjs_0_1_18$dIjlztTEICxkWlsDB6EUj8ij9NE0ZIWJSrmD4mIPB1kb4Ev6g/62AjzPb6b3FnabIkh3V4Uz2dUD3fMxCErMCrXGtqfTxk1woy0LdT8ubxO+uLguWzbLREs2JoBeKikQ0OG89Gz4zp+1dNTs8G1P9hOKuETHA8jUfmXA8gAzrEfEL55tU6xFeVjYfWkQsaapJt76usM+SmgwKF+ee5TkQCXP0A2WkKvI5vvOyJepzEM60gCTitxe4duoGF9OIFhOrKA0HepGGxOIUi0iL7fcrgxZg422aQkHhga9pYaJtbvjsmX/fbuvuddQaiwLN5HiF1WLmyZY77vWAylYL8TQRg==$JWPTOD0SAKi+7lrjHt1eYtrdxnCXVxdIVqb5sGtKVvhv0o6QXM3DIqwjQiN4s6gLhZhZLaSOfypXqkJD+9lyEETt7e5UN0H/Gotg5nzclc6p5oTyMtXbjOQ85ReY/YvzNhHd+UCglo0DlHW4LEXX35yHxokD8zWPyKFuYWzxbv1jILpjCfcdLeFtiAEx3iqQu6G89ol225rgrjvqqjSZ+jDvtCXChCBIBOiHJm6PISocMEQw9gSCTMIG0McP6YPcNQ7Gj+6m4FyPj3eWq1hjVgpxyc9EAoj3GAQKAOjABCYEsapV2dj6iMwTCS5k/+aAgHG7fmKVRBSlIVdJM46oSGUGowwlnxNJ9dAMDh0rq9dC8DvRuOX2dYuV6w==&quot;,&#xd;
+		&quot;billingAddress&quot;: {&#xd;
+			&quot;addressLine1&quot;: &quot;Langer Anger 121&quot;,&#xd;
+			&quot;addressLine2&quot;: &quot;testAddressLine2&quot;,&#xd;
+			&quot;city&quot;: &quot;Heidelberg&quot;,&#xd;
+			&quot;countryCode&quot;: &quot;BR&quot;,&#xd;
+			&quot;email&quot;: &quot;lh200@qq.com&quot;,&#xd;
+			&quot;firstName&quot;: &quot;test&quot;,&#xd;
+			&quot;fullAddress&quot;: &quot;Langer Anger 121 testAddressLine2&quot;,&#xd;
+			&quot;fullName&quot;: &quot;test test&quot;,&#xd;
+			&quot;lastName&quot;: &quot;test&quot;,&#xd;
+			&quot;postalCode&quot;: &quot;01519000&quot;,&#xd;
+			&quot;state&quot;: &quot;Amapa&quot;,&#xd;
+			&quot;streetNumber&quot;: null,&#xd;
+			&quot;telephone&quot;: &quot;1199998888&quot;&#xd;
+		},&#xd;
+		&quot;cardInfo&quot;: {&#xd;
+			&quot;cardHolder&quot;: &quot;test&quot;,&#xd;
+			&quot;cardNo&quot;: &quot;6011111111111117&quot;,&#xd;
+			&quot;cardType&quot;: &quot;DISCOVER&quot;,&#xd;
+			&quot;cvv&quot;: &quot;100&quot;,&#xd;
+			&quot;month&quot;: &quot;10&quot;,&#xd;
+			&quot;year&quot;: &quot;20&quot;&#xd;
+		},&#xd;
+		&quot;cashIp&quot;: &quot;10.33.1.110&quot;,&#xd;
+		&quot;channelCode&quot;: &quot;checkout_credit&quot;,&#xd;
+		&quot;componyInfo&quot;: null,&#xd;
+		&quot;currencyCode&quot;: &quot;USD&quot;,&#xd;
+		&quot;currencyRate&quot;: 1.0,&#xd;
+		&quot;cyberSession&quot;: &quot;4c0ac912-f1c6-45e0-8db2-e9bcbaacf44d&quot;,&#xd;
+		&quot;cybersourceCopyOrManual&quot;: &quot;copy&quot;,&#xd;
+		&quot;ebanxCpf&quot;: null,&#xd;
+		&quot;ebanxCpfType&quot;: null,&#xd;
+		&quot;ebanxInstallmentId&quot;: null,&#xd;
+		&quot;ebanxInstallments&quot;: null,&#xd;
+		&quot;ebanxPaymentTypeCode&quot;: null,&#xd;
+		&quot;gcCseData&quot;: &quot;eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZDQkMtSFM1MTIiLCJraWQiOiJiZWI1ZDRhMy1lZmE5LTQ1ZTktYjBiZS0xODI0NzI0MGU1NzIifQ.MvkU6twCqjCR74oRWSzXUVE4ugfW2HF_NWR8k0eFYZLtPMbUcVFThFWfSINjU1HslxzPcbtmaVjJv6AJI9h6CU8n53Ct5vci_f97XTuzv5cEp8zoqunesMwQNRAVFP4c66_6jfBt-711PEBw1E-FHQcFpuQvne9e9WqWb9UvKvpq8dknQgqlF33edFXOpd5Q3vrD4u0IM0A5mmm8zPU2LOCRTGGLRMp6FIfpbEjwXzE2mfq4Tz_bzm8aB4i_f-3_5ttgQZDZE2q6hxGcxOgQnZgnw1cCE0z-KahAUdDlAnqB1TW3z926t6KywaIIGVkxkaHkaHgeJjMEYPImbNn8dQ.j0injsYOL8YDShEmKgAq-w.UoCpg-amJssmoDsKYgZueJ5Zp9ueYcyq50s6g_gUhXh34T9hnZT5cY9NmvIi2LAaoGBCRCzdMYTLL2r9rWN1V6vGZJpj2wAZu79kDk1gwQn07j04JK5gVRmCID4_1QqezRS3u6teEya5vKBkgnEGVy1rys2XYj-L_soKmLfUiosrP0CcgYUBkcpnQFbu0Htywx2SB7AOWbzzWEuaJXch95H13GjF1lXjDTFSxDynzFibgO6fL8mLZX90FgQ1imkuj3YAFpAK9dzl3WhkWlCH8ykK4v5h28PU3dIrHbTlA1mYJA6xDnZJ2bcIGSJhBMyI2n6ABMr73aq6Ig8bHTAkplApM8IFi0KBo18SKJMYo0M.U2prKr_cvrEFve-g6bdTNdklR4gUbVUr5_zbzlPBKKA&quot;,&#xd;
+		&quot;idealIssuerId&quot;: null,&#xd;
+		&quot;isUseWallet&quot;: false,&#xd;
+		&quot;paySignature&quot;: null,&#xd;
+		&quot;payuInnbBankCode&quot;: null,&#xd;
+		&quot;payuTrccInstallments&quot;: null,&#xd;
+		&quot;pseBankCode&quot;: null,&#xd;
+		&quot;qiwiTel&quot;: null,&#xd;
+		&quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+		&quot;token&quot;: null,&#xd;
+		&quot;traceID&quot;: &quot;b0890dcf-d330-4eb1-8b16-6fd8c4b4729f&quot;,&#xd;
+		&quot;walletAmount&quot;: 0.0,&#xd;
+		&quot;walletPassword&quot;: &quot;&quot;,&#xd;
+		&quot;worldpayAcceptHeader&quot;: &quot;*/*&quot;,&#xd;
+		&quot;worldpayCseData&quot;: &quot;eyJhbGciOiJSU0ExXzUiLCJlbmMiOiJBMjU2R0NNIiwia2lkIjoiMSIsImNvbS53b3JsZHBheS5hcGlWZXJzaW9uIjoiMS4wIiwiY29tLndvcmxkcGF5LmxpYlZlcnNpb24iOiIxLjAuMSIsImNvbS53b3JsZHBheS5jaGFubmVsIjoiamF2YXNjcmlwdCJ9.SSRLIJjGY3uni14r-nkPPte9VOMX4e8k2lgRO2wdBkeYY0giXY64S5jbbPEDFMGBWUd9GmfCWTFametBPviYF4lacLfwgOIVpjznEuyK_alRe9_zUt0dg9DCm9slItwOD30Nq5e1SrEAPzd1LXuIVI-uR5C3iwWbTO4ArOUNp6u4Tct-5BfL5JUlJpiRYxsOwi0fCnLL5YfsERqJSyM_ioH_Y2WD0z7sfUsKBEQxBvWnYU_ghVJbj5JenUhICEFEFNIUST_PhGsslhPVI7CdgUAlAxoensIIRv4KzDzQWRmOwmUHqOM7W0BjGYvKzn6VIs0nDqPZWKu8mgVJS5abWg.LY9nE1KuFJ7wikM5.1WibZUzdd0NCEEnbSusHpCp1Z-Ly-IdiquUWSNXC-mxE5FK-8G-oFpV13Ij9r0dIIeL4tEuANmtCEFNwVXgVRnExar3xp9Sg332xSkS2a4kIzg0800hTXyBEd1WpF4exb9UeNF5thETOTsAF.0gJYNyBYug7IHuDSEVLz0A&quot;,&#xd;
+		&quot;worldpayUserAgentHeader&quot;: &quot;liuhua1&quot;&#xd;
+	},&#xd;
+	&quot;token&quot;: &quot;O1812040090272312134IE&quot;&#xd;
+}&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path"></stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ADNCC事后风控调用" enabled="false">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+	&quot;header&quot;: {&#xd;
+		&quot;service&quot;: &quot;com.globalegrow.spi.pay.inter.PayRiskService&quot;,&#xd;
+		&quot;method&quot;: &quot;payAfterRiskControl&quot;,&#xd;
+		&quot;domain&quot;: &quot;&quot;,&#xd;
+		&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+		&quot;tokenId&quot;: &quot;${token2}&quot;&#xd;
+	},&#xd;
+	&quot;body&quot;:{&#xd;
+	&quot;applePayCbyDto&quot;: null,&#xd;
+	&quot;billingAddressDto&quot;: {&#xd;
+		&quot;addressLine1&quot;: &quot;Address line1&quot;,&#xd;
+		&quot;addressLine2&quot;: &quot;Address line2&quot;,&#xd;
+		&quot;city&quot;: &quot;City&quot;,&#xd;
+		&quot;countryCode&quot;: &quot;BR&quot;,&#xd;
+		&quot;email&quot;: &quot;lh200@qq.com&quot;,&#xd;
+		&quot;firstName&quot;: &quot;liu&quot;,&#xd;
+		&quot;fullAddress&quot;: &quot;Address line1 Address line2&quot;,&#xd;
+		&quot;fullName&quot;: &quot;liu hua&quot;,&#xd;
+		&quot;lastName&quot;: &quot;hua&quot;,&#xd;
+		&quot;postalCode&quot;: &quot;98092&quot;,&#xd;
+		&quot;state&quot;: &quot;Amazonas&quot;,&#xd;
+		&quot;streetNumber&quot;: null,&#xd;
+		&quot;telephone&quot;: &quot;1234567800&quot;&#xd;
+	},&#xd;
+	&quot;cardDto&quot;: {&#xd;
+		&quot;cardNumber&quot;: &quot;4111111111111111&quot;,&#xd;
+		&quot;cardType&quot;: &quot;VISA_CREDIT&quot;,&#xd;
+		&quot;expirationMonth&quot;: &quot;10&quot;,&#xd;
+		&quot;expirationYear&quot;: &quot;20&quot;,&#xd;
+		&quot;fullName&quot;: &quot;liu hua&quot;&#xd;
+	},&#xd;
+	&quot;cyberSession&quot;: null,&#xd;
+	&quot;goodAttributeList&quot;: [{&#xd;
+		&quot;categoryName&quot;: &quot;Bags &amp; Shoes&quot;,&#xd;
+		&quot;id&quot;: 0,&#xd;
+		&quot;productName&quot;: &quot;Large-capacity Sports Handbag Shoulder Travel Bag&quot;,&#xd;
+		&quot;productSKU&quot;: &quot;261189102&quot;,&#xd;
+		&quot;quantity&quot;: 1,&#xd;
+		&quot;unitPrice&quot;: 227.89&#xd;
+	}],&#xd;
+	&quot;googlePayCbyDto&quot;: null,&#xd;
+	&quot;merchantDefinedData&quot;: {&#xd;
+		&quot;customFieldList&quot;: [{&#xd;
+			&quot;id&quot;: &quot;1&quot;,&#xd;
+			&quot;values&quot;: [&quot;10.33.1.112&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;2&quot;,&#xd;
+			&quot;values&quot;: [&quot;261189102&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;3&quot;,&#xd;
+			&quot;values&quot;: [&quot;lh200@qq.com&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;4&quot;,&#xd;
+			&quot;values&quot;: [&quot;lh200@qq.com&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;5&quot;,&#xd;
+			&quot;values&quot;: [&quot;lh200@qq.com&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;6&quot;,&#xd;
+			&quot;values&quot;: [&quot;BR&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;7&quot;,&#xd;
+			&quot;values&quot;: [&quot;BR&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;8&quot;,&#xd;
+			&quot;values&quot;: [&quot;liu&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;9&quot;,&#xd;
+			&quot;values&quot;: [&quot;Amazonas&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;10&quot;,&#xd;
+			&quot;values&quot;: [&quot;City&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;11&quot;,&#xd;
+			&quot;values&quot;: [&quot;Address line2&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;12&quot;,&#xd;
+			&quot;values&quot;: [&quot;98092&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;13&quot;,&#xd;
+			&quot;values&quot;: [&quot;3077213039&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;14&quot;,&#xd;
+			&quot;values&quot;: [&quot;liu hua&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;15&quot;,&#xd;
+			&quot;values&quot;: [&quot;Amazonas&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;16&quot;,&#xd;
+			&quot;values&quot;: [&quot;City&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;17&quot;,&#xd;
+			&quot;values&quot;: [&quot;Address line1 Address line2&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;18&quot;,&#xd;
+			&quot;values&quot;: [&quot;98092&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;19&quot;,&#xd;
+			&quot;values&quot;: [&quot;3077213039&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;23&quot;,&#xd;
+			&quot;values&quot;: [&quot;411111&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;24&quot;,&#xd;
+			&quot;values&quot;: [&quot;10.33.1.112&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;25&quot;,&#xd;
+			&quot;values&quot;: [&quot;qq.com&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;28&quot;,&#xd;
+			&quot;values&quot;: [&quot;qq.com&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;29&quot;,&#xd;
+			&quot;values&quot;: [&quot;qq.com&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;30&quot;,&#xd;
+			&quot;values&quot;: [&quot;10.33.1.112&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;31&quot;,&#xd;
+			&quot;values&quot;: [&quot;10.33.1.112&quot;]&#xd;
+		}]&#xd;
+	},&#xd;
+	&quot;payOrderInfoDto&quot;: {&#xd;
+		&quot;appVersion&quot;: &quot;0&quot;,&#xd;
+		&quot;channelCode&quot;: &quot;ADN_CC&quot;,&#xd;
+		&quot;checkoutType&quot;: 0,&#xd;
+		&quot;couponNo&quot;: null,&#xd;
+		&quot;currencyCode&quot;: &quot;USD&quot;,&#xd;
+		&quot;cyberSession&quot;: &quot;c8d0c50c-fdf9-4f47-99ac-6af0135bf780&quot;,&#xd;
+		&quot;cybersourceCopyOrManual&quot;: &quot;manual&quot;,&#xd;
+		&quot;discountCurrencyAmount&quot;: 0.0,&#xd;
+		&quot;dropShipping&quot;: &quot;F&quot;,&#xd;
+		&quot;ebanxCpf&quot;: null,&#xd;
+		&quot;hasGuessCheckout&quot;: null,&#xd;
+		&quot;hasShippedRecords&quot;: 0,&#xd;
+		&quot;hasUseCoupon&quot;: 0,&#xd;
+		&quot;hasUseIntegral&quot;: 1,&#xd;
+		&quot;installments&quot;: null,&#xd;
+		&quot;insuranceFeeCurrencyAmount&quot;: 0.0,&#xd;
+		&quot;insuranceFeeSum&quot;: 0.0,&#xd;
+		&quot;logisticsGroupName&quot;: &quot;Unregistered Air Mail&quot;,&#xd;
+		&quot;logisticsLevel&quot;: &quot;1&quot;,&#xd;
+		&quot;logisticsMethod&quot;: &quot;Sweden surface mail&quot;,&#xd;
+		&quot;orderAmount&quot;: 262.07,&#xd;
+		&quot;orderCreateTime&quot;: 1552556989,&#xd;
+		&quot;parentOrderSn&quot;: &quot;test${__RandomString(12,0123456789)}&quot;,&#xd;
+		&quot;payAmount&quot;: 262.07,&#xd;
+		&quot;payCurrencyAmount&quot;: 262.07,&#xd;
+		&quot;payCurrencyCode&quot;: &quot;USD&quot;,&#xd;
+		&quot;payCurrencyRate&quot;: 1.0,&#xd;
+		&quot;paySn&quot;: &quot;Test${__RandomString(12,0123456789)}&quot;,&#xd;
+		&quot;platform&quot;: 1,&#xd;
+		&quot;profileId&quot;: null,&#xd;
+		&quot;shippingFeeCurrencyAmount&quot;: 0.0,&#xd;
+		&quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+		&quot;transactionId&quot;: &quot;8825525571638694&quot;,&#xd;
+		&quot;userIp&quot;: &quot;10.33.1.112&quot;&#xd;
+	},&#xd;
+	&quot;paypalInfoDto&quot;: null,&#xd;
+	&quot;riskControlInfo&quot;: {&#xd;
+		&quot;afsResult&quot;: null,&#xd;
+		&quot;cyberRequestId&quot;: null,&#xd;
+		&quot;cybersourceDecision&quot;: null,&#xd;
+		&quot;has3d&quot;: false,&#xd;
+		&quot;middleRiskResult&quot;: null,&#xd;
+		&quot;reasonCode&quot;: null,&#xd;
+		&quot;risk3dResult&quot;: null,&#xd;
+		&quot;thirdRiskScore&quot;: null&#xd;
+	},&#xd;
+	&quot;shippingAddressDto&quot;: {&#xd;
+		&quot;address1&quot;: &quot;Address line1&quot;,&#xd;
+		&quot;address2&quot;: &quot;Address line2&quot;,&#xd;
+		&quot;city&quot;: &quot;City&quot;,&#xd;
+		&quot;countryCode&quot;: &quot;BR&quot;,&#xd;
+		&quot;email&quot;: &quot;lh200@qq.com&quot;,&#xd;
+		&quot;firstName&quot;: &quot;liu&quot;,&#xd;
+		&quot;fullAddress&quot;: &quot;Address line1 Address line2&quot;,&#xd;
+		&quot;fullName&quot;: &quot;liu hua&quot;,&#xd;
+		&quot;grayFullAddress&quot;: &quot;BR Amazonas City Address line1 Address line2&quot;,&#xd;
+		&quot;lastName&quot;: &quot;hua&quot;,&#xd;
+		&quot;phoneNumber&quot;: &quot;1234567800&quot;,&#xd;
+		&quot;postalCode&quot;: &quot;98092&quot;,&#xd;
+		&quot;state&quot;: &quot;Amazonas&quot;&#xd;
+	},&#xd;
+	&quot;skuList&quot;: [&quot;261189102&quot;],&#xd;
+	&quot;sourceId&quot;: &quot;9fb0cfa0-8a35-4f7b-be75-343570fc2a16&quot;,&#xd;
+	&quot;userInfoDto&quot;: {&#xd;
+		&quot;accountAge&quot;: 142,&#xd;
+		&quot;couponNo&quot;: &quot;&quot;,&#xd;
+		&quot;createTime&quot;: 1540276699,&#xd;
+		&quot;growthScore&quot;: 14,&#xd;
+		&quot;hasGuessCheckout&quot;: 0,&#xd;
+		&quot;payeeId&quot;: null,&#xd;
+		&quot;userEmail&quot;: &quot;lh200@qq.com&quot;,&#xd;
+		&quot;userId&quot;: 6454350836788105216,&#xd;
+		&quot;userIp&quot;: &quot;10.33.1.112&quot;,&#xd;
+		&quot;userLevel&quot;: 1&#xd;
+	}&#xd;
+}&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path"></stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="false">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+    &quot;header&quot;: {&#xd;
+        &quot;service&quot;: &quot;com.globalegrow.spi.pay.inter.PayRiskService&quot;,&#xd;
+        &quot;method&quot;: &quot;payAfterRiskControl&quot;,&#xd;
+        &quot;domain&quot;: &quot;&quot;,&#xd;
+        &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+	   &quot;tokenId&quot;:&quot;9c17830f2e3c20e61948653d0697be8f&quot;&#xd;
+    },&#xd;
+    &quot;body&quot;: {&#xd;
+    &quot;sourceId&quot;:&quot;d27dd0a7-fdb1-4ba6-a601-94a308a2b545&quot;,&#xd;
+    &quot;billingAddressDto&quot;:{&#xd;
+        &quot;firstName&quot;:&quot;N**ls&quot;,&#xd;
+        &quot;lastName&quot;:&quot;Aug****ger&quot;,&#xd;
+        &quot;countryCode&quot;:&quot;CH&quot;,&#xd;
+        &quot;state&quot;:&quot;Vaud&quot;,&#xd;
+        &quot;city&quot;:&quot;L&apos;Abbaye&quot;,&#xd;
+        &quot;addressLine1&quot;:&quot;Pre de la Cure&quot;,&#xd;
+        &quot;addressLine2&quot;:&quot;14&quot;,&#xd;
+        &quot;postalCode&quot;:&quot;1344&quot;,&#xd;
+        &quot;telephone&quot;:&quot;788***062&quot;,&#xd;
+        &quot;streetNumber&quot;:null,&#xd;
+        &quot;email&quot;:&quot;xneeel******il.com&quot;&#xd;
+    },&#xd;
+    &quot;shippingAddressDto&quot;:{&#xd;
+        &quot;firstName&quot;:&quot;N**ls&quot;,&#xd;
+        &quot;lastName&quot;:&quot;Aug****ger&quot;,&#xd;
+        &quot;address1&quot;:&quot;Pre de la Cure&quot;,&#xd;
+        &quot;address2&quot;:&quot;14&quot;,&#xd;
+        &quot;countryCode&quot;:&quot;CH&quot;,&#xd;
+        &quot;city&quot;:&quot;L&apos;Abbaye&quot;,&#xd;
+        &quot;state&quot;:&quot;Vaud&quot;,&#xd;
+        &quot;postalCode&quot;:&quot;1344&quot;,&#xd;
+        &quot;phoneNumber&quot;:&quot;788***062&quot;,&#xd;
+        &quot;email&quot;:&quot;xneeel******il.com&quot;&#xd;
+    },&#xd;
+    &quot;goodAttributeList&quot;:[&#xd;
+        {&#xd;
+            &quot;id&quot;:&quot;0&quot;,&#xd;
+            &quot;unitPrice&quot;:&quot;22.99&quot;,&#xd;
+            &quot;quantity&quot;:&quot;1&quot;,&#xd;
+            &quot;productName&quot;:&quot;Sweat à Capuche Rayé avec Poche Kangourou&quot;,&#xd;
+            &quot;productSKU&quot;:&quot;236260204&quot;,&#xd;
+            &quot;categoryName&quot;:&quot;Homme&quot;&#xd;
+        },&#xd;
+        {&#xd;
+            &quot;id&quot;:&quot;1&quot;,&#xd;
+            &quot;unitPrice&quot;:&quot;15.69&quot;,&#xd;
+            &quot;quantity&quot;:&quot;1&quot;,&#xd;
+            &quot;productName&quot;:&quot;Sweat à Capuche Lettre Imprimée en Laine&quot;,&#xd;
+            &quot;productSKU&quot;:&quot;314612106&quot;,&#xd;
+            &quot;categoryName&quot;:&quot;Homme&quot;&#xd;
+        }&#xd;
+    ],&#xd;
+    &quot;payOrderInfoDto&quot;:{&#xd;
+        &quot;parentOrderSn&quot;:&quot;${__RandomString(15,0123456789)&quot;,&#xd;
+        &quot;channelCode&quot;:&quot;checkout_credit&quot;,&#xd;
+        &quot;paySn&quot;:&quot;${__RandomString(15,0123456789)&quot;,&#xd;
+        &quot;transactionId&quot;:&quot;charge_89DB5E770J1C48073CEA&quot;,&#xd;
+        &quot;payCurrencyCode&quot;:&quot;USD&quot;,&#xd;
+        &quot;payCurrencyRate&quot;:&quot;1.0&quot;,&#xd;
+        &quot;payCurrencyAmount&quot;:&quot;50.45&quot;,&#xd;
+        &quot;siteCode&quot;:&quot;ZF&quot;,&#xd;
+        &quot;platform&quot;:&quot;1&quot;,&#xd;
+        &quot;cyberSession&quot;:&quot;03361477-168d-4c00-8293-53f6099bba14&quot;,&#xd;
+        &quot;appVersion&quot;:null,&#xd;
+        &quot;userIp&quot;:&quot;188.63.201.241&quot;,&#xd;
+        &quot;orderAmount&quot;:&quot;50.45&quot;,&#xd;
+        &quot;payAmount&quot;:&quot;50.45&quot;,&#xd;
+        &quot;installments&quot;:null,&#xd;
+        &quot;hasShippedRecords&quot;:&quot;0&quot;,&#xd;
+        &quot;hasUseIntegral&quot;:&quot;1&quot;,&#xd;
+        &quot;hasUseCoupon&quot;:&quot;1&quot;,&#xd;
+        &quot;cybersourceCopyOrManual&quot;:&quot;manual&quot;,&#xd;
+        &quot;hasGuessCheckout&quot;:null,&#xd;
+        &quot;ebanxCpf&quot;:null,&#xd;
+        &quot;dropShipping&quot;:null,&#xd;
+        &quot;checkoutType&quot;:&quot;0&quot;,&#xd;
+        &quot;logisticsMethod&quot;:&quot;Livraison Express&quot;,&#xd;
+        &quot;logisticsLevel&quot;:&quot;3&quot;,&#xd;
+        &quot;logisticsGroupName&quot;:&quot;Livraison Express&quot;,&#xd;
+        &quot;shippingFeeCurrencyAmount&quot;:&quot;15.91&quot;,&#xd;
+        &quot;insuranceFeeCurrencyAmount&quot;:&quot;1.66&quot;,&#xd;
+        &quot;discountCurrencyAmount&quot;:&quot;5.8&quot;,&#xd;
+        &quot;orderCreateTime&quot;:&quot;1548061762&quot;,&#xd;
+        &quot;currencyCode&quot;:&quot;USD&quot;,&#xd;
+        &quot;profileId&quot;:null,&#xd;
+        &quot;insuranceFeeSum&quot;:&quot;1.66&quot;,&#xd;
+        &quot;couponNo&quot;:null&#xd;
+    },&#xd;
+    &quot;userInfoDto&quot;:{&#xd;
+        &quot;userId&quot;:&quot;21494679&quot;,&#xd;
+        &quot;userEmail&quot;:&quot;xneeel******il.com&quot;,&#xd;
+        &quot;payeeId&quot;:null,&#xd;
+        &quot;createTime&quot;:&quot;1548027097&quot;,&#xd;
+        &quot;userIp&quot;:&quot;188.63.201.241&quot;,&#xd;
+        &quot;hasGuessCheckout&quot;:null,&#xd;
+        &quot;userLevel&quot;:null,&#xd;
+        &quot;growthScore&quot;:null,&#xd;
+        &quot;couponNo&quot;:&quot;AA737E095459&quot;&#xd;
+    },&#xd;
+    &quot;cardDto&quot;:{&#xd;
+        &quot;fullName&quot;:&quot;Neels******urger&quot;,&#xd;
+        &quot;cardNumber&quot;:&quot;53077******19163&quot;,&#xd;
+        &quot;expirationMonth&quot;:&quot;1*&quot;,&#xd;
+        &quot;expirationYear&quot;:&quot;1*&quot;,&#xd;
+        &quot;cardType&quot;:&quot;MASTERCARD_CREDIT&quot;&#xd;
+    },&#xd;
+    &quot;merchantDefinedData&quot;:{&#xd;
+        &quot;customFieldList&quot;:[&#xd;
+        ]&#xd;
+    },&#xd;
+    &quot;paypalInfoDto&quot;:null,&#xd;
+    &quot;riskControlInfo&quot;:{&#xd;
+        &quot;cybersourceDecision&quot;:null,&#xd;
+        &quot;reasonCode&quot;:null,&#xd;
+        &quot;afsResult&quot;:null,&#xd;
+        &quot;middleRiskResult&quot;:null,&#xd;
+        &quot;risk3dResult&quot;:null,&#xd;
+        &quot;cyberRequestId&quot;:null,&#xd;
+        &quot;has3d&quot;:&quot;false&quot;&#xd;
+    },&#xd;
+    &quot;googlePayCbyDto&quot;:{&quot;billingAddress&quot;:{&quot;address2&quot;:&quot;2222&quot;,&quot;address3&quot;:&quot;&quot;,&quot;administrativearea&quot;:&quot;九龍&quot;,&quot;adress1&quot;:null,&quot;countrycode&quot;:&quot;HK&quot;,&quot;locality&quot;:&quot;九龍城&quot;,&quot;name&quot;:&quot;fabgshuicheng&quot;,&quot;postalcode&quot;:&quot;&quot;},&quot;cardDetails&quot;:&quot;2764&quot;,&quot;cardType&quot;:&quot;VISA&quot;,&quot;email&quot;:&quot;fangshuicheng@163.com&quot;}&#xd;
+&#xd;
+,&#xd;
+    &quot;cyberSession&quot;:null&#xd;
+}&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path"></stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="googlepay事后风控调用" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+    &quot;header&quot;: {&#xd;
+        &quot;service&quot;: &quot;com.globalegrow.spi.pay.inter.PayRiskService&quot;,&#xd;
+        &quot;method&quot;: &quot;payAfterRiskControl&quot;,&#xd;
+        &quot;domain&quot;: &quot;&quot;,&#xd;
+        &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+	   &quot;tokenId&quot;:&quot;${token2}&quot;&#xd;
+    },&#xd;
+    &quot;body&quot;: {&#xd;
+    &quot;sourceId&quot;:&quot;d27dd0a7-fdb1-4ba6-a601-94a308a2b545&quot;,&#xd;
+    &quot;billingAddressDto&quot;:{&#xd;
+        &quot;firstName&quot;:&quot;N**ls&quot;,&#xd;
+        &quot;lastName&quot;:&quot;Aug****ger&quot;,&#xd;
+        &quot;countryCode&quot;:&quot;CH&quot;,&#xd;
+        &quot;state&quot;:&quot;Vaud&quot;,&#xd;
+        &quot;city&quot;:&quot;L&apos;Abbaye&quot;,&#xd;
+        &quot;addressLine1&quot;:&quot;Pre de la Cure&quot;,&#xd;
+        &quot;addressLine2&quot;:&quot;14&quot;,&#xd;
+        &quot;postalCode&quot;:&quot;1344&quot;,&#xd;
+        &quot;telephone&quot;:&quot;1234567811&quot;,&#xd;
+        &quot;streetNumber&quot;:null,&#xd;
+        &quot;email&quot;:&quot;xneeel******il.com&quot;&#xd;
+    },&#xd;
+    &quot;shippingAddressDto&quot;:{&#xd;
+        &quot;firstName&quot;:&quot;N**ls&quot;,&#xd;
+        &quot;lastName&quot;:&quot;Aug****ger&quot;,&#xd;
+        &quot;address1&quot;:&quot;Pre de la Cure&quot;,&#xd;
+        &quot;address2&quot;:&quot;14&quot;,&#xd;
+        &quot;countryCode&quot;:&quot;CH&quot;,&#xd;
+        &quot;city&quot;:&quot;L&apos;Abbaye&quot;,&#xd;
+        &quot;state&quot;:&quot;Vaud&quot;,&#xd;
+        &quot;postalCode&quot;:&quot;1344&quot;,&#xd;
+        &quot;phoneNumber&quot;:&quot;1234567800&quot;,&#xd;
+        &quot;email&quot;:&quot;xneeel******il.com&quot;&#xd;
+    },&#xd;
+    &quot;goodAttributeList&quot;:[&#xd;
+        {&#xd;
+            &quot;id&quot;:&quot;0&quot;,&#xd;
+            &quot;unitPrice&quot;:&quot;22.99&quot;,&#xd;
+            &quot;quantity&quot;:&quot;1&quot;,&#xd;
+            &quot;productName&quot;:&quot;Sweat à Capuche Rayé avec Poche Kangourou&quot;,&#xd;
+            &quot;productSKU&quot;:&quot;236260204&quot;,&#xd;
+            &quot;categoryName&quot;:&quot;Homme&quot;&#xd;
+        },&#xd;
+        {&#xd;
+            &quot;id&quot;:&quot;1&quot;,&#xd;
+            &quot;unitPrice&quot;:&quot;15.69&quot;,&#xd;
+            &quot;quantity&quot;:&quot;1&quot;,&#xd;
+            &quot;productName&quot;:&quot;Sweat à Capuche Lettre Imprimée en Laine&quot;,&#xd;
+            &quot;productSKU&quot;:&quot;314612106&quot;,&#xd;
+            &quot;categoryName&quot;:&quot;Homme&quot;&#xd;
+        }&#xd;
+    ],&#xd;
+    &quot;payOrderInfoDto&quot;:{&#xd;
+        &quot;parentOrderSn&quot;:&quot;test${__RandomString(12,0123456789)}&quot;,&#xd;
+        &quot;channelCode&quot;:&quot;WPG_Pay&quot;,&#xd;
+        &quot;paySn&quot;:&quot;Test${__RandomString(12,0123456789)}&quot;,&#xd;
+        &quot;transactionId&quot;:&quot;charge_89DB5E770J1C48073CEA&quot;,&#xd;
+        &quot;payCurrencyCode&quot;:&quot;USD&quot;,&#xd;
+        &quot;payCurrencyRate&quot;:&quot;1.0&quot;,&#xd;
+        &quot;payCurrencyAmount&quot;:&quot;50.45&quot;,&#xd;
+        &quot;siteCode&quot;:&quot;GB&quot;,&#xd;
+        &quot;platform&quot;:&quot;1&quot;,&#xd;
+        &quot;cyberSession&quot;:&quot;03361477-168d-4c00-8293-53f6099bba14&quot;,&#xd;
+        &quot;appVersion&quot;:null,&#xd;
+        &quot;userIp&quot;:&quot;188.63.201.241&quot;,&#xd;
+        &quot;orderAmount&quot;:&quot;50.45&quot;,&#xd;
+        &quot;payAmount&quot;:&quot;50.45&quot;,&#xd;
+        &quot;installments&quot;:null,&#xd;
+        &quot;hasShippedRecords&quot;:&quot;0&quot;,&#xd;
+        &quot;hasUseIntegral&quot;:&quot;1&quot;,&#xd;
+        &quot;hasUseCoupon&quot;:&quot;1&quot;,&#xd;
+        &quot;cybersourceCopyOrManual&quot;:&quot;manual&quot;,&#xd;
+        &quot;hasGuessCheckout&quot;:null,&#xd;
+        &quot;ebanxCpf&quot;:null,&#xd;
+        &quot;dropShipping&quot;:null,&#xd;
+        &quot;checkoutType&quot;:&quot;0&quot;,&#xd;
+        &quot;logisticsMethod&quot;:&quot;Livraison Express&quot;,&#xd;
+        &quot;logisticsLevel&quot;:&quot;3&quot;,&#xd;
+        &quot;logisticsGroupName&quot;:&quot;Livraison Express&quot;,&#xd;
+        &quot;shippingFeeCurrencyAmount&quot;:&quot;15.91&quot;,&#xd;
+        &quot;insuranceFeeCurrencyAmount&quot;:&quot;1.66&quot;,&#xd;
+        &quot;discountCurrencyAmount&quot;:&quot;5.8&quot;,&#xd;
+        &quot;orderCreateTime&quot;:&quot;1548061762&quot;,&#xd;
+        &quot;currencyCode&quot;:&quot;USD&quot;,&#xd;
+        &quot;profileId&quot;:null,&#xd;
+        &quot;insuranceFeeSum&quot;:&quot;1.66&quot;,&#xd;
+        &quot;couponNo&quot;:null&#xd;
+    },&#xd;
+    &quot;userInfoDto&quot;:{&#xd;
+        &quot;userId&quot;:&quot;21494679&quot;,&#xd;
+        &quot;userEmail&quot;:&quot;xneeel******il.com&quot;,&#xd;
+        &quot;payeeId&quot;:null,&#xd;
+        &quot;createTime&quot;:&quot;1548027097&quot;,&#xd;
+        &quot;userIp&quot;:&quot;188.63.201.241&quot;,&#xd;
+        &quot;hasGuessCheckout&quot;:null,&#xd;
+        &quot;userLevel&quot;:null,&#xd;
+        &quot;growthScore&quot;:null,&#xd;
+        &quot;couponNo&quot;:&quot;AA737E095459&quot;&#xd;
+    },&#xd;
+    &quot;cardDto&quot;:{&#xd;
+        &quot;fullName&quot;:&quot;Neels******urger&quot;,&#xd;
+        &quot;cardNumber&quot;:&quot;53077******19163&quot;,&#xd;
+        &quot;expirationMonth&quot;:&quot;1*&quot;,&#xd;
+        &quot;expirationYear&quot;:&quot;1*&quot;,&#xd;
+        &quot;cardType&quot;:&quot;MASTERCARD_CREDIT&quot;&#xd;
+    },&#xd;
+    &quot;merchantDefinedData&quot;:{&#xd;
+        &quot;customFieldList&quot;:[&#xd;
+        ]&#xd;
+    },&#xd;
+    &quot;paypalInfoDto&quot;:null,&#xd;
+    &quot;riskControlInfo&quot;:{&#xd;
+        &quot;cybersourceDecision&quot;:null,&#xd;
+        &quot;reasonCode&quot;:null,&#xd;
+        &quot;afsResult&quot;:null,&#xd;
+        &quot;middleRiskResult&quot;:null,&#xd;
+        &quot;risk3dResult&quot;:null,&#xd;
+        &quot;cyberRequestId&quot;:null,&#xd;
+        &quot;has3d&quot;:&quot;false&quot;&#xd;
+    },&#xd;
+    &quot;googlePayCbyDto&quot;:{&quot;billingAddress&quot;:{&quot;address2&quot;:&quot;2222&quot;,&quot;address3&quot;:&quot;&quot;,&quot;administrativearea&quot;:&quot;九龍&quot;,&quot;adress1&quot;:null,&quot;countrycode&quot;:&quot;HK&quot;,&quot;locality&quot;:&quot;九龍城&quot;,&quot;name&quot;:&quot;fabgshuicheng&quot;,&quot;postalcode&quot;:&quot;&quot;},&quot;cardDetails&quot;:&quot;2764&quot;,&quot;cardType&quot;:&quot;VISA&quot;,&quot;email&quot;:&quot;fangshuicheng@163.com&quot;}&#xd;
+&#xd;
+,&#xd;
+    &quot;cyberSession&quot;:null&#xd;
+}&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path"></stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="applepay事中风控" enabled="false">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+    &quot;header&quot;: {&#xd;
+        &quot;service&quot;: &quot;com.globalegrow.spi.pay.inter.PayRiskService&quot;,&#xd;
+        &quot;method&quot;: &quot;checkBeforRiskControl&quot;,&#xd;
+        &quot;domain&quot;: &quot;&quot;,&#xd;
+        &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+	   &quot;tokenId&quot;:&quot;${token2}&quot;&#xd;
+    },&#xd;
+    &quot;body&quot;: {&quot;callCount&quot;:1,&quot;callRiskCount&quot;:0,&quot;checkoutReq&quot;:{&quot;appVersion&quot;:&quot;4.5.4&quot;,&quot;billingAddressInfo&quot;:{&quot;addressLine1&quot;:&quot;hhhhh&quot;,&quot;addressLine2&quot;:&quot;kaifxiingighihjg&quot;,&quot;city&quot;:&quot;dfdf&quot;,&quot;countryCode&quot;:&quot;MX&quot;,&quot;email&quot;:&quot;583241254@qq.com&quot;,&quot;firstName&quot;:&quot;hhh&quot;,&quot;lastName&quot;:&quot;hhh&quot;,&quot;postalCode&quot;:&quot;70297&quot;,&quot;state&quot;:&quot;Aguascalientes&quot;,&quot;streetNumber&quot;:null,&quot;telephone&quot;:&quot;123456768&quot;},&quot;cancelUrl&quot;:&quot;http://app-zaful.com.release.php5.egomsl.com/soa_pay/cancel/&quot;,&quot;checkoutOrderTag&quot;:null,&quot;checkoutType&quot;:0,&quot;cooperationType&quot;:null,&quot;dropShipping&quot;:null,&quot;isPromotionGoods&quot;:false,&quot;lang&quot;:&quot;en&quot;,&quot;notifyUrl&quot;:&quot;http://m.wap-zaful.com.master.php5.egomsl.com/co-pay-ac-notify.html&quot;,&quot;orderInfos&quot;:[{&quot;activityDeductAmount&quot;:0.0,&quot;contrabands&quot;:null,&quot;couponDeductAmount&quot;:0.0,&quot;createTime&quot;:1552880389,&quot;currencyCode&quot;:&quot;USD&quot;,&quot;currencyRate&quot;:1.0,&quot;expireTime&quot;:1553139589,&quot;exponent&quot;:2,&quot;handlingFee&quot;:null,&quot;hasUseCoupon&quot;:0,&quot;insuranceFee&quot;:0.0,&quot;integralDeductAmount&quot;:0.0,&quot;logisticCouponDeductAmount&quot;:null,&quot;logisticsGroupName&quot;:&quot;Standard Shipping&quot;,&quot;logisticsLevel&quot;:&quot;2&quot;,&quot;logisticsMethod&quot;:&quot;Standard Shipping&quot;,&quot;orderAddressInfo&quot;:{&quot;addressLine1&quot;:&quot;sh sjdb&quot;,&quot;addressLine2&quot;:&quot;&quot;,&quot;city&quot;:&quot;Dupo&quot;,&quot;countryCode&quot;:&quot;US&quot;,&quot;countryName&quot;:&quot;United States of America&quot;,&quot;email&quot;:&quot;zhongliping-buyer@globalegrow.com&quot;,&quot;firstName&quot;:&quot;test&quot;,&quot;lastName&quot;:&quot;buyer&quot;,&quot;postalCode&quot;:&quot;62239&quot;,&quot;state&quot;:&quot;Illinois&quot;,&quot;telephone&quot;:&quot;1234567890&quot;},&quot;orderAmount&quot;:31.21,&quot;orderCurrencyAmount&quot;:null,&quot;orderGoodsInfos&quot;:[{&quot;catName&quot;:&quot;Two-Piece Outfits&quot;,&quot;catalogue&quot;:&quot;women價格 &gt; an accessoriessactivewear top &gt; Two-Piece Outfits&quot;,&quot;categoryId&quot;:59,&quot;categoryName&quot;:&quot;women價格&quot;,&quot;goodsSn&quot;:&quot;210882301&quot;,&quot;operationType&quot;:null,&quot;price&quot;:24.49,&quot;qty&quot;:1,&quot;shopCode&quot;:null,&quot;title&quot;:&quot;Off Shoulder Crop Top and Sunflower Shorts&quot;}],&quot;orderSn&quot;:&quot;UA1903172239498204&quot;,&quot;orderType&quot;:0,&quot;shippingFee&quot;:6.72,&quot;taxesAmount&quot;:null,&quot;trackingFee&quot;:0.0,&quot;userEmail&quot;:&quot;583241254@qq.com&quot;,&quot;userId&quot;:5455}],&quot;parentOrderSn&quot;:&quot;UA1903172239498204&quot;,&quot;payAmount&quot;:31.21,&quot;payCurrencyAmount&quot;:null,&quot;payExtendsInfoDto&quot;:null,&quot;pipelineCode&quot;:&quot;ZF&quot;,&quot;platform&quot;:3,&quot;prepayInfo&quot;:null,&quot;returnUrl&quot;:&quot;http://app-zaful.com.release.php5.egomsl.com/soa_pay/payok/&quot;,&quot;roundType&quot;:null,&quot;siteCode&quot;:&quot;ZF&quot;,&quot;swellOrderAmount&quot;:null,&quot;userInfo&quot;:{&quot;couponNo&quot;:null,&quot;createTime&quot;:1531101501,&quot;growthScore&quot;:null,&quot;hasGuessCheckout&quot;:null,&quot;hasShippedRecords&quot;:1,&quot;isNewUser&quot;:0,&quot;userEmail&quot;:&quot;583241254@qq.com&quot;,&quot;userId&quot;:5455,&quot;userIp&quot;:&quot;10.33.1.247&quot;,&quot;userLevel&quot;:null}},&quot;hasCheckAfterRisk&quot;:false,&quot;hasCheckBeforeRisk&quot;:false,&quot;payChannelInfo&quot;:{&quot;adnTrspIssuerId&quot;:null,&quot;adyenDeviceFingerprint&quot;:null,&quot;adyenccCardEncrypted&quot;:null,&quot;billingAddressInfo&quot;:null,&quot;cardInfo&quot;:null,&quot;channelCode&quot;:&quot;APPLE_PAY&quot;,&quot;cybersourceCopyOrManual&quot;:null,&quot;ebanxCpf&quot;:null,&quot;ebanxCpfType&quot;:null,&quot;ebanxInstallmentId&quot;:null,&quot;ebanxInstallments&quot;:null,&quot;ebanxPaymentTypeCode&quot;:null,&quot;gcCseData&quot;:null,&quot;giftCardSn&quot;:null,&quot;idealIssuerId&quot;:null,&quot;instalmentInfo&quot;:null,&quot;isVerify3ds&quot;:false,&quot;payChannelAccount&quot;:{&quot;account&quot;:&quot;WF7K8PVB597TNIHSO5ST&quot;,&quot;authCode&quot;:&quot;{\&quot;user\&quot;:\&quot;WF7K8PVB597TNIHSO5ST\&quot;,\&quot;pwd\&quot;:\&quot;asdasdasd123\&quot;,\&quot;merchantCode\&quot;:\&quot;GEGROWZFUSD\&quot;,\&quot;installationId\&quot;:\&quot;\&quot;}&quot;},&quot;payuTrccInstallments&quot;:null,&quot;profileID&quot;:null,&quot;pseBankCode&quot;:null,&quot;qiwiTel&quot;:null,&quot;riskChannel&quot;:null,&quot;worldpayAcceptHeader&quot;:&quot;*/*&quot;,&quot;worldpayCseData&quot;:null,&quot;worldpayUserAgentHeader&quot;:&quot;Zaful/4.5.4 (iPhone; iOS 11.4.1; Scale/2.00)&quot;},&quot;payChannels&quot;:[{&quot;channelCode&quot;:&quot;APPLE_PAY&quot;}],&quot;payGateway&quot;:{&quot;cancelUrl&quot;:&quot;http://app-zaful.com.release.php5.egomsl.com/soa_pay/cancel/&quot;,&quot;channelCode&quot;:&quot;APPLE_PAY&quot;,&quot;checkoutType&quot;:0,&quot;completedTime&quot;:null,&quot;countryCode&quot;:&quot;US&quot;,&quot;createTime&quot;:1552880413,&quot;currencyChannel&quot;:8,&quot;currencyCode&quot;:&quot;USD&quot;,&quot;currencyRate&quot;:1.0,&quot;errorCode&quot;:null,&quot;exponent&quot;:2,&quot;id&quot;:null,&quot;installmentInterestAmount&quot;:0,&quot;isVerify3ds&quot;:false,&quot;lang&quot;:&quot;en&quot;,&quot;notifyUrl&quot;:&quot;http://m.wap-zaful.com.master.php5.egomsl.com/co-pay-ac-notify.html&quot;,&quot;parentOrderSn&quot;:&quot;UA1903172239498204&quot;,&quot;parentTradeSn&quot;:&quot;T190318013489114013RRC&quot;,&quot;payAccount&quot;:&quot;WF7K8PVB597TNIHSO5ST&quot;,&quot;payAmount&quot;:31.21,&quot;payCurrencyAmount&quot;:31.21,&quot;payDeductAmount&quot;:0,&quot;paySn&quot;:&quot;P1903180134891140136&quot;,&quot;payStatus&quot;:0,&quot;pipelineCode&quot;:&quot;ZF&quot;,&quot;platform&quot;:3,&quot;refundAmount&quot;:null,&quot;refundTime&quot;:null,&quot;refundType&quot;:null,&quot;returnUrl&quot;:&quot;http://app-zaful.com.release.php5.egomsl.com/soa_pay/payok/&quot;,&quot;siteCode&quot;:&quot;ZF&quot;,&quot;tradeSn&quot;:&quot;T190318013489114013RRC&quot;,&quot;transactionId&quot;:&quot;&quot;,&quot;updateTime&quot;:1552880413,&quot;userEmail&quot;:&quot;583241254@qq.com&quot;,&quot;userId&quot;:5455,&quot;userIp&quot;:&quot;10.33.1.247&quot;,&quot;verify3dsResult&quot;:null},&quot;payOrderInfo&quot;:{&quot;appVersion&quot;:&quot;4.5.4&quot;,&quot;billingAddressInfo&quot;:{&quot;addressLine1&quot;:&quot;hhhhh&quot;,&quot;addressLine2&quot;:&quot;kaifxiingighihjg&quot;,&quot;city&quot;:&quot;dfdf&quot;,&quot;countryCode&quot;:&quot;MX&quot;,&quot;email&quot;:&quot;583241254@qq.com&quot;,&quot;firstName&quot;:&quot;hhh&quot;,&quot;lastName&quot;:&quot;hhh&quot;,&quot;postalCode&quot;:&quot;70297&quot;,&quot;state&quot;:&quot;Aguascalientes&quot;,&quot;streetNumber&quot;:null,&quot;telephone&quot;:&quot;123456768&quot;},&quot;cancelUrl&quot;:&quot;http://app-zaful.com.release.php5.egomsl.com/soa_pay/cancel/&quot;,&quot;checkoutType&quot;:0,&quot;contrands&quot;:null,&quot;cooperationType&quot;:null,&quot;discountCurrencyAmount&quot;:0.0,&quot;handlingFeeCurrencyAmount&quot;:0,&quot;hasShippedRecords&quot;:1,&quot;hasUseCoupon&quot;:0,&quot;hasUseIntegral&quot;:1,&quot;insuranceFeeCurrencyAmount&quot;:0.0,&quot;lang&quot;:&quot;en&quot;,&quot;logisticsGroupName&quot;:&quot;Standard Shipping&quot;,&quot;logisticsLevel&quot;:&quot;2&quot;,&quot;logisticsMethod&quot;:&quot;Standard Shipping&quot;,&quot;notifyUrl&quot;:&quot;http://m.wap-zaful.com.master.php5.egomsl.com/co-pay-ac-notify.html&quot;,&quot;orderAddressInfo&quot;:{&quot;addressLine1&quot;:&quot;sh sjdb&quot;,&quot;addressLine2&quot;:&quot;&quot;,&quot;city&quot;:&quot;Dupo&quot;,&quot;countryCode&quot;:&quot;US&quot;,&quot;email&quot;:&quot;zhongliping-buyer@globalegrow.com&quot;,&quot;firstName&quot;:&quot;test&quot;,&quot;fullAddress&quot;:&quot;sh sjdb &quot;,&quot;fullName&quot;:&quot;test buyer&quot;,&quot;grayFullAddress&quot;:&quot;US Illinois Dupo sh sjdb &quot;,&quot;lastName&quot;:&quot;buyer&quot;,&quot;postalCode&quot;:&quot;62239&quot;,&quot;state&quot;:&quot;Illinois&quot;,&quot;telephone&quot;:&quot;1234567890&quot;},&quot;orderAmount&quot;:31.21,&quot;orderCreateTime&quot;:1552880389,&quot;orderCurrencyAmount&quot;:31.21,&quot;orderCurrencyCode&quot;:&quot;USD&quot;,&quot;orderCurrencyRate&quot;:1.0,&quot;orderExponent&quot;:2,&quot;orderGoodsInfos&quot;:[{&quot;categoryId&quot;:59,&quot;categoryName&quot;:&quot;women價格&quot;,&quot;goodsSn&quot;:&quot;210882301&quot;,&quot;operationType&quot;:null,&quot;price&quot;:24.49,&quot;qty&quot;:1,&quot;shopCode&quot;:null,&quot;title&quot;:&quot;Off Shoulder Crop Top and Sunflower Shorts&quot;}],&quot;orderInfos&quot;:[{&quot;orderAmount&quot;:31.21,&quot;orderCreateTime&quot;:1552880389,&quot;orderCurrencyAmount&quot;:31.21,&quot;orderCurrencyCode&quot;:&quot;USD&quot;,&quot;orderCurrencyRate&quot;:1.0,&quot;orderExponent&quot;:2,&quot;orderSn&quot;:&quot;UA1903172239498204&quot;}],&quot;orderType&quot;:0,&quot;paidAmount&quot;:0,&quot;paidCurrencyAmount&quot;:null,&quot;parentOrderSn&quot;:&quot;UA1903172239498204&quot;,&quot;payActivityDto&quot;:null,&quot;payAmount&quot;:31.21,&quot;payCurrencyAmount&quot;:31.21,&quot;payCurrencyCode&quot;:&quot;USD&quot;,&quot;payCurrencyRate&quot;:1.0,&quot;payDeductAmount&quot;:0,&quot;payDeductCurrencyAmount&quot;:null,&quot;payExponent&quot;:2,&quot;pipelineCode&quot;:&quot;ZF&quot;,&quot;platform&quot;:3,&quot;returnUrl&quot;:&quot;http://app-zaful.com.release.php5.egomsl.com/soa_pay/payok/&quot;,&quot;shippingFeeCurrencyAmount&quot;:6.72,&quot;shopCodes&quot;:[null],&quot;siteCode&quot;:&quot;ZF&quot;,&quot;skuList&quot;:[&quot;210882301&quot;],&quot;taxesAmount&quot;:null,&quot;taxesCurrencyAmount&quot;:null,&quot;trackingFeeCurrencyAmount&quot;:0.0,&quot;userCreateTime&quot;:1531101501,&quot;userEmail&quot;:&quot;583241254@qq.com&quot;,&quot;userId&quot;:5455,&quot;userIp&quot;:&quot;10.33.1.247&quot;,&quot;walletAmount&quot;:null,&quot;walletCurrencyAmount&quot;:null,&quot;walletFullPay&quot;:false},&quot;payTradeInfo&quot;:{&quot;parentTradeSn&quot;:&quot;T190318013489114013RRC&quot;,&quot;payGatewayOrders&quot;:[{&quot;currencyCode&quot;:&quot;USD&quot;,&quot;currencyRate&quot;:1.0,&quot;exponent&quot;:2,&quot;id&quot;:null,&quot;orderAmount&quot;:31.21,&quot;orderCurrencyAmount&quot;:31.21,&quot;orderSn&quot;:&quot;UA1903172239498204&quot;,&quot;orderTime&quot;:1552880389,&quot;parentOrderSn&quot;:&quot;UA1903172239498204&quot;,&quot;parentTradeSn&quot;:&quot;T190318013489114013RRC&quot;,&quot;pipelineCode&quot;:&quot;ZF&quot;,&quot;platform&quot;:3,&quot;siteCode&quot;:&quot;ZF&quot;,&quot;tradeSn&quot;:&quot;T190318013489114013RRC&quot;,&quot;updateTime&quot;:1552880413,&quot;userId&quot;:5455}],&quot;payGateways&quot;:null,&quot;tradeSn&quot;:&quot;T190318013489114013RRC&quot;},&quot;retrying&quot;:false,&quot;riskControlInfo&quot;:null,&quot;riskRuleInfo&quot;:null,&quot;toPayReq&quot;:{&quot;adnTrspIssuerId&quot;:null,&quot;adyenDeviceFingerprint&quot;:null,&quot;adyenccCardEncrypted&quot;:null,&quot;applePayCbyDto&quot;:{&quot;cardNumber&quot;:&quot;1439&quot;,&quot;cardType&quot;:&quot;Visa&quot;},&quot;billingAddress&quot;:null,&quot;cardInfo&quot;:null,&quot;cashIp&quot;:&quot;10.33.1.247&quot;,&quot;channelCode&quot;:&quot;APPLE_PAY&quot;,&quot;componyInfo&quot;:null,&quot;creditCardRsaStr&quot;:null,&quot;currencyCode&quot;:&quot;USD&quot;,&quot;currencyRate&quot;:1.0,&quot;cyberScan&quot;:null,&quot;cyberSession&quot;:&quot;5776d351-e275-4b1a-a98a-578fae609ff9&quot;,&quot;cybersourceCopyOrManual&quot;:null,&quot;ebanxCpf&quot;:null,&quot;ebanxCpfType&quot;:null,&quot;ebanxInstallmentId&quot;:null,&quot;ebanxInstallments&quot;:null,&quot;ebanxPaymentTypeCode&quot;:null,&quot;gcCseData&quot;:null,&quot;googlePayCbyDto&quot;:null,&quot;idealIssuerId&quot;:null,&quot;isUseWallet&quot;:false,&quot;partialPay&quot;:false,&quot;paySignature&quot;:{&quot;header&quot;:{&quot;ephemeralPublicKey&quot;:&quot;MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEE++c3OGkTX8lzYWKyrhOYdB7/JpR6+dcJO+i/U1GENo6+MyWhtoyGW7mEgycuAVpBNBYo2suyxjIqQLGhMnx+w==&quot;,&quot;publicKeyHash&quot;:&quot;+gepgPLRIXBBUjz+hEs06dkPmJpUyETDY7LolckVevE=&quot;,&quot;transactionId&quot;:&quot;4d5276a084a07875e2d2b07fef67fbe97e3ff92ba3e31ccea6fd2e5a622052b1&quot;},&quot;protocolVersion&quot;:&quot;EC_v1&quot;,&quot;signature&quot;:&quot;MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCAMIID5jCCA4ugAwIBAgIIaGD2mdnMpw8wCgYIKoZIzj0EAwIwejEuMCwGA1UEAwwlQXBwbGUgQXBwbGljYXRpb24gSW50ZWdyYXRpb24gQ0EgLSBHMzEmMCQGA1UECwwdQXBwbGUgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkxEzARBgNVBAoMCkFwcGxlIEluYy4xCzAJBgNVBAYTAlVTMB4XDTE2MDYwMzE4MTY0MFoXDTIxMDYwMjE4MTY0MFowYjEoMCYGA1UEAwwfZWNjLXNtcC1icm9rZXItc2lnbl9VQzQtU0FOREJPWDEUMBIGA1UECwwLaU9TIFN5c3RlbXMxEzARBgNVBAoMCkFwcGxlIEluYy4xCzAJBgNVBAYTAlVTMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEgjD9q8Oc914gLFDZm0US5jfiqQHdbLPgsc1LUmeY+M9OvegaJajCHkwz3c6OKpbC9q+hkwNFxOh6RCbOlRsSlaOCAhEwggINMEUGCCsGAQUFBwEBBDkwNzA1BggrBgEFBQcwAYYpaHR0cDovL29jc3AuYXBwbGUuY29tL29jc3AwNC1hcHBsZWFpY2EzMDIwHQYDVR0OBBYEFAIkMAua7u1GMZekplopnkJxghxFMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUI/JJxE+T5O8n5sT2KGw/orv9LkswggEdBgNVHSAEggEUMIIBEDCCAQwGCSqGSIb3Y2QFATCB/jCBwwYIKwYBBQUHAgIwgbYMgbNSZWxpYW5jZSBvbiB0aGlzIGNlcnRpZmljYXRlIGJ5IGFueSBwYXJ0eSBhc3N1bWVzIGFjY2VwdGFuY2Ugb2YgdGhlIHRoZW4gYXBwbGljYWJsZSBzdGFuZGFyZCB0ZXJtcyBhbmQgY29uZGl0aW9ucyBvZiB1c2UsIGNlcnRpZmljYXRlIHBvbGljeSBhbmQgY2VydGlmaWNhdGlvbiBwcmFjdGljZSBzdGF0ZW1lbnRzLjA2BggrBgEFBQcCARYqaHR0cDovL3d3dy5hcHBsZS5jb20vY2VydGlmaWNhdGVhdXRob3JpdHkvMDQGA1UdHwQtMCswKaAnoCWGI2h0dHA6Ly9jcmwuYXBwbGUuY29tL2FwcGxlYWljYTMuY3JsMA4GA1UdDwEB/wQEAwIHgDAPBgkqhkiG92NkBh0EAgUAMAoGCCqGSM49BAMCA0kAMEYCIQDaHGOui+X2T44R6GVpN7m2nEcr6T6sMjOhZ5NuSo1egwIhAL1a+/hp88DKJ0sv3eT3FxWcs71xmbLKD/QJ3mWagrJNMIIC7jCCAnWgAwIBAgIISW0vvzqY2pcwCgYIKoZIzj0EAwIwZzEbMBkGA1UEAwwSQXBwbGUgUm9vdCBDQSAtIEczMSYwJAYDVQQLDB1BcHBsZSBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eTETMBEGA1UECgwKQXBwbGUgSW5jLjELMAkGA1UEBhMCVVMwHhcNMTQwNTA2MjM0NjMwWhcNMjkwNTA2MjM0NjMwWjB6MS4wLAYDVQQDDCVBcHBsZSBBcHBsaWNhdGlvbiBJbnRlZ3JhdGlvbiBDQSAtIEczMSYwJAYDVQQLDB1BcHBsZSBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eTETMBEGA1UECgwKQXBwbGUgSW5jLjELMAkGA1UEBhMCVVMwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATwFxGEGddkhdUaXiWBB3bogKLv3nuuTeCN/EuT4TNW1WZbNa4i0Jd2DSJOe7oI/XYXzojLdrtmcL7I6CmE/1RFo4H3MIH0MEYGCCsGAQUFBwEBBDowODA2BggrBgEFBQcwAYYqaHR0cDovL29jc3AuYXBwbGUuY29tL29jc3AwNC1hcHBsZXJvb3RjYWczMB0GA1UdDgQWBBQj8knET5Pk7yfmxPYobD+iu/0uSzAPBgNVHRMBAf8EBTADAQH/MB8GA1UdIwQYMBaAFLuw3qFYM4iapIqZ3r6966/ayySrMDcGA1UdHwQwMC4wLKAqoCiGJmh0dHA6Ly9jcmwuYXBwbGUuY29tL2FwcGxlcm9vdGNhZzMuY3JsMA4GA1UdDwEB/wQEAwIBBjAQBgoqhkiG92NkBgIOBAIFADAKBggqhkjOPQQDAgNnADBkAjA6z3KDURaZsYb7NcNWymK/9Bft2Q91TaKOvvGcgV5Ct4n4mPebWZ+Y1UENj53pwv4CMDIt1UQhsKMFd2xd8zg7kGf9F3wsIW2WT8ZyaYISb1T4en0bmcubCYkhYQaZDwmSHQAAMYIBizCCAYcCAQEwgYYwejEuMCwGA1UEAwwlQXBwbGUgQXBwbGljYXRpb24gSW50ZWdyYXRpb24gQ0EgLSBHMzEmMCQGA1UECwwdQXBwbGUgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkxEzARBgNVBAoMCkFwcGxlIEluYy4xCzAJBgNVBAYTAlVTAghoYPaZ2cynDzANBglghkgBZQMEAgEFAKCBlTAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0xOTAzMTgwMzQwMTNaMCoGCSqGSIb3DQEJNDEdMBswDQYJYIZIAWUDBAIBBQChCgYIKoZIzj0EAwIwLwYJKoZIhvcNAQkEMSIEICmw6Y2Wjbm/wgHuH2rHn3SNuZm8+Y72XArcft5yo7pDMAoGCCqGSM49BAMCBEYwRAIgf7GGjeP5zFdCG1RGnL0GRiDBVrKOGoCabTbOP+LyUvQCIFevUctf0htCweEYAfMyFADIGe93m2EGQQeZvO4gHuQvAAAAAAAA&quot;,&quot;signedMessage&quot;:&quot;AiWM5EKDYmy8u+7447onXaY4y0RwNyTspxvKGUzJSSPtObgJEXhne45U8NAVGMI+THWwtAQFRWmXfbuKUY7mAA2QrBOIOPu7VCoyX2hoxZ5DktXme3keF58uGKZy6hpS3joldj9tASfgKS7SbutSmuH6KBXIy45+rlSr6QMUCHp7V6/Z3fN7HBKHumMx375M240um+k4kYAVSslqUTvh+OtbkF0blnizWBCnpm5ok3AJySbX8Eb90y6Huz4dPaopl7qe8s8RqXB8kenn/aUW5w6LMFxIxe9JaieoySZUyNAJI6ZNJPHZV8JFw5N65C7tTaEW/3ziuv1AHq9WG9xTzOzHBbgJOnJGXIYtcO3HI3pizr3e+qwp1tNhsfE0oERSV7237J3Tl0x1Pr/q9b/aXpxMPtM7TPzpQj+t7HVs/U8=&quot;},&quot;payuInnbBankCode&quot;:null,&quot;payuTrccInstallments&quot;:null,&quot;pseBankCode&quot;:null,&quot;qiwiTel&quot;:null,&quot;siteCode&quot;:&quot;ZF&quot;,&quot;token&quot;:null,&quot;tokenisation&quot;:null,&quot;traceID&quot;:&quot;e23d64e1-87e3-48eb-a207-2495397f1140&quot;,&quot;useNewCard&quot;:false,&quot;walletAmount&quot;:null,&quot;walletPassword&quot;:null,&quot;worldpayAcceptHeader&quot;:&quot;*/*&quot;,&quot;worldpayCseData&quot;:null,&quot;worldpayUserAgentHeader&quot;:&quot;Zaful/4.5.4 (iPhone; iOS 11.4.1; Scale/2.00)&quot;},&quot;token&quot;:&quot;O190318013489113954TLM&quot;}&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path"></stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="applepay事后风控" enabled="false">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+    &quot;header&quot;: {&#xd;
+        &quot;service&quot;: &quot;com.globalegrow.spi.pay.inter.PayRiskService&quot;,&#xd;
+        &quot;method&quot;: &quot;payAfterRiskControl&quot;,&#xd;
+        &quot;domain&quot;: &quot;&quot;,&#xd;
+        &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+	   &quot;tokenId&quot;:&quot;${token2}&quot;&#xd;
+    },&#xd;
+    &quot;body&quot;: {&#xd;
+	&quot;billingAddressDto&quot;: null,&#xd;
+	&quot;cardDto&quot;: null,&#xd;
+	&quot;cyberSession&quot;: null,&#xd;
+	&quot;goodAttributeList&quot;: [{&#xd;
+		&quot;categoryName&quot;: &quot;women價格&quot;,&#xd;
+		&quot;id&quot;: 0,&#xd;
+		&quot;productName&quot;: &quot;Off Shoulder Crop Top and Sunflower Shorts&quot;,&#xd;
+		&quot;productSKU&quot;: &quot;210882301&quot;,&#xd;
+		&quot;quantity&quot;: 1,&#xd;
+		&quot;unitPrice&quot;: 24.49&#xd;
+	}],&#xd;
+	&quot;googlePayCbyDto&quot;: null,&#xd;
+	&quot;merchantDefinedData&quot;: {&#xd;
+		&quot;customFieldList&quot;: [{&#xd;
+			&quot;id&quot;: &quot;1&quot;,&#xd;
+			&quot;values&quot;: [&quot;10.33.1.247&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;2&quot;,&#xd;
+			&quot;values&quot;: [&quot;210882301&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;3&quot;,&#xd;
+			&quot;values&quot;: [&quot;583241254@qq.com&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;4&quot;,&#xd;
+			&quot;values&quot;: [&quot;zhongliping-buyer@globalegrow.com&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;6&quot;,&#xd;
+			&quot;values&quot;: [&quot;US&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;8&quot;,&#xd;
+			&quot;values&quot;: [&quot;test&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;9&quot;,&#xd;
+			&quot;values&quot;: [&quot;Illinois&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;10&quot;,&#xd;
+			&quot;values&quot;: [&quot;Dupo&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;11&quot;,&#xd;
+			&quot;values&quot;: [&quot;&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;12&quot;,&#xd;
+			&quot;values&quot;: [&quot;62239&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;13&quot;,&#xd;
+			&quot;values&quot;: [&quot;1234567890&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;24&quot;,&#xd;
+			&quot;values&quot;: [&quot;10.33.1.247&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;25&quot;,&#xd;
+			&quot;values&quot;: [&quot;qq.com&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;30&quot;,&#xd;
+			&quot;values&quot;: [&quot;10.33.1.247&quot;]&#xd;
+		},&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;31&quot;,&#xd;
+			&quot;values&quot;: [&quot;10.33.1.247&quot;]&#xd;
+		}]&#xd;
+	},&#xd;
+	&quot;payOrderInfoDto&quot;: {&#xd;
+		&quot;appVersion&quot;: &quot;4.5.4&quot;,&#xd;
+		&quot;channelCode&quot;: &quot;APPLE_PAY&quot;,&#xd;
+		&quot;checkoutType&quot;: 0,&#xd;
+		&quot;couponNo&quot;: null,&#xd;
+		&quot;currencyCode&quot;: &quot;USD&quot;,&#xd;
+		&quot;cyberSession&quot;: &quot;5776d351-e275-4b1a-a98a-578fae609ff9&quot;,&#xd;
+		&quot;cybersourceCopyOrManual&quot;: null,&#xd;
+		&quot;discountCurrencyAmount&quot;: 0.0,&#xd;
+		&quot;dropShipping&quot;: null,&#xd;
+		&quot;ebanxCpf&quot;: null,&#xd;
+		&quot;hasGuessCheckout&quot;: null,&#xd;
+		&quot;hasShippedRecords&quot;: 1,&#xd;
+		&quot;hasUseCoupon&quot;: 0,&#xd;
+		&quot;hasUseIntegral&quot;: 1,&#xd;
+		&quot;installments&quot;: null,&#xd;
+		&quot;insuranceFeeCurrencyAmount&quot;: 0.0,&#xd;
+		&quot;insuranceFeeSum&quot;: 0.0,&#xd;
+		&quot;logisticsGroupName&quot;: &quot;Standard Shipping&quot;,&#xd;
+		&quot;logisticsLevel&quot;: &quot;2&quot;,&#xd;
+		&quot;logisticsMethod&quot;: &quot;Standard Shipping&quot;,&#xd;
+		&quot;orderAmount&quot;: 31.21,&#xd;
+		&quot;orderCreateTime&quot;: 1552880389,&#xd;
+		&quot;parentOrderSn&quot;: &quot;test${__RandomString(12,0123456789)}&quot;,&#xd;
+		&quot;payAmount&quot;: 31.21,&#xd;
+		&quot;payCurrencyAmount&quot;: 31.21,&#xd;
+		&quot;payCurrencyCode&quot;: &quot;USD&quot;,&#xd;
+		&quot;payCurrencyRate&quot;: 1.0,&#xd;
+		&quot;paySn&quot;: &quot;Test${__RandomString(12,0123456789)}&quot;,&#xd;
+		&quot;platform&quot;: 3,&#xd;
+		&quot;profileId&quot;: null,&#xd;
+		&quot;shippingFeeCurrencyAmount&quot;: 6.72,&#xd;
+		&quot;siteCode&quot;: &quot;ZF&quot;,&#xd;
+		&quot;transactionId&quot;: &quot;P1903180134891140136&quot;,&#xd;
+		&quot;userIp&quot;: &quot;10.33.1.247&quot;&#xd;
+	},&#xd;
+	&quot;paypalInfoDto&quot;: null,&#xd;
+	&quot;riskControlInfo&quot;: {&#xd;
+		&quot;afsResult&quot;: null,&#xd;
+		&quot;cyberRequestId&quot;: null,&#xd;
+		&quot;cybersourceDecision&quot;: null,&#xd;
+		&quot;has3d&quot;: false,&#xd;
+		&quot;middleRiskResult&quot;: null,&#xd;
+		&quot;reasonCode&quot;: null,&#xd;
+		&quot;risk3dResult&quot;: null,&#xd;
+		&quot;thirdRiskScore&quot;: null&#xd;
+	},&#xd;
+	&quot;shippingAddressDto&quot;: {&#xd;
+		&quot;address1&quot;: &quot;sh sjdb&quot;,&#xd;
+		&quot;address2&quot;: &quot;&quot;,&#xd;
+		&quot;city&quot;: &quot;Dupo&quot;,&#xd;
+		&quot;countryCode&quot;: &quot;US&quot;,&#xd;
+		&quot;email&quot;: &quot;zhongliping-buyer@globalegrow.com&quot;,&#xd;
+		&quot;firstName&quot;: &quot;test&quot;,&#xd;
+		&quot;fullAddress&quot;: &quot;sh sjdb &quot;,&#xd;
+		&quot;fullName&quot;: &quot;test buyer&quot;,&#xd;
+		&quot;grayFullAddress&quot;: &quot;US Illinois Dupo sh sjdb &quot;,&#xd;
+		&quot;lastName&quot;: &quot;buyer&quot;,&#xd;
+		&quot;phoneNumber&quot;: &quot;1234567866&quot;,&#xd;
+		&quot;postalCode&quot;: &quot;62239&quot;,&#xd;
+		&quot;state&quot;: &quot;Illinois&quot;&#xd;
+	},&#xd;
+	&quot;skuList&quot;: [&quot;210882301&quot;],&#xd;
+	&quot;sourceId&quot;: &quot;e23d64e1-87e3-48eb-a207-2495397f1140&quot;,&#xd;
+	&quot;userInfoDto&quot;: {&#xd;
+		&quot;accountAge&quot;: 252,&#xd;
+		&quot;couponNo&quot;: null,&#xd;
+		&quot;createTime&quot;: 1531101501,&#xd;
+		&quot;growthScore&quot;: null,&#xd;
+		&quot;hasGuessCheckout&quot;: null,&#xd;
+		&quot;payeeId&quot;: null,&#xd;
+		&quot;userEmail&quot;: &quot;583241254@qq.com&quot;,&#xd;
+		&quot;userId&quot;: 5455,&#xd;
+		&quot;userIp&quot;: &quot;10.33.1.247&quot;,&#xd;
+		&quot;userLevel&quot;: null&#xd;
+	}&#xd;
+}&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path"></stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>true</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <sentBytes>true</sentBytes>
+                  <threadCounts>true</threadCounts>
+                  <idleTime>true</idleTime>
+                  <connectTime>true</connectTime>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="PHP接口" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">User-Agent</stringProp>
+              <stringProp name="Header.value">liuhua2</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <RecordingController guiclass="RecordController" testclass="RecordingController" testname="pps登录脚本" enabled="false"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2 /login/index/checklogin" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="from" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">from</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="dosubmit" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">dosubmit</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="username" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">username</stringProp>
+                  <stringProp name="Argument.value">zhangwei</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="password" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">password</stringProp>
+                  <stringProp name="Argument.value">zhang1wei</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">user.hqygou.com</stringProp>
+            <stringProp name="HTTPSampler.port">80</stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/login/index/checklogin</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">http://user.hqygou.com/login/index/login/</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">zh-CN,zh;q=0.9,en;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="Origin" elementType="Header">
+                  <stringProp name="Header.name">Origin</stringProp>
+                  <stringProp name="Header.value">http://user.hqygou.com</stringProp>
+                </elementProp>
+                <elementProp name="Pragma" elementType="Header">
+                  <stringProp name="Header.name">Pragma</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                </elementProp>
+                <elementProp name="Cache-Control" elementType="Header">
+                  <stringProp name="Header.name">Cache-Control</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="4 /base/login/do-login" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="sid" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">sid</stringProp>
+                  <stringProp name="Argument.value">0d95693a6d30d6791ed3cf9dedc86cd5</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="url" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">url</stringProp>
+                  <stringProp name="Argument.value">QmZoN2UzRVZWWklsMnlON2RLNUEvVEppWmpabVkyVXpNbVl4WXpaaFpXRmhabUl6WVRNME1EZ3pOamRrTW1GbU1XRmpOemxpTnpBeE5qbGtaamxpTXpRNE1qUXhNbVJsTVdVeU5XVXhaVGJQSm8rdWJRS0tQU21Cc3JvTnlDRVNGTlhwbjRXVUovbG5UdHpmSnNTRDkrdTJUM3ZMUnMvNG8rajExbUs2Q1Z3PQ==</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="username" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">username</stringProp>
+                  <stringProp name="Argument.value">zhangwei</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="isadmin" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">isadmin</stringProp>
+                  <stringProp name="Argument.value">0</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="key" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">key</stringProp>
+                  <stringProp name="Argument.value">afasf%2A%5Ed%23%26%5Eh213sa152</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">www.obs-pay.com</stringProp>
+            <stringProp name="HTTPSampler.port">80</stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/base/login/do-login</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="TestPlan.comments">Detected a redirect from the previous sample</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">http://user.hqygou.com/login/index/login/</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">zh-CN,zh;q=0.9,en;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Cache-Control" elementType="Header">
+                  <stringProp name="Header.name">Cache-Control</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Pragma" elementType="Header">
+                  <stringProp name="Header.name">Pragma</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="3 /login/index/sso" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="struli" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">struli</stringProp>
+                  <stringProp name="Argument.value">aHR0cDovL3d3dy5vYnMtcGF5LmNvbS9iYXNlL2xvZ2luL2RvLWxvZ2lufEJmaDdlM0VWVlpJbDJ5TjdkSzVBL1RKaVpqWm1ZMlV6TW1ZeFl6WmhaV0ZoWm1JellUTTBNRGd6Tmpka01tRm1NV0ZqTnpsaU56QXhOamxrWmpsaU16UTRNalF4TW1SbE1XVXlOV1V4WlRiUEpvK3ViUUtLUFNtQnNyb055Q0VTRk5YcG40V1VKL2xuVHR6ZkpzU0Q5K3UyVDN2TFJzLzRvK2oxMW1LNkNWdz0=</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">user.hqygou.com</stringProp>
+            <stringProp name="HTTPSampler.port">80</stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/login/index/sso</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">http://user.hqygou.com/login/index/login/</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">zh-CN,zh;q=0.9,en;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Cache-Control" elementType="Header">
+                  <stringProp name="Header.name">Cache-Control</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Pragma" elementType="Header">
+                  <stringProp name="Header.name">Pragma</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="5 /" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">www.obs-pay.com</stringProp>
+            <stringProp name="HTTPSampler.port">80</stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">http://user.hqygou.com/login/index/login/</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">zh-CN,zh;q=0.9,en;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Cache-Control" elementType="Header">
+                  <stringProp name="Header.name">Cache-Control</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Pragma" elementType="Header">
+                  <stringProp name="Header.name">Pragma</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="7 /dist/js/manifest.js" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="1550563234" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">1550563234</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata"></stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">www.obs-pay.com</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/dist/js/manifest.js</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">http://www.obs-pay.com/?</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">zh-CN,zh;q=0.9,en;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="Cache-Control" elementType="Header">
+                  <stringProp name="Header.name">Cache-Control</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Pragma" elementType="Header">
+                  <stringProp name="Header.name">Pragma</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">*/*</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="6 /dist/css/app.css" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="1550563234" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">1550563234</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata"></stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">www.obs-pay.com</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/dist/css/app.css</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">http://www.obs-pay.com/?</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">zh-CN,zh;q=0.9,en;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="Cache-Control" elementType="Header">
+                  <stringProp name="Header.name">Cache-Control</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Pragma" elementType="Header">
+                  <stringProp name="Header.name">Pragma</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/css,*/*;q=0.1</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="9 /dist/js/app.js" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="1550563234" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">1550563234</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata"></stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">www.obs-pay.com</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/dist/js/app.js</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">http://www.obs-pay.com/?</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">zh-CN,zh;q=0.9,en;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="Cache-Control" elementType="Header">
+                  <stringProp name="Header.name">Cache-Control</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Pragma" elementType="Header">
+                  <stringProp name="Header.name">Pragma</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">*/*</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="10 /base/menu/public-menus" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">www.obs-pay.com</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/base/menu/public-menus</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">http://www.obs-pay.com/?</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">zh-CN,zh;q=0.9,en;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="X-Requested-With" elementType="Header">
+                  <stringProp name="Header.name">X-Requested-With</stringProp>
+                  <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                </elementProp>
+                <elementProp name="Cache-Control" elementType="Header">
+                  <stringProp name="Header.name">Cache-Control</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Pragma" elementType="Header">
+                  <stringProp name="Header.name">Pragma</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="11 /dist/fonts/fontawesome-webfont.woff2" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="ver" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">ver</stringProp>
+                  <stringProp name="Argument.value">af7ae50</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">www.obs-pay.com</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/dist/fonts/fontawesome-webfont.woff2</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">http://www.obs-pay.com/dist/css/app.css?1550563234</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">zh-CN,zh;q=0.9,en;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="Origin" elementType="Header">
+                  <stringProp name="Header.name">Origin</stringProp>
+                  <stringProp name="Header.value">http://www.obs-pay.com</stringProp>
+                </elementProp>
+                <elementProp name="Cache-Control" elementType="Header">
+                  <stringProp name="Header.name">Cache-Control</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Pragma" elementType="Header">
+                  <stringProp name="Header.name">Pragma</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">*/*</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="8 /dist/js/vendor.js" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="1550563234" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">1550563234</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata"></stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">www.obs-pay.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/dist/js/vendor.js</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">http://www.obs-pay.com/?</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">zh-CN,zh;q=0.9,en;q=0.8</stringProp>
+              </elementProp>
+              <elementProp name="Cache-Control" elementType="Header">
+                <stringProp name="Header.name">Cache-Control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+              <elementProp name="Pragma" elementType="Header">
+                <stringProp name="Header.name">Pragma</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">*/*</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">www.obs-pay.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/pay/public/currencys</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="PHP接口" enabled="false"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SMS--顾客TK信息" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">www.obs-pay.com</stringProp>
+            <stringProp name="HTTPSampler.port">80</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/pay/risk/event-tk-info?email=zhaoyang2@globalegrow.com</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="TestPlan.comments">http://wiki.hqygou.com:8090/pages/viewpage.action?pageId=121144463</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

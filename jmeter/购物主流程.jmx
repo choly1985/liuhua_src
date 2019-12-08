@@ -1,0 +1,1598 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="4.0" jmeter="4.0 r1823414">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="基线流程" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="ip" elementType="Argument">
+            <stringProp name="Argument.name">ip</stringProp>
+            <stringProp name="Argument.value">10.40.2.109</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="port" elementType="Argument">
+            <stringProp name="Argument.name">port</stringProp>
+            <stringProp name="Argument.value">2087</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="token" elementType="Argument">
+            <stringProp name="Argument.name">token</stringProp>
+            <stringProp name="Argument.value">9c17830f2e3c20e61948653d0697be8f</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath">D:\Program Files\mysql-connector-java-8.0.13.jar</stringProp>
+    </TestPlan>
+    <hashTree>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Content-Type</stringProp>
+            <stringProp name="Header.value">application/json</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="系统变量" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="ip" elementType="Argument">
+            <stringProp name="Argument.name">ip</stringProp>
+            <stringProp name="Argument.value">10.40.2.109</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="port" elementType="Argument">
+            <stringProp name="Argument.name">port</stringProp>
+            <stringProp name="Argument.value">2087</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="token" elementType="Argument">
+            <stringProp name="Argument.name">token</stringProp>
+            <stringProp name="Argument.value">9c17830f2e3c20e61948653d0697be8f</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="环境变量" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="webGoodSn" elementType="Argument">
+            <stringProp name="Argument.name">webGoodSn</stringProp>
+            <stringProp name="Argument.value">009936771515</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="virWhCodeList" elementType="Argument">
+            <stringProp name="Argument.name">virWhCodeList</stringProp>
+            <stringProp name="Argument.value">1433363</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="email" elementType="Argument">
+            <stringProp name="Argument.name">email</stringProp>
+            <stringProp name="Argument.value">xiaozhetest@qq.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="password" elementType="Argument">
+            <stringProp name="Argument.name">password</stringProp>
+            <stringProp name="Argument.value">qq556677</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="goods" elementType="Argument">
+            <stringProp name="Argument.name">goods</stringProp>
+            <stringProp name="Argument.value">221634501</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="连接数据库" enabled="true">
+        <boolProp name="autocommit">true</boolProp>
+        <stringProp name="checkQuery">Select 1</stringProp>
+        <stringProp name="connectionAge">5000</stringProp>
+        <stringProp name="dataSource">mysql</stringProp>
+        <stringProp name="dbUrl">jdbc:mysql://10.60.46.206:3307/</stringProp>
+        <stringProp name="driver">com.mysql.jdbc.Driver</stringProp>
+        <boolProp name="keepAlive">true</boolProp>
+        <stringProp name="password">java123456</stringProp>
+        <stringProp name="poolMax">0</stringProp>
+        <stringProp name="timeout">10000</stringProp>
+        <stringProp name="transactionIsolation">DEFAULT</stringProp>
+        <stringProp name="trimInterval">60000</stringProp>
+        <stringProp name="username">java-service</stringProp>
+      </JDBCDataSource>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>true</responseData>
+            <samplerData>true</samplerData>
+            <xml>true</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>true</responseHeaders>
+            <requestHeaders>true</requestHeaders>
+            <responseDataOnError>true</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <hostname>true</hostname>
+            <threadCounts>true</threadCounts>
+            <sampleCount>true</sampleCount>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="购物主流程" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">2</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>true</responseData>
+              <samplerData>true</samplerData>
+              <xml>true</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>true</responseHeaders>
+              <requestHeaders>true</requestHeaders>
+              <responseDataOnError>true</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <hostname>true</hostname>
+              <threadCounts>true</threadCounts>
+              <sampleCount>true</sampleCount>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="购物主流程" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="001-用户登陆" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+&quot;header&quot;: {&#xd;
+&quot;service&quot;: &quot;com.globalegrow.member.spi.inter.IMemUserBaseInnerService&quot;,&#xd;
+&quot;method&quot;: &quot;login&quot;,&#xd;
+&quot;domain&quot;: &quot;&quot;,&#xd;
+&quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+&quot;tokenid&quot;:&quot;${token}&quot;&#xd;
+},&#xd;
+&quot;body&quot;: {&#xd;
+&quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+&quot;pipelineCode&quot;:&quot;GB&quot;,&#xd;
+&quot;email&quot;: &quot;${email}&quot;,&#xd;
+&quot;password&quot;: &quot;${password}&quot;,&#xd;
+&quot;ip&quot;:&quot;10.33.1.200&quot;,&#xd;
+&quot;loginType&quot;:1,&#xd;
+&quot;platform&quot;:1&#xd;
+}&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${ip}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/gateway/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>true</responseData>
+                  <samplerData>true</samplerData>
+                  <xml>true</xml>
+                  <fieldNames>true</fieldNames>
+                  <responseHeaders>true</responseHeaders>
+                  <requestHeaders>true</requestHeaders>
+                  <responseDataOnError>true</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <sentBytes>true</sentBytes>
+                  <url>true</url>
+                  <hostname>true</hostname>
+                  <threadCounts>true</threadCounts>
+                  <sampleCount>true</sampleCount>
+                  <idleTime>true</idleTime>
+                  <connectTime>true</connectTime>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="提取userid" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">userid</stringProp>
+              <stringProp name="RegexExtractor.regex">\\&quot;userId\\&quot;:(.*?),</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="固定定时器" enabled="true">
+              <stringProp name="ConstantTimer.delay">500</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="002-查询商品详情" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;header&quot;: {&#xd;
+    &quot;service&quot;: &quot;com.globalegrow.spi.goods.common.inter.IGoodsService&quot;,&#xd;
+    &quot;method&quot;: &quot;getGoodsListByWebGoodSn&quot;,&#xd;
+    &quot;domain&quot;: &quot;&quot;,&#xd;
+    &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+    &quot;tokenid&quot;:&quot;${token}&quot;&#xd;
+  },&#xd;
+  &quot;body&quot;: {&#xd;
+    &quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+    &quot;pipelineCode&quot;: &quot;GB&quot;,&#xd;
+    &quot;webGoodSnList&quot;: [&#xd;
+      {&#xd;
+        &quot;webGoodSn&quot;: &quot;${webGoodSn}&quot;,&#xd;
+        &quot;virWhCodeList&quot; :[&#xd;
+            &quot;${virWhCodeList}&quot;&#xd;
+        ]&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;lang&quot;: &quot;en&quot;,&#xd;
+    &quot;platform&quot;: 1&#xd;
+  }&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${ip}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/gateway/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>true</responseData>
+                  <samplerData>true</samplerData>
+                  <xml>true</xml>
+                  <fieldNames>true</fieldNames>
+                  <responseHeaders>true</responseHeaders>
+                  <requestHeaders>true</requestHeaders>
+                  <responseDataOnError>true</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <sentBytes>true</sentBytes>
+                  <url>true</url>
+                  <hostname>true</hostname>
+                  <threadCounts>true</threadCounts>
+                  <sampleCount>true</sampleCount>
+                  <idleTime>true</idleTime>
+                  <connectTime>true</connectTime>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="提取goods" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">goods</stringProp>
+              <stringProp name="RegexExtractor.regex">\\&quot;goodSn\\&quot;:\\&quot;(.*?)\\&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="固定定时器" enabled="true">
+              <stringProp name="ConstantTimer.delay">500</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="003-清空购物车" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;header&quot;: {&#xd;
+    &quot;service&quot;: &quot;com.globalegrow.cart.spi.outer.CartAtomService&quot;,&#xd;
+    &quot;method&quot;: &quot;clearCart&quot;,&#xd;
+    &quot;domain&quot;: &quot;&quot;,&#xd;
+    &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+    &quot;tokenid&quot;:&quot;${token}&quot;&#xd;
+  },&#xd;
+  &quot;body&quot;: {&#xd;
+    &quot;userId&quot;: &quot;${userid}&quot;,&#xd;
+    &quot;sessionId&quot;: &quot;en&quot;,&#xd;
+    &quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+    &quot;pipelineCode&quot;:&quot;GB&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${ip}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/gateway/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="固定定时器" enabled="true">
+              <stringProp name="ConstantTimer.delay">500</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="004-加入购物车" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;header&quot;: {&#xd;
+    &quot;domain&quot;: &quot;&quot;,&#xd;
+    &quot;method&quot;: &quot;addToCart&quot;,&#xd;
+    &quot;service&quot;: &quot;com.globalegrow.cart.spi.outer.CartAtomService&quot;,&#xd;
+    &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+    &quot;tokenid&quot;:&quot;${token}&quot;&#xd;
+  },&#xd;
+  &quot;body&quot;: {&#xd;
+    &quot;goodList&quot;: [&#xd;
+      {&#xd;
+        &quot;goodSn&quot;: &quot;${goods}&quot;,&#xd;
+        &quot;goodType&quot;: &quot;0&quot;,&#xd;
+        &quot;qty&quot;: 1,&#xd;
+        &quot;source&quot;: 0,&#xd;
+        &quot;warehouseCode&quot;: &quot;${virWhCodeList}&quot;&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;platform&quot;:1,&#xd;
+    &quot;sessionId&quot;: &quot;&quot;,&#xd;
+    &quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+    &quot;pipelineCode&quot;:&quot;GB&quot;,&#xd;
+    &quot;userId&quot;: &quot;${userid}&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${ip}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/gateway/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>true</responseData>
+                  <samplerData>true</samplerData>
+                  <xml>true</xml>
+                  <fieldNames>true</fieldNames>
+                  <responseHeaders>true</responseHeaders>
+                  <requestHeaders>true</requestHeaders>
+                  <responseDataOnError>true</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <sentBytes>true</sentBytes>
+                  <url>true</url>
+                  <hostname>true</hostname>
+                  <threadCounts>true</threadCounts>
+                  <sampleCount>true</sampleCount>
+                  <idleTime>true</idleTime>
+                  <connectTime>true</connectTime>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="固定定时器" enabled="true">
+              <stringProp name="ConstantTimer.delay">500</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="006-保存购物车" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;header&quot;: {&#xd;
+    &quot;service&quot;: &quot;com.globalegrow.spi.cart.common.inter.CartApi&quot;,&#xd;
+    &quot;method&quot;: &quot;saveActivityId&quot;,&#xd;
+    &quot;domain&quot;: &quot;&quot;,&#xd;
+    &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+    &quot;tokenid&quot;:&quot;${token}&quot;&#xd;
+  },&#xd;
+  &quot;body&quot;: {&#xd;
+        &quot;currentUserId&quot;: &quot;${userid}&quot;,&#xd;
+        &quot;lang&quot;: &quot;en&quot;,&#xd;
+        &quot;pipelineCode&quot;: &quot;GB&quot;,&#xd;
+        &quot;platform&quot;: 1,&#xd;
+        &quot;sessionId&quot;: &quot;&quot;,&#xd;
+        &quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+        &quot;userId&quot;: ${userid}&#xd;
+  }  &#xd;
+} </stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${ip}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/gateway/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>true</responseData>
+                  <samplerData>true</samplerData>
+                  <xml>true</xml>
+                  <fieldNames>true</fieldNames>
+                  <responseHeaders>true</responseHeaders>
+                  <requestHeaders>true</requestHeaders>
+                  <responseDataOnError>true</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <sentBytes>true</sentBytes>
+                  <url>true</url>
+                  <hostname>true</hostname>
+                  <threadCounts>true</threadCounts>
+                  <sampleCount>true</sampleCount>
+                  <idleTime>true</idleTime>
+                  <connectTime>true</connectTime>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="固定定时器" enabled="true">
+              <stringProp name="ConstantTimer.delay">500</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="005-查看购物车" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{ &#xd;
+   &quot;header&quot;: { &#xd;
+     &quot;service&quot;: &quot;com.globalegrow.spi.cart.common.inter.CartApi&quot;,&#xd;
+     &quot;method&quot;: &quot;getListCart&quot;, &#xd;
+     &quot;domain&quot;: &quot;&quot;,&#xd;
+     &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+     &quot;tokenid&quot;:&quot;${token}&quot;&#xd;
+     }, &#xd;
+     &quot;body&quot;: {&#xd;
+        &quot;countryCode&quot;: &quot;US&quot;,&#xd;
+        &quot;goodSnCount&quot;: 1,&#xd;
+        &quot;lang&quot;: &quot;en&quot;,&#xd;
+        &quot;pipelineCode&quot;: &quot;GB&quot;,&#xd;
+        &quot;platform&quot;: 1,&#xd;
+        &quot;sessionId&quot;: &quot;&quot;,&#xd;
+        &quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+        &quot;useIntegral&quot;: false,&#xd;
+        &quot;userId&quot;: ${userid}&#xd;
+    }&#xd;
+       &#xd;
+  &#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${ip}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/gateway/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>true</responseData>
+                  <samplerData>true</samplerData>
+                  <xml>true</xml>
+                  <fieldNames>true</fieldNames>
+                  <responseHeaders>true</responseHeaders>
+                  <requestHeaders>true</requestHeaders>
+                  <responseDataOnError>true</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <sentBytes>true</sentBytes>
+                  <url>true</url>
+                  <hostname>true</hostname>
+                  <threadCounts>true</threadCounts>
+                  <sampleCount>true</sampleCount>
+                  <idleTime>true</idleTime>
+                  <connectTime>true</connectTime>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="固定定时器" enabled="true">
+              <stringProp name="ConstantTimer.delay">500</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="007-购物车结算" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;header&quot;: {&#xd;
+    &quot;service&quot;: &quot;com.globalegrow.spi.cart.common.inter.CartApi&quot;,&#xd;
+    &quot;method&quot;: &quot;getListConfirmCart&quot;,&#xd;
+    &quot;domain&quot;: &quot;&quot;,&#xd;
+    &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+    &quot;tokenid&quot;:&quot;${token}&quot;&#xd;
+    &#xd;
+  },&#xd;
+  &quot;body&quot;:  {&#xd;
+        &quot;addressId&quot;: 12540051,&#xd;
+        &quot;countryCode&quot;: &quot;US&quot;,&#xd;
+        &quot;couponCode&quot;: &quot;&quot;,&#xd;
+        &quot;createTime&quot;: ${__time(/1000,)},&#xd;
+        &quot;integralNum&quot;: 0,&#xd;
+        &quot;lang&quot;: &quot;en&quot;,&#xd;
+        &quot;pipelineCode&quot;: &quot;GB&quot;,&#xd;
+        &quot;platform&quot;: 1,&#xd;
+        &quot;settlementGroupMap&quot;: {},&#xd;
+        &quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+        &quot;useIntegral&quot;: false,&#xd;
+        &quot;userId&quot;: ${userid}&#xd;
+    }&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${ip}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/gateway/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="提取goodsGroupId" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">goodsGroupId</stringProp>
+              <stringProp name="RegexExtractor.regex">\\&quot;goodsGroupId\\&quot;:\\&quot;(.*?)\\&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="提取logisticsCode" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">logisticsCode</stringProp>
+              <stringProp name="RegexExtractor.regex">\\&quot;logisticsCode\\&quot;:\\&quot;(.*?)\\&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">0</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="提取warehouseCode" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">warehouseCode</stringProp>
+              <stringProp name="RegexExtractor.regex">\\&quot;warehouseCode\\&quot;:\\&quot;(.*?)\\&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">0</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>true</responseData>
+                  <samplerData>true</samplerData>
+                  <xml>true</xml>
+                  <fieldNames>true</fieldNames>
+                  <responseHeaders>true</responseHeaders>
+                  <requestHeaders>true</requestHeaders>
+                  <responseDataOnError>true</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <sentBytes>true</sentBytes>
+                  <url>true</url>
+                  <hostname>true</hostname>
+                  <threadCounts>true</threadCounts>
+                  <sampleCount>true</sampleCount>
+                  <idleTime>true</idleTime>
+                  <connectTime>true</connectTime>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="固定定时器" enabled="true">
+              <stringProp name="ConstantTimer.delay">500</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="005-价格确认" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;header&quot;: {&#xd;
+    &quot;service&quot;: &quot;com.globalegrow.spi.cart.common.inter.CartInnerService&quot;,&#xd;
+    &quot;method&quot;: &quot;orderCalc&quot;,&#xd;
+    &quot;domain&quot;: &quot;&quot;,&#xd;
+    &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+    &quot;tokenid&quot;:&quot;${token}&quot;&#xd;
+  },&#xd;
+  &quot;body&quot;:  {&#xd;
+        &quot;addressId&quot;: 12540051,&#xd;
+        &quot;couponCode&quot;: &quot;&quot;,&#xd;
+        &quot;goodGroupList&quot;: [&#xd;
+            {&#xd;
+                &quot;goodsGroupId&quot;: &quot;${goodsGroupId}&quot;,&#xd;
+                &quot;isInsurance&quot;: false,&#xd;
+                &quot;logisticsCode&quot;: &quot;${logisticsCode}&quot;,&#xd;
+                &quot;logisticsGroupId&quot;: null,&#xd;
+                &quot;warehouseCode&quot;: &quot;${warehouseCode}&quot;&#xd;
+            }&#xd;
+        ],&#xd;
+        &quot;integralNum&quot;: 0,&#xd;
+        &quot;lang&quot;: &quot;en&quot;,&#xd;
+        &quot;logisticsCouponCode&quot;: &quot;&quot;,&#xd;
+        &quot;pipelineCode&quot;: &quot;GB&quot;,&#xd;
+        &quot;platform&quot;: 1,&#xd;
+        &quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+        &quot;useIntegral&quot;: false,&#xd;
+        &quot;userId&quot;: ${userid}&#xd;
+    }&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${ip}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/gateway/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="提取orderPayAmount" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">orderPayAmount</stringProp>
+              <stringProp name="RegexExtractor.regex">\\&quot;settleAmount\\&quot;:(.*?),</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="提取shippingAmount" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">shippingAmount</stringProp>
+              <stringProp name="RegexExtractor.regex">\\&quot;shippingAmount\\&quot;:(.*?),</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>true</responseData>
+                  <samplerData>true</samplerData>
+                  <xml>true</xml>
+                  <fieldNames>true</fieldNames>
+                  <responseHeaders>true</responseHeaders>
+                  <requestHeaders>true</requestHeaders>
+                  <responseDataOnError>true</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <sentBytes>true</sentBytes>
+                  <url>true</url>
+                  <hostname>true</hostname>
+                  <threadCounts>true</threadCounts>
+                  <sampleCount>true</sampleCount>
+                  <idleTime>true</idleTime>
+                  <connectTime>true</connectTime>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="固定定时器" enabled="true">
+              <stringProp name="ConstantTimer.delay">500</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="006-生成订单" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;header&quot;: {&#xd;
+    &quot;service&quot;: &quot;com.globalegrow.spi.order.common.inter.OrderService&quot;,&#xd;
+    &quot;method&quot;: &quot;addOrder&quot;,&#xd;
+    &quot;domain&quot;: &quot;&quot;,&#xd;
+    &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+    &quot;tokenid&quot;:&quot;${token}&quot;&#xd;
+  },&#xd;
+  &quot;body&quot;:     {&#xd;
+        &quot;activityDeductAmount&quot;: 0,&#xd;
+        &quot;addressId&quot;: 12540051,&#xd;
+        &quot;couponCode&quot;: &quot;&quot;,&#xd;
+        &quot;couponDeductAmount&quot;: 0,&#xd;
+        &quot;currencyCode&quot;: &quot;USD&quot;,&#xd;
+        &quot;email&quot;: null,&#xd;
+        &quot;ext&quot;: null,&#xd;
+        &quot;goodGroupList&quot;: [&#xd;
+            {&#xd;
+                &quot;goodsGroupId&quot;: &quot;${goodsGroupId}&quot;,&#xd;
+                &quot;insurance&quot;: false,&#xd;
+                &quot;isInsurance&quot;: false,&#xd;
+                &quot;logisticsCode&quot;: &quot;${logisticsCode}&quot;,&#xd;
+                &quot;logisticsGroupId&quot;: null,&#xd;
+                &quot;warehouseCode&quot;: &quot;${warehouseCode}&quot;&#xd;
+            }&#xd;
+        ],&#xd;
+        &quot;inssuranceAmount&quot;: 0,&#xd;
+        &quot;integralDeductAmount&quot;: 0,&#xd;
+        &quot;integralNum&quot;: 0,&#xd;
+        &quot;ip&quot;: &quot;10.33.1.200&quot;,&#xd;
+        &quot;isDropshipping&quot;: 0,&#xd;
+        &quot;isGift&quot;: 0,&#xd;
+        &quot;isQuickBuy&quot;: 0,&#xd;
+        &quot;isQuickPayment&quot;: 0,&#xd;
+        &quot;isTest&quot;: 0,&#xd;
+        &quot;lang&quot;: &quot;en&quot;,&#xd;
+        &quot;logisticCouponDeductAmount&quot;: 0,&#xd;
+        &quot;logisticsCouponCode&quot;: &quot;&quot;,&#xd;
+        &quot;orderPayAmount&quot;: ${orderPayAmount},&#xd;
+        &quot;orderType&quot;: 0,&#xd;
+        &quot;pipelineCode&quot;: &quot;GB&quot;,&#xd;
+        &quot;platform&quot;: 1,&#xd;
+        &quot;platformVersion&quot;: &quot;0&quot;,&#xd;
+        &quot;postbackId&quot;: &quot;&quot;,&#xd;
+        &quot;shippingAmount&quot;: ${shippingAmount},&#xd;
+        &quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+        &quot;token&quot;: &quot;${__RandomString(20,1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,ABC)}&quot;,&#xd;
+        &quot;useIntegral&quot;: false,&#xd;
+        &quot;userId&quot;: ${userid},&#xd;
+        &quot;userRemark&quot;: &quot;&quot;,&#xd;
+        &quot;utmCampaign&quot;: &quot;&quot;,&#xd;
+        &quot;utmMedium&quot;: &quot;&quot;,&#xd;
+        &quot;utmSource&quot;: &quot;&quot;,&#xd;
+        &quot;wjLinkid&quot;: 0&#xd;
+    }&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${ip}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/gateway/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="提取parentOrderSn" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">parentOrderSn</stringProp>
+              <stringProp name="RegexExtractor.regex">\\&quot;parentOrderSn\\&quot;:\\&quot;(.*?)\\&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="提取orderSns" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">orderSns</stringProp>
+              <stringProp name="RegexExtractor.regex">\\&quot;orderSns\\&quot;:\\&quot;(.*?)\\&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>true</responseData>
+                  <samplerData>true</samplerData>
+                  <xml>true</xml>
+                  <fieldNames>true</fieldNames>
+                  <responseHeaders>true</responseHeaders>
+                  <requestHeaders>true</requestHeaders>
+                  <responseDataOnError>true</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <sentBytes>true</sentBytes>
+                  <url>true</url>
+                  <hostname>true</hostname>
+                  <threadCounts>true</threadCounts>
+                  <sampleCount>true</sampleCount>
+                  <idleTime>true</idleTime>
+                  <connectTime>true</connectTime>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="固定定时器" enabled="true">
+              <stringProp name="ConstantTimer.delay">500</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="007-订单去支付" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+    &quot;header&quot;:{&#xd;
+        &quot;service&quot;:&quot;com.globalegrow.spi.order.common.inter.OrderInnerService&quot;,&#xd;
+        &quot;method&quot;:&quot;toPay&quot;,&#xd;
+        &quot;domain&quot;:&quot;&quot;,&#xd;
+        &quot;version&quot;:&quot;1.0.0&quot;,&#xd;
+        &quot;tokenid&quot;:&quot;${token}&quot;&#xd;
+    },&#xd;
+    &quot;body&quot;:{&#xd;
+        &quot;parentOrderSn&quot;:&quot;${parentOrderSn}&quot;,&#xd;
+        &quot;userId&quot;:${userid},&#xd;
+        &quot;siteCode&quot;:&quot;GB&quot;&#xd;
+    }&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${ip}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/gateway/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="提取expireTime" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">expireTime</stringProp>
+              <stringProp name="RegexExtractor.regex">\\&quot;expireTime\\&quot;:(.*?),</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>true</responseData>
+                  <samplerData>true</samplerData>
+                  <xml>true</xml>
+                  <fieldNames>true</fieldNames>
+                  <responseHeaders>true</responseHeaders>
+                  <requestHeaders>true</requestHeaders>
+                  <responseDataOnError>true</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <sentBytes>true</sentBytes>
+                  <url>true</url>
+                  <hostname>true</hostname>
+                  <threadCounts>true</threadCounts>
+                  <sampleCount>true</sampleCount>
+                  <idleTime>true</idleTime>
+                  <connectTime>true</connectTime>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="固定定时器" enabled="true">
+              <stringProp name="ConstantTimer.delay">500</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+          </hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="查询SQL" enabled="true">
+            <stringProp name="dataSource">mysql</stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="query">SELECT parent_order_sn,order_sn,created_time FROM gb_order.`order_info_76` WHERE parent_order_sn = ${parentOrderSn};</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="variableNames">order_sn,created_time</stringProp>
+            <stringProp name="resultVariable">aaa</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="固定定时器" enabled="true">
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="008-支付checkout" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+    &quot;header&quot;:{&#xd;
+        &quot;service&quot;:&quot;com.globalegrow.spi.pay.inter.PayService&quot;,&#xd;
+        &quot;method&quot;:&quot;checkout&quot;,&#xd;
+        &quot;domain&quot;:&quot;&quot;,&#xd;
+        &quot;version&quot;:&quot;1.0.0&quot;,&#xd;
+        &quot;tokenId&quot;:&quot;${token}&quot;&#xd;
+    },&#xd;
+    &quot;body&quot;:{&#xd;
+        &quot;appVersion&quot;: &quot;0&quot;,&#xd;
+        &quot;billingAddressInfo&quot;: null,&#xd;
+        &quot;cancelUrl&quot;: &quot;https://order.gearbest.net/payment/result?type=cancel&quot;,&#xd;
+        &quot;checkoutType&quot;: 0,&#xd;
+        &quot;isPromotionGoods&quot;: false,&#xd;
+        &quot;lang&quot;: &quot;en&quot;,&#xd;
+        &quot;notifyUrl&quot;: &quot;https://www.gearbest.net/api/payment/notify&quot;,&#xd;
+        &quot;orderInfos&quot;: [&#xd;
+            {&#xd;
+                &quot;activityDeductAmount&quot;: 0,&#xd;
+                &quot;contrabands&quot;: [&#xd;
+                    1&#xd;
+                ],&#xd;
+                &quot;couponDeductAmount&quot;: 0,&#xd;
+                &quot;createTime&quot;:${created_time_1},&#xd;
+                &quot;currencyCode&quot;: &quot;USD&quot;,&#xd;
+                &quot;currencyRate&quot;: 1,&#xd;
+                &quot;expireTime&quot;: ${expireTime},&#xd;
+                &quot;exponent&quot;: 2,&#xd;
+                &quot;handlingFee&quot;: null,&#xd;
+                &quot;hasUseCoupon&quot;: 0,&#xd;
+                &quot;insuranceFee&quot;: 0,&#xd;
+                &quot;integralDeductAmount&quot;: 0,&#xd;
+                &quot;logisticCouponDeductAmount&quot;: 0,&#xd;
+                &quot;logisticsLevel&quot;: &quot;1&quot;,&#xd;
+                &quot;logisticsMethod&quot;: &quot;1&quot;,&#xd;
+                &quot;orderAddressInfo&quot;: {&#xd;
+                    &quot;addressLine1&quot;: &quot;aaaaa&quot;,&#xd;
+                    &quot;addressLine2&quot;: &quot;bbbbb&quot;,&#xd;
+                    &quot;city&quot;: &quot;ddddd&quot;,&#xd;
+                    &quot;countryCode&quot;: &quot;US&quot;,&#xd;
+                    &quot;countryName&quot;: &quot;United States&quot;,&#xd;
+                    &quot;email&quot;: &quot;xiaozhetest@qq.com&quot;,&#xd;
+                    &quot;firstName&quot;: &quot;zhe&quot;,&#xd;
+                    &quot;lastName&quot;: &quot;xiao&quot;,&#xd;
+                    &quot;postalCode&quot;: &quot;556677&quot;,&#xd;
+                    &quot;state&quot;: &quot;Arkansas&quot;,&#xd;
+                    &quot;telephone&quot;: &quot;18520885271&quot;&#xd;
+                },&#xd;
+                &quot;orderAmount&quot;: ${orderPayAmount},&#xd;
+                &quot;orderCurrencyAmount&quot;: null,&#xd;
+                &quot;orderGoodsInfos&quot;: [&#xd;
+                    {&#xd;
+                        &quot;catName&quot;: &quot;Watering &amp; Irrigation&quot;,&#xd;
+                        &quot;catalogue&quot;: &quot;Home &amp; Garden&lt;Garden Supplies&lt;Watering &amp; Irrigation&quot;,&#xd;
+                        &quot;categoryId&quot;: 11658,&#xd;
+                        &quot;categoryName&quot;: &quot;Home &amp; Garden&quot;,&#xd;
+                        &quot;goodsSn&quot;: &quot;220167001&quot;,&#xd;
+                        &quot;price&quot;: 85.87,&#xd;
+                        &quot;qty&quot;: 1,&#xd;
+                        &quot;title&quot;: &quot;Garden Magic Water Spray Head Pipe Nozzle with 8 Modes&quot;&#xd;
+                    }&#xd;
+                ],&#xd;
+                &quot;orderSn&quot;: &quot;${orderSn}&quot;,&#xd;
+                &quot;orderType&quot;: 0,&#xd;
+                &quot;shippingFee&quot;: ${shippingAmount},&#xd;
+                &quot;trackingFee&quot;: 0,&#xd;
+                &quot;userEmail&quot;: &quot;xiaozhetest@qq.com&quot;,&#xd;
+                &quot;userId&quot;: ${userid}&#xd;
+            }&#xd;
+        ],&#xd;
+        &quot;parentOrderSn&quot;: &quot;${parentOrderSn}&quot;,&#xd;
+        &quot;payAmount&quot;: ${orderPayAmount},&#xd;
+        &quot;payCurrencyAmount&quot;: null,&#xd;
+        &quot;pipelineCode&quot;: &quot;GB&quot;,&#xd;
+        &quot;platform&quot;: 1,&#xd;
+        &quot;returnUrl&quot;: &quot;https://order.gearbest.net/payment/result?type=success&quot;,&#xd;
+        &quot;roundType&quot;: null,&#xd;
+        &quot;siteCode&quot;: &quot;GB&quot;,&#xd;
+        &quot;userInfo&quot;: {&#xd;
+            &quot;createTime&quot;:${created_time_1},&#xd;
+            &quot;hasShippedRecords&quot;: 0,&#xd;
+            &quot;userEmail&quot;: &quot;xiaozhetest@qq.com&quot;,&#xd;
+            &quot;userId&quot;: ${userid},&#xd;
+            &quot;userIp&quot;: &quot;10.33.1.200&quot;&#xd;
+        }&#xd;
+    }&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${ip}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/gateway/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>true</responseData>
+                  <samplerData>true</samplerData>
+                  <xml>true</xml>
+                  <fieldNames>true</fieldNames>
+                  <responseHeaders>true</responseHeaders>
+                  <requestHeaders>true</requestHeaders>
+                  <responseDataOnError>true</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <sentBytes>true</sentBytes>
+                  <url>true</url>
+                  <hostname>true</hostname>
+                  <threadCounts>true</threadCounts>
+                  <sampleCount>true</sampleCount>
+                  <idleTime>true</idleTime>
+                  <connectTime>true</connectTime>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="提取token1" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">token1</stringProp>
+              <stringProp name="RegexExtractor.regex">\\&quot;token\\&quot;:\\&quot;(.*?)\\&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="固定定时器" enabled="true">
+              <stringProp name="ConstantTimer.delay">500</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="009-支付toPay" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+    &quot;header&quot;:{&#xd;
+        &quot;service&quot;:&quot;com.globalegrow.spi.pay.inter.PayService&quot;,&#xd;
+        &quot;method&quot;:&quot;toPay&quot;,&#xd;
+        &quot;domain&quot;:&quot;&quot;,&#xd;
+        &quot;version&quot;:&quot;1.0.0&quot;,&#xd;
+        &quot;tokenId&quot;:&quot;${token}&quot;&#xd;
+    },&#xd;
+    &quot;body&quot;:{&#xd;
+        &quot;adnTrspIssuerId&quot;: null,&#xd;
+        &quot;adyenDeviceFingerprint&quot;: null,&#xd;
+        &quot;adyenccCardEncrypted&quot;: null,&#xd;
+        &quot;billingAddress&quot;: null,&#xd;
+        &quot;cardInfo&quot;: null,&#xd;
+        &quot;cashIp&quot;: &quot;10.33.1.200&quot;,&#xd;
+        &quot;channelCode&quot;: &quot;WALLET&quot;,&#xd;
+        &quot;currencyCode&quot;: &quot;USD&quot;,&#xd;
+        &quot;currencyRate&quot;: 1,&#xd;
+        &quot;cyberSession&quot;: &quot;${__RandomString(8,1234567890abcdefghijklmnopqrstuvwxyz)}-${__RandomString(4,1234567890abcdefghijklmnopqrstuvwxyz)}-${__RandomString(4,1234567890abcdefghijklmnopqrstuvwxyz)}-${__RandomString(4,1234567890abcdefghijklmnopqrstuvwxyz)}-${__RandomString(12,1234567890abcdefghijklmnopqrstuvwxyz)}&quot;,&#xd;
+        &quot;cybersourceCopyOrManual&quot;: null,&#xd;
+        &quot;ebanxCpf&quot;: null,&#xd;
+        &quot;ebanxInstallmentId&quot;: null,&#xd;
+        &quot;ebanxInstallments&quot;: null,&#xd;
+        &quot;idealIssuerId&quot;: null,&#xd;
+        &quot;isUseWallet&quot;: true,&#xd;
+        &quot;payuTrccInstallments&quot;: null,&#xd;
+        &quot;pseBankCode&quot;: null,&#xd;
+        &quot;qiwiTel&quot;: null,&#xd;
+        &quot;token&quot;: &quot;${token1}&quot;,&#xd;
+        &quot;traceID&quot;: &quot;${__RandomString(8,1234567890abcdefghijklmnopqrstuvwxyz)}-${__RandomString(4,1234567890abcdefghijklmnopqrstuvwxyz)}-${__RandomString(4,1234567890abcdefghijklmnopqrstuvwxyz)}-${__RandomString(4,1234567890abcdefghijklmnopqrstuvwxyz)}-${__RandomString(12,1234567890abcdefghijklmnopqrstuvwxyz)}&quot;,&#xd;
+        &quot;walletAmount&quot;: ${orderPayAmount},&#xd;
+        &quot;walletPassword&quot;: &quot;qq556677&quot;,&#xd;
+        &quot;worldpayAcceptHeader&quot;: &quot;*/*&quot;,&#xd;
+        &quot;worldpayCseData&quot;: null,&#xd;
+        &quot;worldpayUserAgentHeader&quot;: &quot;xiaozhe&quot;&#xd;
+    }&#xd;
+&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${ip}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/gateway/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>true</responseData>
+                  <samplerData>true</samplerData>
+                  <xml>true</xml>
+                  <fieldNames>true</fieldNames>
+                  <responseHeaders>true</responseHeaders>
+                  <requestHeaders>true</requestHeaders>
+                  <responseDataOnError>true</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <sentBytes>true</sentBytes>
+                  <url>true</url>
+                  <hostname>true</hostname>
+                  <threadCounts>true</threadCounts>
+                  <sampleCount>true</sampleCount>
+                  <idleTime>true</idleTime>
+                  <connectTime>true</connectTime>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="固定定时器" enabled="true">
+              <stringProp name="ConstantTimer.delay">500</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
